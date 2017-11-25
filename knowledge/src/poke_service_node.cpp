@@ -8,10 +8,14 @@ using namespace json_prolog;
 
 bool calculate_poke_position(object_detection::PokeObject::Request  &req, object_detection::PokeObject::Response &res)
 {
+    ROS_INFO("%g", req.detection.position.point.x);
+    ROS_INFO("%g", req.detection.position.point.y);
+    ROS_INFO("%g", req.detection.position.point.z);
+
 	  std::stringstream ss;
-	  ss << "calculate_poke_position(" << req.detection.position.x << "," 
-	                                   << req.detection.position.y << "," 
-	                                   << req.detection.position.z << ",RX,RY,RZ)";
+	  ss << "calculate_poke_position(" << req.detection.position.point.x << "," 
+	                                   << req.detection.position.point.y << "," 
+	                                   << req.detection.position.point.z << ",RX,RY,RZ)";
 	  std::string query = ss.str();
 
     Prolog pl;
@@ -19,9 +23,10 @@ bool calculate_poke_position(object_detection::PokeObject::Request  &req, object
 
     if(&bdg != NULL)
     {
-      	res.poke_position.x = bdg["RX"];
-      	res.poke_position.y = bdg["RY"];
-    		res.poke_position.z = bdg["RZ"];
+        res.poke_position.header = req.detection.position.header;
+      	res.poke_position.point.x = bdg["RX"];
+      	res.poke_position.point.y = bdg["RY"];
+    	res.poke_position.point.z = bdg["RZ"];
 
         return true;
     }

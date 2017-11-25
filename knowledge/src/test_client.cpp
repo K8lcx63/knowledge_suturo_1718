@@ -11,16 +11,18 @@ int main(int argc, char **argv)
      ros::ServiceClient client = n.serviceClient<object_detection::PokeObject>("/poke_service_node/calculate_poke_position");
 
      object_detection::PokeObject srv;
-     srv.request.detection.type = "";
-     srv.request.detection.position.x = 0.05;
-     srv.request.detection.position.y = 0.05;
-     srv.request.detection.position.z = 0.2;
+     srv.request.detection.position.point.x = 7.368364604189992e-4;
+     srv.request.detection.position.point.y = 0.17276005446910858e0;
+     srv.request.detection.position.point.z = 0.9788062572479248e0;
+
+     double a = (7.368364604189992e-4) -0.15;
+     ROS_INFO("a: %g", a);
 
      if (client.call(srv))
      {
-       ROS_INFO("x: %g", srv.response.poke_position.x);
-       ROS_INFO("y: %g", srv.response.poke_position.y);
-       ROS_INFO("z: %g", srv.response.poke_position.z);
+       ROS_INFO("x: %g", srv.response.poke_position.point.x);
+       ROS_INFO("y: %g", srv.response.poke_position.point.y);
+       ROS_INFO("z: %g", srv.response.poke_position.point.z);
      }
      else
      {
