@@ -2,3 +2,4 @@
 	url = https://github.com/code-iai/iai_common_msgs
 [submodule "knowrob"]
 	url = https://github.com/knowrob/knowrob
+	ignore = all
