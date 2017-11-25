@@ -2,7 +2,7 @@
 
 ### Installation
 
-- Java8 installieren: [klick mich](https://wiki.ubuntuusers.de/Java/Installation/Oracle_Java/Java_8/) **Wichtig JDK*
+- Java8 installieren: [klick mich](https://wiki.ubuntuusers.de/Java/Installation/Oracle_Java/Java_8/) **Wichtig JDK**
 - Repo clonen und bauen
 
 ### Services
