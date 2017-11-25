@@ -11,7 +11,7 @@ Folgende Services gibt es:
 
 #### object_detection/PokeObject
 
-Eingabe: ObjectDetection<br/><br/>      
-Rückgabe: gemetry_msgs/PointStamped
+Eingabe: ObjectDetection. 
+Rückgabe: gemetry_msgs/PointStamped.
 
 Dieser Service berechnert anhand der Eingabe eine optimale Anstoßposition, so dass das Object zu Fall gebracht wird. Zu beachten ist, dass die Position welche in der Rückgabe gehalten wird absolut ist und in dem Frame sich befindet, welches in header.frame_id steht.
