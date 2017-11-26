@@ -15,7 +15,7 @@ int main(int argc, char **argv)
      srv.request.detection.position.point.y = 0.17276005446910858e0;
      srv.request.detection.position.point.z = 0.9788062572479248e0;
 
-     client.call(srv)
+     client.call(srv);
      
      return 0;
 }
