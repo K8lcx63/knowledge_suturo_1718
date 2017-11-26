@@ -8,15 +8,15 @@ using namespace json_prolog;
 
 bool calculate_poke_position(object_detection::PokeObject::Request  &req, object_detection::PokeObject::Response &res)
 {
-    ROS_INFO("%g", req.detection.position.point.x);
-    ROS_INFO("%g", req.detection.position.point.y);
-    ROS_INFO("%g", req.detection.position.point.z);
+    ROS_INFO("Input from vison x: %g", req.detection.position.point.x);
+    ROS_INFO("Input from vison y: %g", req.detection.position.point.y);
+    ROS_INFO("Input from vison z: %g", req.detection.position.point.z);
 
-	  std::stringstream ss;
-	  ss << "calculate_poke_position(" << req.detection.position.point.x << "," 
-	                                   << req.detection.position.point.y << "," 
-	                                   << req.detection.position.point.z << ",RX,RY,RZ)";
-	  std::string query = ss.str();
+	std::stringstream ss;
+	ss << "calculate_poke_position(" << req.detection.position.point.x << "," 
+	                                 << req.detection.position.point.y << "," 
+	                                 << req.detection.position.point.z << ",RX,RY,RZ)";
+	std::string query = ss.str();
 
     Prolog pl;
   	PrologBindings bdg = pl.once(query);
@@ -28,11 +28,16 @@ bool calculate_poke_position(object_detection::PokeObject::Request  &req, object
       	res.poke_position.point.y = bdg["RY"];
     	res.poke_position.point.z = bdg["RZ"];
 
+    	ROS_INFO("Modified result from knowledge x: %g", res.poke_position.point.x);
+    	ROS_INFO("Modified result from knowledge y: %g", res.poke_position.point.y);
+    	ROS_INFO("Modified result from knowledge z: %g", res.poke_position.point.z);
+
         return true;
     }
     else
     {
-      return false;
+    	ROS_ERROR("Failed to call service 'calculate_poke_position'!");
+      	return false;
     }
 }
    
@@ -42,7 +47,6 @@ int main(int argc, char **argv)
     ros::NodeHandle nh("~");
    
     ros::ServiceServer service = nh.advertiseService("calculate_poke_position", calculate_poke_position);
-    ROS_INFO("Ready to calc.");
     ros::spin();
    
     return 0;
