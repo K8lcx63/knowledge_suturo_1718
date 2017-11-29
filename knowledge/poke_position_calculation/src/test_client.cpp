@@ -8,7 +8,7 @@ int main(int argc, char **argv)
    ros::init(argc, argv, "test_client");
    
      ros::NodeHandle n;
-     ros::ServiceClient client = n.serviceClient<object_detection::PokeObject>("/poke_service_node/calculate_poke_position");
+     ros::ServiceClient client = n.serviceClient<object_detection::PokeObject>("/poke_position_service/calculate_poke_position");
 
      object_detection::PokeObject srv;
      srv.request.detection.position.point.x = 7.368364604189992e-4;

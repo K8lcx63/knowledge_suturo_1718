@@ -1,0 +1,8 @@
+
+*.bin
+
+knowrob_cram/designator_integration_msgs/build/tmp/publishMavenJavaPublicationToMavenRepository/org/knowrob/knowrob_cram/designator_integration_msgs/maven-metadata-remote\.xml
+
+*.sha1
+
+knowrob_cram/knowrob_cram/build/tmp/publishMavenJavaPublicationToMavenRepository/org/knowrob/knowrob_cram/knowrob_cram/maven-metadata-remote\.xml
