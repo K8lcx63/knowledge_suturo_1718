@@ -11,7 +11,20 @@ Folgende Services gibt es:
 
 #### object_detection/PokeObject
 
-Eingabe: ObjectDetection  
-Rückgabe: gemetry_msgs/PointStamped
+Topic-Name: /poke_position_service/calculate_poke_position  
+Eingabe: ObjectDetection    
+Rückgabe: geometry_msgs/PointStamped poke_position
 
 Dieser Service berechnert anhand der Eingabe eine optimale Anstoßposition, so dass das Object zu Fall gebracht wird. Zu beachten ist, dass die Position welche in der Rückgabe gehalten wird absolut ist und in dem Frame sich befindet, welches in header.frame_id steht.
+
+#### knowledge_msgs/GetFixedKitchenObjects
+
+Topic-Name: /kitchen_model_service/get_fixed_kitchen_objects  
+Eingabe:  
+Rückgabe: string frame_id  
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; string[] names  
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; geometry_msgs/Pose[] poses  
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; geometry_msgs/Vector3[] bounding_boxes  
+
+
+Dieser Service exportiert alle festen Objecte im Lab aus der 'room.owl' in das in der Rückgabe angegebene Format. Das Ziel ist es diese Daten an Motion weiterzureichen und daraus eine Planning-Scene zu erstellen, damit der Roboter seine Umgebung kennt.
