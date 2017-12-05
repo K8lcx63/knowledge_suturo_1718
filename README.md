@@ -4,6 +4,7 @@
 
 - Java8 installieren: [klick mich](https://wiki.ubuntuusers.de/Java/Installation/Oracle_Java/Java_8/) **Wichtig JDK**
 - Repo clonen und bauen
+- Die folgenden Schritte ausführen: [klick mich](http://knowrob.org/installation/workspace)
 
 ### Launchen
 
