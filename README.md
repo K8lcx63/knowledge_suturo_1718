@@ -5,6 +5,13 @@
 - Java8 installieren: [klick mich](https://wiki.ubuntuusers.de/Java/Installation/Oracle_Java/Java_8/) **Wichtig JDK**
 - Repo clonen und bauen
 
+### Launchen
+
+Um Alle Knoten des Knowledgepackages zu starten wird folgender Befehl verwendet:
+
+ > roslaunch knowledge knowledge_main.launch
+
+
 ### Services
 
 Folgende Services gibt es:
