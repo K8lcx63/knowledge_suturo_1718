@@ -1,8 +1,11 @@
 [submodule "iai_common_msgs"]
+	path = iai_common_msgs
 	url = https://github.com/code-iai/iai_common_msgs
 [submodule "knowrob"]
+	path = knowrob
 	url = https://github.com/knowrob/knowrob
 	ignore = all
 [submodule "iai_maps"]
+	path = iai_maps
 	url = https://github.com/code-iai/iai_maps
-    ignore = all
+	ignore = all
