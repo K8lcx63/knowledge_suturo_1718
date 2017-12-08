@@ -15,7 +15,7 @@
   getBoundingBox(r,-).
 
 
-getFixedKitchenObjects2(ObjectName, Translation, Quaternion, BoundingBox, MeshPath):-
+getFixedKitchenObjects2(ObjectName, Translation, Quaternion, BoundingBox):-
  rdfs_individual_of(Object, knowrob:'SemanticMapPerception'),
  rdf_has(Object, knowrob:'objectActedOn',ObjectName),
  rdf_has(Object, knowrob:'eventOccursAt', Transformation),

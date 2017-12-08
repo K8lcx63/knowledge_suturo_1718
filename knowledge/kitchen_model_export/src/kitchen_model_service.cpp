@@ -212,7 +212,7 @@ geometry_msgs::Pose toPoseMsgs2(PrologBindings bdg)
 
 bool get_fixed_kitchen_objects_2(knowledge_msgs::GetFixedKitchenObjects::Request  &req, knowledge_msgs::GetFixedKitchenObjects::Response &res)
 {
-    std::string query = "getFixedKitchenObjects2(ObjectName, Translation, Quaternion, BoundingBox, MeshPath)";
+    std::string query = "getFixedKitchenObjects2(ObjectName, Translation, Quaternion, BoundingBox)";
     Prolog pl;
     PrologQueryProxy bdgs = pl.query(query);
 
