@@ -4,5 +4,5 @@
 [submodule "knowrob"]
 	path = knowrob
 	url = https://github.com/knowrob/knowrob
-	branch = master
+	update = checkout
 	ignore = all
