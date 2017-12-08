@@ -129,13 +129,120 @@ bool get_fixed_kitchen_objects(knowledge_msgs::GetFixedKitchenObjects::Request  
 
     return succes;
 }
+
+double prologValueToDouble2(PrologValue value)
+{
+    double result;
+
+    if(value.type() == PrologValue::value_type::DOUBLE)
+    {
+        result = value;
+    }
+    
+    if(value.type() == PrologValue::value_type::INT)
+    {
+        int64_t temp = value;
+        result = static_cast<double>(temp);
+    }
+    return result;
+
+}
+
+tf::Quaternion prologBindingToQuaternion2(PrologBindings bdg)
+{
+    std::vector<PrologValue> quaternionList = bdg["Quaternion"].as<std::vector<PrologValue>>();
+
+    ROS_INFO_STREAM("1");
+    double x = prologValueToDouble2(quaternionList.at(0));
+    ROS_INFO_STREAM("2");
+    double y = prologValueToDouble2(quaternionList.at(1));
+    ROS_INFO_STREAM("3");
+    double z = prologValueToDouble2(quaternionList.at(2));
+    double w = prologValueToDouble2(quaternionList.at(3));
+
+    return tf::Quaternion(x, y, z, w);
+}
+
+tf::Vector3 prologBindingToPosition2(PrologBindings bdg)
+{
+    std::vector<PrologValue> translationList = bdg["Translation"].as<std::vector<PrologValue>>();
+
+    double x = prologValueToDouble2(translationList.at(0));
+    double y = prologValueToDouble2(translationList.at(1));
+    double z = prologValueToDouble2(translationList.at(2));
+
+    return tf::Vector3(x, y, z);
+}
+
+geometry_msgs::Vector3 toBoundingBoxMsgs2(PrologBindings bdg)
+{
+    std::vector<PrologValue> boundingBoxList = bdg["BoundingBox"].as<std::vector<PrologValue>>();
+
+    double width = prologValueToDouble2(boundingBoxList.at(0));
+    double height = prologValueToDouble2(boundingBoxList.at(1));
+    double depth = prologValueToDouble2(boundingBoxList.at(2));
+
+
+    geometry_msgs::Vector3 boundingBoxMsgs;
+    boundingBoxMsgs.x = width;
+    boundingBoxMsgs.y = height;
+    boundingBoxMsgs.z = depth;
+    
+    return boundingBoxMsgs;
+}
+
+geometry_msgs::Pose toPoseMsgs2(PrologBindings bdg)
+{
+    tf::Quaternion quaternion = prologBindingToQuaternion2(bdg);
+    tf::Vector3 point = prologBindingToPosition2(bdg);
+
+    geometry_msgs::Pose pose;
+
+    pose.position.x = point.getX();
+    pose.position.y = point.getY();
+    pose.position.z = point.getZ();
+
+    pose.orientation.x = quaternion.getX();
+    pose.orientation.y = quaternion.getY();
+    pose.orientation.z = quaternion.getZ();
+    pose.orientation.w = quaternion.getW();
+
+    return pose;
+}
+
+bool get_fixed_kitchen_objects_2(knowledge_msgs::GetFixedKitchenObjects::Request  &req, knowledge_msgs::GetFixedKitchenObjects::Response &res)
+{
+    std::string query = "getFixedKitchenObjects2(ObjectName, Translation, Quaternion, BoundingBox)";
+    Prolog pl;
+    PrologQueryProxy bdgs = pl.query(query);
+
+    bool succes = false;
+    for(PrologQueryProxy::iterator it=bdgs.begin(); it != bdgs.end(); it++)
+    {
+        succes = true;
+        PrologBindings bdg = *it;
+
+        res.names.push_back(bdg["ObjectName"]);
+        res.poses.push_back(toPoseMsgs2(bdg));
+        res.bounding_boxes.push_back(toBoundingBoxMsgs2(bdg));
+    }
+
+    if(succes)
+    {
+        res.frame_id = "/map";
+    }
+
+    return succes;
+}
+
+
    
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "kitchen_model_service");
     ros::NodeHandle nh("~");
    
-    ros::ServiceServer service = nh.advertiseService("get_fixed_kitchen_objects", get_fixed_kitchen_objects);
+    ros::ServiceServer service = nh.advertiseService("get_fixed_kitchen_objects", get_fixed_kitchen_objects_2);
     ros::spin();
    
     return 0;

@@ -1,9 +1,68 @@
-:- module(kitchen_model_exporter,[getFixedKitchenObjects/20]).
+:- module(kitchen_model_exporter,[getFixedKitchenObjects/20, getFixedKitchenObjects2/4]).
 
+:- use_module(library('semweb/rdfs')).
+:- use_module(library('semweb/rdf_db')).
 
 %% Register owl namespaces
-:- rdf_db:rdf_register_ns(knowrob, 'http://ias.cs.tum.edu/kb/knowrob.owl#', [keep(true)]). 
-	
+%:- rdf_db:rdf_register_ns(knowrob, 'http://ias.cs.tum.edu/kb/knowrob.owl#', [keep(true)]). 
+
+:- rdf_register_prefix(knowrob, 'http://knowrob.org/kb/knowrob.owl#').
+:- rdf_register_prefix(iai-map, 'http://knowrob.org/kb/IAI-kitchen.owl#').
+
+:- rdf_meta 
+  getQuaternion(r,-),
+  getTranslation(r,-),
+  getBoundingBox(r,-).
+
+
+getFixedKitchenObjects2(ObjectName, Translation, Quaternion, BoundingBox):-
+ rdfs_individual_of(Object, knowrob:'SemanticMapPerception'),
+ rdf_has(Object, knowrob:'objectActedOn',ObjectName),
+ rdf_has(Object, knowrob:'eventOccursAt', Transformation),
+ getTranslation(Transformation, Translation),
+ getQuaternion(Transformation, Quaternion),
+ getBoundingBox(ObjectName, BoundingBox).
+
+getQuaternion(TransformationHandle, Quaternion):-
+  rdf(TransformationHandle, knowrob:'quaternion', QuaternionRaw),
+  strip_literal_type(QuaternionRaw, QuaternionSpaceSeperated),
+  string_to_list(QuaternionSpaceSeperated, Quaternion).
+  
+getTranslation(TransformationHandle, Translation):-
+  rdf(TransformationHandle, knowrob:'translation', TranslationRaw),
+  strip_literal_type(TranslationRaw, TranslationSpaceSeperated),
+  string_to_list(TranslationSpaceSeperated, Translation).
+  
+getBoundingBox(BoundingBoxHandle, BoundingBox):-
+  rdf(BoundingBoxHandle, rdf:'type', Class),
+  owl_direct_subclass_of(Class, Sub),
+  owl_restriction(Sub, restriction(knowrob:'boundingBoxSize',_)),
+  owl_restriction_object_domain(Sub, BoundingBoxRaw),
+  strip_literal_type(BoundingBoxRaw, BoundingBoxSpaceSeperated),
+  string_to_list(BoundingBoxSpaceSeperated, BoundingBox).
+
+string_to_list(StringValue, List):-
+  atomic_list_concat(StringList,' ', StringValue),
+  to_double_list(StringList, [], List).
+
+to_double_list([], TempList, DoubleList):-
+  append([], TempList, DoubleList).
+
+to_double_list([H|T], TempList, DoubleList):-
+  atom_number(H, DoubleValue),
+  append(TempList, [DoubleValue], NewTempList),
+  to_double_list(T, NewTempList, DoubleList).
+  
+
+
+
+
+
+
+
+
+
+
 getFixedKitchenObjects(Object, M00, M01, M02, M03, M10, M11, M12, M13, M20, M21, M22, M23, M30, M31, M32, M33, Width, Height, Depth) :- 
   rdf_has(A,knowrob:'objectActedOn',Object),
   rdfs_individual_of(A, knowrob:'SemanticMapPerception'),
