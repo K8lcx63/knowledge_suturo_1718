@@ -1,5 +1,6 @@
 :- register_ros_package(knowrob_common).
-:- register_ros_package(iai_semantic_maps).
+:- register_ros_package(knowrob_household).
+
 
 :- use_module(kitchen_model_exporter,[getFixedKitchenObjects/20, getFixedKitchenObjects2/4]).
 
