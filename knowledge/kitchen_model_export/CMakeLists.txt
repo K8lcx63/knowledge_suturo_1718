@@ -6,6 +6,7 @@ add_definitions(-std=c++11)
 find_package(catkin REQUIRED COMPONENTS 
 	roscpp
 	knowrob_common
+	iai_semantic_maps
 	json_prolog
 	knowledge_msgs
 	geometry_msgs
@@ -16,6 +17,7 @@ catkin_package(
 CATKIN_DEPENDS 
 	roscpp
 	knowrob_common
+	iai_semantic_maps
 	json_prolog
 	knowledge_msgs
 	geometry_msgs

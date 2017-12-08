@@ -1,4 +1,4 @@
-:- module(kitchen_model_exporter,[getFixedKitchenObjects/20, getFixedKitchenObjects2/5]).
+:- module(kitchen_model_exporter,[getFixedKitchenObjects/20, getFixedKitchenObjects2/4]).
 
 :- use_module(library('semweb/rdfs')).
 :- use_module(library('semweb/rdf_db')).
