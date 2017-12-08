@@ -1,4 +1,4 @@
-:- module(kitchen_model_exporter,[getFixedKitchenObjects/20, getFixedKitchenObjects2/4]).
+:- module(kitchen_model_exporter,[getFixedKitchenObjects/20, getFixedKitchenObjects2/5]).
 
 :- use_module(library('semweb/rdfs')).
 :- use_module(library('semweb/rdf_db')).
@@ -15,13 +15,14 @@
   getBoundingBox(r,-).
 
 
-getFixedKitchenObjects2(ObjectName, Translation, Quaternion, BoundingBox):-
+getFixedKitchenObjects2(ObjectName, Translation, Quaternion, BoundingBox, MeshPath):-
  rdfs_individual_of(Object, knowrob:'SemanticMapPerception'),
  rdf_has(Object, knowrob:'objectActedOn',ObjectName),
  rdf_has(Object, knowrob:'eventOccursAt', Transformation),
  getTranslation(Transformation, Translation),
  getQuaternion(Transformation, Quaternion),
- getBoundingBox(ObjectName, BoundingBox).
+ getBoundingBox(ObjectName, BoundingBox),
+ getMeshPath(ObjectName, MeshPath).
 
 getQuaternion(TransformationHandle, Quaternion):-
   rdf(TransformationHandle, knowrob:'quaternion', QuaternionRaw),
@@ -40,6 +41,13 @@ getBoundingBox(BoundingBoxHandle, BoundingBox):-
   owl_restriction_object_domain(Sub, BoundingBoxRaw),
   strip_literal_type(BoundingBoxRaw, BoundingBoxSpaceSeperated),
   string_to_list(BoundingBoxSpaceSeperated, BoundingBox).
+
+getMeshPath(BoundingBoxHandle, MeshPath):-
+  rdf(BoundingBoxHandle, rdf:'type', Class),
+  owl_direct_subclass_of(Class, Sub),
+  owl_restriction(Sub, restriction(knowrob:'pathToCadModel',_)),
+  owl_restriction_object_domain(Sub, MeshPathRaw),
+  strip_literal_type(MeshPathRaw, MeshPath).
 
 string_to_list(StringValue, List):-
   atomic_list_concat(StringList,' ', StringValue),
