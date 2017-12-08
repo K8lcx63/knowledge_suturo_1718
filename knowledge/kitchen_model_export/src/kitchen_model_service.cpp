@@ -184,9 +184,9 @@ geometry_msgs::Vector3 toBoundingBoxMsgs2(PrologBindings bdg)
 
 
     geometry_msgs::Vector3 boundingBoxMsgs;
-    boundingBoxMsgs.x = width;
-    boundingBoxMsgs.y = height;
-    boundingBoxMsgs.z = depth;
+    boundingBoxMsgs.z = width;
+    boundingBoxMsgs.x = height;
+    boundingBoxMsgs.y = depth;
     
     return boundingBoxMsgs;
 }
