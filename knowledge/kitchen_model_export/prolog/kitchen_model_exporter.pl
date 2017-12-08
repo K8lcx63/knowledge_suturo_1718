@@ -21,8 +21,7 @@ getFixedKitchenObjects2(ObjectName, Translation, Quaternion, BoundingBox, MeshPa
  rdf_has(Object, knowrob:'eventOccursAt', Transformation),
  getTranslation(Transformation, Translation),
  getQuaternion(Transformation, Quaternion),
- getBoundingBox(ObjectName, BoundingBox),
- getMeshPath(ObjectName, MeshPath).
+ getBoundingBox(ObjectName, BoundingBox).
 
 getQuaternion(TransformationHandle, Quaternion):-
   rdf(TransformationHandle, knowrob:'quaternion', QuaternionRaw),
@@ -41,13 +40,6 @@ getBoundingBox(BoundingBoxHandle, BoundingBox):-
   owl_restriction_object_domain(Sub, BoundingBoxRaw),
   strip_literal_type(BoundingBoxRaw, BoundingBoxSpaceSeperated),
   string_to_list(BoundingBoxSpaceSeperated, BoundingBox).
-
-getMeshPath(BoundingBoxHandle, MeshPath):-
-  rdf(BoundingBoxHandle, rdf:'type', Class),
-  owl_direct_subclass_of(Class, Sub),
-  owl_restriction(Sub, restriction(knowrob:'pathToCadModel',_)),
-  owl_restriction_object_domain(Sub, MeshPathRaw),
-  strip_literal_type(MeshPathRaw, MeshPath).
 
 string_to_list(StringValue, List):-
   atomic_list_concat(StringList,' ', StringValue),

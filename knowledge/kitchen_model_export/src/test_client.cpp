@@ -29,7 +29,6 @@ int main(int argc, char **argv)
           ROS_INFO_STREAM("\t width: " << srv.response.bounding_boxes.at(i).x);
           ROS_INFO_STREAM("\t height: " << srv.response.bounding_boxes.at(i).y);
           ROS_INFO_STREAM("\t depth: " << srv.response.bounding_boxes.at(i).z);
-          ROS_INFO_STREAM("mesh_path: " << srv.response.mesh_paths.at(i));
      }
      
      return 0;
