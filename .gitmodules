@@ -5,7 +5,3 @@
 	path = knowrob
 	url = https://github.com/knowrob/knowrob
 	ignore = all
-[submodule "iai_maps"]
-	path = iai_maps
-	url = https://github.com/code-iai/iai_maps
-	ignore = all
