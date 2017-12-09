@@ -152,13 +152,10 @@ tf::Quaternion prologBindingToQuaternion2(PrologBindings bdg)
 {
     std::vector<PrologValue> quaternionList = bdg["Quaternion"].as<std::vector<PrologValue>>();
 
-    ROS_INFO_STREAM("1");
-    double x = prologValueToDouble2(quaternionList.at(0));
-    ROS_INFO_STREAM("2");
-    double y = prologValueToDouble2(quaternionList.at(1));
-    ROS_INFO_STREAM("3");
-    double z = prologValueToDouble2(quaternionList.at(2));
-    double w = prologValueToDouble2(quaternionList.at(3));
+    double w = prologValueToDouble2(quaternionList.at(0));
+    double x = prologValueToDouble2(quaternionList.at(1));
+    double y = prologValueToDouble2(quaternionList.at(2));
+    double z = prologValueToDouble2(quaternionList.at(3));
 
     return tf::Quaternion(x, y, z, w);
 }
@@ -242,7 +239,7 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "kitchen_model_service");
     ros::NodeHandle nh("~");
    
-    ros::ServiceServer service = nh.advertiseService("get_fixed_kitchen_objects", get_fixed_kitchen_objects_2);
+    ros::ServiceServer service = nh.advertiseService("get_fixed_kitchen_objects", get_fixed_kitchen_objects);
     ros::spin();
    
     return 0;

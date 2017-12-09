@@ -16,12 +16,12 @@
 
 
 getFixedKitchenObjects2(ObjectName, Translation, Quaternion, BoundingBox):-
- rdfs_individual_of(Object, knowrob:'SemanticMapPerception'),
- rdf_has(Object, knowrob:'objectActedOn',ObjectName),
- rdf_has(Object, knowrob:'eventOccursAt', Transformation),
- getTranslation(Transformation, Translation),
- getQuaternion(Transformation, Quaternion),
- getBoundingBox(ObjectName, BoundingBox).
+  rdfs_individual_of(Object, knowrob:'SemanticMapPerception'),
+  rdf_has(Object, knowrob:'objectActedOn',ObjectName),
+  rdf_has(Object, knowrob:'eventOccursAt', Transformation),
+  getTranslation(Transformation, Translation),
+  getQuaternion(Transformation, Quaternion),
+  getBoundingBox(ObjectName, BoundingBox).
 
 getQuaternion(TransformationHandle, Quaternion):-
   rdf(TransformationHandle, knowrob:'quaternion', QuaternionRaw),
@@ -41,18 +41,6 @@ getBoundingBox(BoundingBoxHandle, BoundingBox):-
   strip_literal_type(BoundingBoxRaw, BoundingBoxSpaceSeperated),
   string_to_list(BoundingBoxSpaceSeperated, BoundingBox).
 
-string_to_list(StringValue, List):-
-  atomic_list_concat(StringList,' ', StringValue),
-  to_double_list(StringList, [], List).
-
-to_double_list([], TempList, DoubleList):-
-  append([], TempList, DoubleList).
-
-to_double_list([H|T], TempList, DoubleList):-
-  atom_number(H, DoubleValue),
-  append(TempList, [DoubleValue], NewTempList),
-  to_double_list(T, NewTempList, DoubleList).
-  
 
 
 
