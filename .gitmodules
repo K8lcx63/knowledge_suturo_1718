@@ -4,5 +4,3 @@
 [submodule "knowrob"]
 	path = knowrob
 	url = https://github.com/knowrob/knowrob
-	update = checkout
-	ignore = all
