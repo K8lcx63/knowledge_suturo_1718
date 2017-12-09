@@ -4,3 +4,4 @@
 [submodule "knowrob"]
 	path = knowrob
 	url = https://github.com/knowrob/knowrob
+	ignore = all
