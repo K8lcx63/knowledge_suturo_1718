@@ -1,5 +1,4 @@
 :- register_ros_package(knowrob_common).
-:- register_ros_package(knowledge_common).
 
 :- use_module(poke_position_calculator,[calculatePokePosition/6]).
 

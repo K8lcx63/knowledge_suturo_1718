@@ -5,22 +5,20 @@
 :- rdf_register_prefix(suturo_object, 'http://knowrob.org/kb/suturo_object.owl#').
 
 :- rdf_meta 
-	get_bounding_box(r,-).
+	get_bounding_box(r,-,-,-).
 
 calculatePokePosition(X,Y,Z,RX,RY,RZ) :-
-  get_bounding_box(suturo_object:'PfannerIceTea2LPackage', BoundingBox),
-  nth0(0, BoundingBox, Width),
-  nth0(1, BoundingBox, Height),
-  nth0(2, BoundingBox, Depth),
+  get_bounding_box(suturo_object:'PfannerIceTea2LPackage', Width, Height, Depth),
   TX is 1.5*Depth, 
   TZ is Height/4,
   RX is X-TX,%Einfache Tiefe nach hinten drücken	
   RY is Y,   %Mitte der Breite bleibt
   RZ is Z+TZ.%3/4 der Höhe
 
-get_bounding_box(BoundingBoxHandle, BoundingBox):-
-  owl_direct_subclass_of(BoundingBoxHandle, Sub),
-  owl_restriction(Sub, restriction(knowrob:'boundingBoxSize',_)),
-  owl_restriction_object_domain(Sub, BoundingBoxRaw),
-  strip_literal_type(BoundingBoxRaw, BoundingBoxSpaceSeperated),
-  string_to_list(BoundingBoxSpaceSeperated, BoundingBox).
+get_bounding_box(BoundingBoxHandle, Width, Height, Depth):-
+  class_properties_value(BoundingBoxHandle, knowrob:'boundingBoxSize',BoundingBoxRaw), 
+  strip_literal_type(BoundingBoxRaw, BoundingBoxSpaceSpeperated),
+  parse_vector(BoundingBoxSpaceSpeperated, BoundingBox),
+  nth0(0, BoundingBox, Width),
+  nth0(1, BoundingBox, Height),
+  nth0(2, BoundingBox, Depth).
