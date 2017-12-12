@@ -7,8 +7,8 @@ int main(int argc, char const *argv[])
 
 	ros::NodeHandle node;
 	tf::TransformListener listener;
-	ros::Publisher turtle_vel =
-		node.advertise<geometry_msgs::Twist>("turtle2/cmd_vel", 10);
+	ros::Publisher map_trans =
+		node.advertise<geometry_msgs::TransformStamped>("map_tf_listener/tf", 10);
 
 	ros::Rate rate(10.0);
   	while (node.ok()){
@@ -22,6 +22,7 @@ int main(int argc, char const *argv[])
    		    ros::Duration(1.0).sleep();
       	continue;
     	}
+    	map_trans.publish(transform);
     	rate.sleep();
     }
 	return 0;
