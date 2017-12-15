@@ -90,7 +90,7 @@ geometry_msgs::Vector3 toBoundingBoxMsgs(PrologBindings bdg)
 
 bool get_fixed_kitchen_objects(knowledge_msgs::GetFixedKitchenObjects::Request  &req, knowledge_msgs::GetFixedKitchenObjects::Response &res)
 {
-    std::string query = "getFixedKitchenObjects(ObjectName, Translation, Quaternion, BoundingBox)";
+    std::string query = "get_fixed_kitchen_objects(ObjectName, Translation, Quaternion, BoundingBox)";
     Prolog pl;
   	PrologQueryProxy bdgs = pl.query(query);
 

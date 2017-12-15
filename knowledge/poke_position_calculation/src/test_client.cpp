@@ -2,6 +2,8 @@
 #include "object_detection/PokeObject.h"
 #include <string>
 #include <iostream>
+#include <geometry_msgs/Quaternion.h>
+#include <tf/tf.h>
 
 int main(int argc, char **argv)
 {
@@ -14,6 +16,13 @@ int main(int argc, char **argv)
      srv.request.detection.position.point.x = 7.368364604189992e-4;
      srv.request.detection.position.point.y = 0.17276005446910858e0;
      srv.request.detection.position.point.z = 0.9788062572479248e0;
+
+     geometry_msgs::Quaternion quad = tf::createQuaternionMsgFromRollPitchYaw(M_PI_2, 0, 0);
+
+     ROS_INFO_STREAM("Qx: " << quad.x);
+     ROS_INFO_STREAM("Qy: " << quad.y);
+     ROS_INFO_STREAM("Qz: " << quad.z);
+     ROS_INFO_STREAM("Qw: " << quad.w);
 
      client.call(srv);
      

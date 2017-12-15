@@ -8,6 +8,8 @@ find_package(catkin REQUIRED COMPONENTS
 	knowrob_common
 	json_prolog
 	object_detection
+	geometry_msgs
+	tf
 	)
 
 
@@ -17,6 +19,8 @@ CATKIN_DEPENDS
 	knowrob_common
 	json_prolog
 	object_detection
+	geometry_msgs
+	tf
 )
 
 include_directories(

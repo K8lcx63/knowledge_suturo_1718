@@ -13,9 +13,9 @@ bool calculate_poke_position(object_detection::PokeObject::Request  &req, object
     ROS_INFO("Input from vison z: %g", req.detection.position.point.z);
 
 	std::stringstream ss;
-	ss << "calculatePokePosition(" << req.detection.position.point.x << "," 
-	                                 << req.detection.position.point.y << "," 
-	                                 << req.detection.position.point.z << ",RX,RY,RZ)";
+	ss << "calculate_poke_position(" << req.detection.position.point.x << "," 
+	                               << req.detection.position.point.y << "," 
+	                               << req.detection.position.point.z << ",RX,RY,RZ)";
 	std::string query = ss.str();
 
     Prolog pl;

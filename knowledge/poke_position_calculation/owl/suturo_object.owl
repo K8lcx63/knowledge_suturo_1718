@@ -60,6 +60,12 @@
 
     <owl:Class rdf:about="http://knowrob.org/kb/suturo_object.owl#PfannerIceTea2LPackage">
         <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/suturo_object.owl#IceTeaPackage"/>
+         <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&knowrob;pathToCadModel"/>
+                <owl:hasValue rdf:datatype="&xsd;string">meshes/PfannerIceTea2LPackage.dae</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>   
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&knowrob;boundingBoxSize"/>
