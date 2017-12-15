@@ -1,4 +1,4 @@
-:- module(poke_position_calculator,[calculate_poke_position/6]).
+:- module(poke_position_calculator,[calculatePokePosition/6]).
 
 :- use_module(library(semweb/rdf_db)).
 
@@ -19,13 +19,13 @@
 % @param RY Y coordinate of the poke point
 % @param RZ Z coordinate of the poke point
 %
-calculate_poke_position(X,Y,Z,RX,RY,RZ) :-
-  get_bounding_box(suturo_object:'PfannerIceTea2LPackage', Width, Height, Depth),
-  TX is 1.5*Depth, 
-  TZ is Height/4,
-  RX is X-TX,%Einfache Tiefe nach hinten drücken	
-  RY is Y,   %Mitte der Breite bleibt
-  RZ is Z+TZ.%3/4 der Höhe
+% Koordinatensystem: Z nach vorne hinten, Y nach oben unten, X nach links rechts
+%
+calculatePokePosition(X,Y,Z,RX,RY,RZ) :-
+  get_bounding_box(suturo_object:'PfannerIceTea2LPackage', _, Height, Depth), 
+  RX is X
+  RY is Y+(Height/4),%3/4 der Höhe%
+  RZ is Z+Depth.     %1,5fache Tiefe 
 
 % get_bounding_box(+BoundingBoxHandle, -Width, -Height, -Depth).
 %
