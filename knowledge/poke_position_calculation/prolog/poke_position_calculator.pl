@@ -23,7 +23,7 @@
 %
 calculate_poke_position(X,Y,Z,RX,RY,RZ) :-
   get_bounding_box(suturo_object:'PfannerIceTea2LPackage', _, Height, Depth), 
-  RX is X
+  RX is X,
   RY is Y+(Height/4),%3/4 der Höhe%
   RZ is Z+Depth.     %1,5fache Tiefe 
 
