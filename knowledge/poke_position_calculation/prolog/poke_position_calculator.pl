@@ -1,4 +1,4 @@
-:- module(poke_position_calculator,[calculatePokePosition/6]).
+:- module(poke_position_calculator,[calculate_poke_position/6]).
 
 :- use_module(library(semweb/rdf_db)).
 
@@ -21,7 +21,7 @@
 %
 % Koordinatensystem: Z nach vorne hinten, Y nach oben unten, X nach links rechts
 %
-calculatePokePosition(X,Y,Z,RX,RY,RZ) :-
+calculate_poke_position(X,Y,Z,RX,RY,RZ) :-
   get_bounding_box(suturo_object:'PfannerIceTea2LPackage', _, Height, Depth), 
   RX is X
   RY is Y+(Height/4),%3/4 der Höhe%
