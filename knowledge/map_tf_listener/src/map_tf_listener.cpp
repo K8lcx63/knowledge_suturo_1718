@@ -1,14 +1,13 @@
 #include <ros/ros.h>
 #include <tf/transform_listener.h>
+#include <tf/transform_broadcaster.h>
 
-int main(int argc, char const *argv[])
+int main(int argc, char** argv)
 {
 	ros::init(argc, argv, "map_tf_listener");
 
 	ros::NodeHandle node;
 	tf::TransformListener listener;
-	ros::Publisher map_trans =
-		node.advertise<geometry_msgs::TransformStamped>("map_tf_listener/tf", 10);
 
 	ros::Rate rate(10.0);
   	while (node.ok()){
@@ -22,7 +21,7 @@ int main(int argc, char const *argv[])
    		    ros::Duration(1.0).sleep();
       	continue;
     	}
-    	map_trans.publish(transform);
+    	
     	rate.sleep();
     }
 	return 0;
