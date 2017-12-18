@@ -1,30 +1,27 @@
 #include "ros/ros.h"
 #include "object_detection/PokeObject.h"
 #include <string>
-#include <iostream>
-#include <geometry_msgs/Quaternion.h>
-#include <tf/tf.h>
+#include <marker_publisher/marker_publisher.h>
+
 
 int main(int argc, char **argv)
 {
-   ros::init(argc, argv, "test_client");
+     ros::init(argc, argv, "test_client");
    
      ros::NodeHandle n;
      ros::ServiceClient client = n.serviceClient<object_detection::PokeObject>("/poke_position_service/calculate_poke_position");
 
+     geometry_msgs::PointStamped vision_point;
+     vision_point.header.stamp = ros::Time();
+     vision_point.header.frame_id = "/head_mount_kinect_ir_optical_frame";
+     vision_point.point.x = 0.475767;;
+     vision_point.point.y = -0.021934;
+     vision_point.point.z = 1.453995;
+
      object_detection::PokeObject srv;
-     srv.request.detection.position.point.x = 7.368364604189992e-4;
-     srv.request.detection.position.point.y = 0.17276005446910858e0;
-     srv.request.detection.position.point.z = 0.9788062572479248e0;
-
-     geometry_msgs::Quaternion quad = tf::createQuaternionMsgFromRollPitchYaw(M_PI_2, 0, 0);
-
-     ROS_INFO_STREAM("Qx: " << quad.x);
-     ROS_INFO_STREAM("Qy: " << quad.y);
-     ROS_INFO_STREAM("Qz: " << quad.z);
-     ROS_INFO_STREAM("Qw: " << quad.w);
+     srv.request.detection.position = vision_point; 
 
      client.call(srv);
-     
+
      return 0;
 }

@@ -8,7 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
 	knowrob_common
 	json_prolog
 	object_detection
-	geometry_msgs
+	marker_publisher
 	tf
 	)
 
@@ -20,6 +20,7 @@ CATKIN_DEPENDS
 	json_prolog
 	object_detection
 	geometry_msgs
+	marker_publisher
 	tf
 )
 
@@ -33,3 +34,6 @@ target_link_libraries(poke_position_service ${catkin_LIBRARIES})
 
 add_executable(test_client src/test_client.cpp)
 target_link_libraries(test_client ${catkin_LIBRARIES})
+
+add_executable(test_marker src/test_marker.cpp)
+target_link_libraries(test_marker ${catkin_LIBRARIES})

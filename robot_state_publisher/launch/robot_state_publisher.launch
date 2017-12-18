@@ -1,7 +1,0 @@
-<launch>
-	<param name="robot_description" command="$(find xacro)/xacro.py '$(find pr2_description)/robots/pr2.urdf.xacro'" />
-    <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub" >
-      <param name="publish_frequency" type="double" value="1.0" />
-      <param name="tf_prefix" type="string" value="" />
-    </node>
-  </launch>

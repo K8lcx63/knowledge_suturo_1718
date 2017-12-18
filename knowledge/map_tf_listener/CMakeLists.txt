@@ -5,7 +5,6 @@ add_definitions(-std=c++11)
 
 find_package(catkin REQUIRED COMPONENTS 
 	roscpp
-	knowrob_common
 	tf
 	geometry_msgs
 	)
@@ -13,7 +12,6 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 CATKIN_DEPENDS 
 	roscpp
-	knowrob_common
 	tf
 	geometry_msgs
 )

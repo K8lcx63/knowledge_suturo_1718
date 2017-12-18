@@ -19,13 +19,12 @@
 % @param RY Y coordinate of the poke point
 % @param RZ Z coordinate of the poke point
 %
-% Koordinatensystem: Z nach vorne hinten, Y nach oben unten, X nach links rechts
+% Koordinatensystem: Z nach oben unten, Y nach links rechts, X vorne hinten
 %
-calculate_poke_position(X,Y,Z,RX,RY,RZ) :-
+calculate_poke_position(X,Y,Z,RX,Y,RZ) :-
   get_bounding_box(suturo_object:'PfannerIceTea2LPackage', _, Height, Depth), 
-  RX is X,
-  RY is Y+(Height/4),%3/4 der Höhe%
-  RZ is Z+Depth.     %1,5fache Tiefe 
+  RX is X+Depth,
+  RZ is Z+(Height/4). 
 
 % get_bounding_box(+BoundingBoxHandle, -Width, -Height, -Depth).
 %
