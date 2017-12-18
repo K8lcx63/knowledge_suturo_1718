@@ -53,7 +53,16 @@ public:
         visionPoint = req.detection.position;
 
         ROS_INFO("Transform point to odom_combined");
-        listener.transformPoint("/odom_combined", req.detection.position, transformedPoint);
+
+        try
+        {
+        	listener.transformPoint("/odom_combined", req.detection.position, transformedPoint);
+        }
+        catch (tf::TransformException &ex) 
+        {
+        	res.error_message = "Failed to call service 'calculate_poke_position'. Transformation failed!";
+         	return false;
+        }
 	   
         ROS_INFO_STREAM("Transformed point frame_id: " << transformedPoint.header.frame_id);
         ROS_INFO("Transformed point x: %g", transformedPoint.point.x);
@@ -69,18 +78,21 @@ public:
       	    res.poke_position.point.x = bdg["RX"];
       	    res.poke_position.point.y = bdg["RY"];
     	    res.poke_position.point.z = bdg["RZ"];
+    	    res.error_message = "";
             
 		    ROS_INFO_STREAM("Modified point frame_id: " << res.poke_position.header.frame_id);
     	    ROS_INFO("Modified result from knowledge x: %g", res.poke_position.point.x);
     	    ROS_INFO("Modified result from knowledge y: %g", res.poke_position.point.y);
     	    ROS_INFO("Modified result from knowledge z: %g", res.poke_position.point.z);
+    	    ROS_INFO_STREAM("Errormessage: " << res.error_message);
             knowledgePoint = res.poke_position;
 
             return true;
         }
         else
         {
-    	    ROS_ERROR("Failed to call service 'calculate_poke_position'!");
+        	res.error_message = "Failed to call service 'calculate_poke_position'. Prolog found no solution!";
+    	    ROS_ERROR("Failed to call service 'calculate_poke_position'. Prolog found no solution!");
       	    return false;
         }
     }
