@@ -6,6 +6,7 @@
 - Repo clonen und bauen
 - Die folgenden Schritte ausführen: [klick mich](http://knowrob.org/installation/workspace)
 - rosdep install --from-paths \<pfad zum catkin_ws> --ignore-src --rosdistro=indigo -r -y **(z.b ~/catkin_ws)**
+- sudo apt-get update 
 
 ### Launchen
 
