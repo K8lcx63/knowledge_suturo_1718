@@ -19,5 +19,7 @@
   <run_depend>knowledge_msgs</run_depend>
   <build_depend>geometry_msgs</build_depend>
   <run_depend>geometry_msgs</run_depend>
+  <build_depend>knowrob_beliefstate</build_depend>
+  <run_depend>knowrob_beliefstate</run_depend>
 
 </package>

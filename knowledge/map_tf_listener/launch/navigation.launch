@@ -1,0 +1,18 @@
+<launch>
+  <include file="$(find pr2_machine)/$(env ROBOT).machine" />
+
+  <include file="$(find
+pr2_navigation_perception)/lasers_and_filters.xml" />
+  <include file="$(find pr2_navigation_perception)/ground_plane.xml" />
+  <include file="$(find pr2_navigation_global)/amcl_node.xml" />
+  <include file="$(find pr2_navigation_teleop)/teleop.xml" />
+
+  <include file="$(find
+nav_pcontroller)/launch/pr2_nav_pcontroller.launch" />
+
+  <node name="map_server"
+        pkg="map_server"
+        type="map_server"
+        args="$(find iai_maps)/maps/some_map.yaml" machine="c2" />
+
+</launch>

@@ -9,6 +9,7 @@ find_package(catkin REQUIRED COMPONENTS
 	json_prolog
 	knowledge_msgs
 	geometry_msgs
+	knowrob_beliefstate
 	)
 
 
@@ -19,6 +20,7 @@ CATKIN_DEPENDS
 	json_prolog
 	knowledge_msgs
 	geometry_msgs
+	knowrob_beliefstate
 )
 
 include_directories(
