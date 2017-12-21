@@ -32,8 +32,11 @@ include_directories(
 add_executable(poke_position_service src/poke_position_service.cpp)
 target_link_libraries(poke_position_service ${catkin_LIBRARIES})
 
-add_executable(test_client src/test_client.cpp)
-target_link_libraries(test_client ${catkin_LIBRARIES})
+add_executable(test_client_left src/test_client_left.cpp)
+target_link_libraries(test_client_left ${catkin_LIBRARIES})
+
+add_executable(test_client_right src/test_client_right.cpp)
+target_link_libraries(test_client_right ${catkin_LIBRARIES})
 
 add_executable(test_marker src/test_marker.cpp)
 target_link_libraries(test_marker ${catkin_LIBRARIES})

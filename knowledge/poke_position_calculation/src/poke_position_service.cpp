@@ -17,12 +17,23 @@ private:
     geometry_msgs::PointStamped transformedPoint;
     geometry_msgs::PointStamped knowledgePoint;
 
-    std::string createQuery()
+    std::string createQuery(const int direction)
     {
+        std::string directionString;
+        switch(direction)
+        {
+            case object_detection::PokeObject::Request::DIRECTION_LEFT: directionString = "left";
+            break;
+            case object_detection::PokeObject::Request::DIRECTION_RIGHT: directionString = "right";
+            break;
+            default: directionString = "left";
+        }
+
         std::stringstream ss;
-        ss << "calculate_poke_position(" << transformedPoint.point.x << "," 
-                                         << transformedPoint.point.y << "," 
-                                         << transformedPoint.point.z << ",RX,RY,RZ)";
+        ss << "calculate_poke_position_" << directionString << "(" << transformedPoint.point.x << "," 
+                                                                   << transformedPoint.point.y << "," 
+                                                                   << transformedPoint.point.z << ","
+                                                                   << "RX, RY, RZ)";
 
         return ss.str();
     }
@@ -70,7 +81,7 @@ public:
         ROS_INFO("Transformed point z: %g", transformedPoint.point.z);
 	   
         Prolog pl;
-  	    PrologBindings bdg = pl.once(createQuery());
+  	    PrologBindings bdg = pl.once(createQuery(req.direction));
 
         if(&bdg != NULL)
         {

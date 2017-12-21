@@ -19,6 +19,7 @@ int main(int argc, char **argv)
      vision_point.point.z = 1.453995;
 
      object_detection::PokeObject srv;
+     srv.request.direction = object_detection::PokeObject::Request::DIRECTION_RIGHT;
      srv.request.detection.position = vision_point; 
 
      client.call(srv);
