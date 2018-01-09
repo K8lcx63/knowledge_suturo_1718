@@ -1,7 +1,10 @@
 [submodule "iai_common_msgs"]
 	path = iai_common_msgs
-	url = https://github.com/code-iai/iai_common_msgs
+	url = https://github.com/code-iai/iai_common_msgs 
 [submodule "knowrob"]
 	path = knowrob
 	url = https://github.com/knowrob/knowrob
 	ignore = all
+[submodule "ros_control"]
+	path = ros_control
+	url = https://github.com/ros-controls/ros_control
