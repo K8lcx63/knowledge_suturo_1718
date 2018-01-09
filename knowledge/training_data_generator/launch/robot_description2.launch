@@ -1,0 +1,12 @@
+<launch>
+
+  <!-- send pr2 urdf to param server -->
+  <arg name="use_tf_static" default="false"/>
+  <include file="$(find pr2_description)/robots/upload_pr2.launch" />
+
+  <!--GUI used to send fake joint values-->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="false"/>
+  </node>
+  
+</launch>
