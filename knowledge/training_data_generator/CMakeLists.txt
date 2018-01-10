@@ -48,3 +48,6 @@ target_link_libraries(feature_extractor ${catkin_LIBRARIES})
 
 add_executable(move_pr2_head src/move_pr2_head.cpp)
 target_link_libraries(move_pr2_head ${catkin_LIBRARIES})
+
+add_executable(cloud_transformer src/cloud_transformer.cpp)
+target_link_libraries(cloud_transformer ${catkin_LIBRARIES})

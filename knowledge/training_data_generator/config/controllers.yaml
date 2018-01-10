@@ -1,4 +1,4 @@
-svm_model_generation:
+training_data_generator:
     #list of controllers
     joint_state_controller:
       type: joint_state_controller/JointStateController

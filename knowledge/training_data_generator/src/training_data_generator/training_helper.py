@@ -50,9 +50,9 @@ def capture_sample(yaw):
     sms_req.model_state.reference_frame = 'world'
     set_model_state_prox(sms_req)
 
-    reset_pr2_position()#prevent the pr2 from flying away
+    #reset_pr2_position()#prevent the pr2 from flying away
 
-    #return rospy.wait_for_message('/head_mount_kinect/depth_registered/points', PointCloud2)
+    return rospy.wait_for_message('/camera/depth_registered/points', PointCloud2)
 
 def initial_setup():
     """ Prepares the Gazebo world for generating training data.
@@ -114,24 +114,24 @@ def delete_model():
     delete_model_prox = rospy.ServiceProxy('gazebo/delete_model', DeleteModel)
     delete_model_prox('training_model')
 
-def reset_pr2_position():
-    pr2_pose = Pose()
-    pr2_pose.position.x = 0.0
-    pr2_pose.position.y = 0.0
-    pr2_pose.position.z = 0.0
+# def reset_pr2_position():
+#     pr2_pose = Pose()
+#     pr2_pose.position.x = 0.0
+#     pr2_pose.position.y = 0.0
+#     pr2_pose.position.z = 0.0
 
-    get_model_state_prox = rospy.ServiceProxy('gazebo/get_model_state',GetModelState)
-    model_state = get_model_state_prox('pr2','world')
+#     get_model_state_prox = rospy.ServiceProxy('gazebo/get_model_state',GetModelState)
+#     model_state = get_model_state_prox('pr2','world')
 
-    set_model_state_prox = rospy.ServiceProxy('gazebo/set_model_state', SetModelState)
+#     set_model_state_prox = rospy.ServiceProxy('gazebo/set_model_state', SetModelState)
 
-    model_state.pose.orientation.x = 0.0
-    model_state.pose.orientation.y = 0.0
-    model_state.pose.orientation.z = 0.0
-    model_state.pose.orientation.w = 1.0
-    sms_req = SetModelStateRequest()
-    sms_req.model_state.pose = pr2_pose
-    sms_req.model_state.twist = model_state.twist
-    sms_req.model_state.model_name = 'pr2'
-    sms_req.model_state.reference_frame = 'world'
-    set_model_state_prox(sms_req)
+#     model_state.pose.orientation.x = 0.0
+#     model_state.pose.orientation.y = 0.0
+#     model_state.pose.orientation.z = 0.0
+#     model_state.pose.orientation.w = 1.0
+#     sms_req = SetModelStateRequest()
+#     sms_req.model_state.pose = pr2_pose
+#     sms_req.model_state.twist = model_state.twist
+#     sms_req.model_state.model_name = 'pr2'
+#     sms_req.model_state.reference_frame = 'world'
+#     set_model_state_prox(sms_req)

@@ -1,0 +1,13 @@
+material @HERE@
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture pringles_paprika.png
+      }
+    }
+  }
+}
