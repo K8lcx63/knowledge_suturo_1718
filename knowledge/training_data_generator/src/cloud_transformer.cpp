@@ -26,8 +26,8 @@
 class CloudTransformer
 {
 public:
-  explicit CloudTransformer(ros::NodeHandle nh)
-    : nh_(nh)
+  explicit CloudTransformer(ros::NodeHandle nh):
+  nh_(nh)
   {
     // Define Publishers and Subscribers here
     pcl_sub_ = nh_.subscribe("/camera/depth_registered/points", 1, &CloudTransformer::pclCallback, this);
@@ -46,7 +46,7 @@ private:
 
   void pclCallback(const sensor_msgs::PointCloud2ConstPtr& pcl_msg)
   {
-    listener_.waitForTransform("world", "camera_link", ros::Time::now(), ros::Duration(3.0));
+    listener_.waitForTransform("world", "camera_link", ros::Time(0), ros::Duration(3.0));
     pcl_ros::transformPointCloud("world", *pcl_msg, *buffer_, listener_);
     pcl_pub_.publish(buffer_);
   }
@@ -54,10 +54,10 @@ private:
 
 int main(int argc, char **argv)
 {
-  ros::init(argc, argv, "point_cloud_tf");
+  ros::init(argc, argv, "cloud_transformer");
   ros::NodeHandle nh("~");
 
-  CloudTransformer tranform_cloud(nh);
+  CloudTransformer cloud_transformer(nh);
 
   // Spin until ROS is shutdown
   while (ros::ok())

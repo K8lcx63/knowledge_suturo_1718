@@ -27,7 +27,7 @@ from geometry_msgs.msg import Pose
 from sensor_msgs.msg import PointCloud2
 
 
-def capture_sample(yaw):
+def capture_sample():
     """ Captures a PointCloud2 using the sensor stick RGBD camera
         Args: None
         Returns:
@@ -38,6 +38,7 @@ def capture_sample(yaw):
 
     set_model_state_prox = rospy.ServiceProxy('gazebo/set_model_state', SetModelState)
 
+    yaw = random.uniform(0, 2*math.pi)
     quaternion = tf.transformations.quaternion_from_euler(0, 0, yaw)
     model_state.pose.orientation.x = quaternion[0]
     model_state.pose.orientation.y = quaternion[1]
@@ -50,9 +51,7 @@ def capture_sample(yaw):
     sms_req.model_state.reference_frame = 'world'
     set_model_state_prox(sms_req)
 
-    #reset_pr2_position()#prevent the pr2 from flying away
-
-    return rospy.wait_for_message('/camera/depth_registered/points', PointCloud2)
+    return rospy.wait_for_message('/cloud_transformer/point_cloud', PointCloud2)
 
 def initial_setup():
     """ Prepares the Gazebo world for generating training data.
@@ -73,8 +72,6 @@ def initial_setup():
     get_physics_properties_prox = rospy.ServiceProxy('gazebo/get_physics_properties', GetPhysicsProperties)
     physics_properties = get_physics_properties_prox()
 
-    #physics_properties.gravity.x = 0
-    #physics_properties.gravity.y = 0
     physics_properties.gravity.z = 0
 
     set_physics_properties_prox = rospy.ServiceProxy('gazebo/set_physics_properties', SetPhysicsProperties)
@@ -113,25 +110,3 @@ def delete_model():
     # Delete the old model if it's stil around
     delete_model_prox = rospy.ServiceProxy('gazebo/delete_model', DeleteModel)
     delete_model_prox('training_model')
-
-# def reset_pr2_position():
-#     pr2_pose = Pose()
-#     pr2_pose.position.x = 0.0
-#     pr2_pose.position.y = 0.0
-#     pr2_pose.position.z = 0.0
-
-#     get_model_state_prox = rospy.ServiceProxy('gazebo/get_model_state',GetModelState)
-#     model_state = get_model_state_prox('pr2','world')
-
-#     set_model_state_prox = rospy.ServiceProxy('gazebo/set_model_state', SetModelState)
-
-#     model_state.pose.orientation.x = 0.0
-#     model_state.pose.orientation.y = 0.0
-#     model_state.pose.orientation.z = 0.0
-#     model_state.pose.orientation.w = 1.0
-#     sms_req = SetModelStateRequest()
-#     sms_req.model_state.pose = pr2_pose
-#     sms_req.model_state.twist = model_state.twist
-#     sms_req.model_state.model_name = 'pr2'
-#     sms_req.model_state.reference_frame = 'world'
-#     set_model_state_prox(sms_req)
