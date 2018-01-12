@@ -1,0 +1,5 @@
+<launch>
+  <!-- train_svm-->
+   <node name="train_svm" pkg="train_svm_classifier" type="train_svm.py" output="screen" />
+
+</launch>
