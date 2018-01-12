@@ -107,7 +107,9 @@ clf.fit(X=X_train, y=y_train)
 model = {'classifier': clf, 'classes': encoder.classes_, 'scaler': X_scaler}
 
 # Save classifier to disk
-pickle.dump(model, open('model.sav', 'wb'))
+packagePath = rospack.get_path('train_svm_classifier')
+fullPath = packagePath + '/data/svm_model.sav'
+pickle.dump(model, open(fullPath, 'wb'))
 
 # Plot non-normalized confusion matrix
 plt.figure()
