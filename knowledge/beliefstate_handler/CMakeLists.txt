@@ -27,8 +27,3 @@ include_directories(
   include ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(beliefstate_service src/beliefstate_service.cpp)
-target_link_libraries(beliefstate_service ${catkin_LIBRARIES})
-
-add_executable(test_client src/test_client.cpp)
-target_link_libraries(test_client ${catkin_LIBRARIES})
