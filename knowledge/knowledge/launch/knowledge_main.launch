@@ -3,5 +3,5 @@
  
   <node name="json_prolog_node" pkg="json_prolog" type="json_prolog_node" cwd="node" output="screen" />
   <node name="poke_position_service" pkg="poke_position_calculation" type="poke_position_service" output="screen" />
-  <node name="kitchen_model_service" pkg="kitchen_model_export" type="kitchen_model_service" output="screen" />
+  <include file="$(find kitchen_model_export)/launch/knowledge_export_service.launch" />
 </launch>
