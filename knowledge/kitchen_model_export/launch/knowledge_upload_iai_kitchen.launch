@@ -1,5 +1,5 @@
 <launch>
   <include file="$(find iai_maps)/launch/kitchen_with_state_publisher.launch" />
   <include file="$(find iai_maps)/launch/room.launch" />
-  <include file="$(find iai_maps)/launch/map.launch" />
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find iai_maps)/maps/map_robohow_2015.yaml" />
 </launch>
