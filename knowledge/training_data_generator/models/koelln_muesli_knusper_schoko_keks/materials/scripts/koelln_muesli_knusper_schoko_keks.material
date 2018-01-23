@@ -1,0 +1,13 @@
+material @HERE@
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture koelln_muesli_knusper_schoko_keks.png
+      }
+    }
+  }
+}

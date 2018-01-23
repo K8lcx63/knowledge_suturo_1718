@@ -29,7 +29,7 @@ def save_training_set():
 if __name__ == '__main__':
     rospy.init_node('capture_node')
 
-    models = ['beer', 'pringles_paprika']
+    models = ['hela_curry_ketchup', 'pringles_paprika', 'pringles_vinegar', 'koelln_muesli_knusper_honig_nuss', 'koelln_muesli_knusper_schoko_keks']
 
     # Disable gravity and delete the ground plane
     initial_setup()
@@ -40,7 +40,7 @@ if __name__ == '__main__':
         spawn_model(model_name)
         
         for i in range(40):
-            print(i)
+            print(('round {} of 40 for object ' + model_name).format(i))
             # make five attempts to get a valid a point cloud then give up
             sample_was_good = False
             try_count = 0
