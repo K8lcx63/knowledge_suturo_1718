@@ -1,0 +1,3 @@
+<launch>
+   <node name="svm_trainer" pkg="svm_classifier" type="svm_trainer.py" output="screen" />
+</launch>

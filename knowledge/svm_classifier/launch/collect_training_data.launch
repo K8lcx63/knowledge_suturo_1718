@@ -1,0 +1,3 @@
+<launch>
+   <node name="svm_training_data_collector" pkg="svm_classifier" type="svm_training_data_collector.py" output="screen" />
+</launch>

@@ -1,0 +1,3 @@
+<launch>
+   <node name="svm_classifier" pkg="svm_classifier" type="svm_classifier.py" output="screen" />
+</launch>
