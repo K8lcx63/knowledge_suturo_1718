@@ -24,6 +24,12 @@
     
 
 
+    <!-- http://knowrob.org/kb/suturo_object.owl#graspableAt -->
+
+    <owl:ObjectProperty rdf:about="http://knowrob.org/kb/suturo_object.owl#graspableAt"/>
+    
+
+
     <!-- http://knowrob.org/kb/suturo_object.owl#normallyEatenAt -->
 
     <owl:ObjectProperty rdf:about="http://knowrob.org/kb/suturo_object.owl#normallyEatenAt">
@@ -53,6 +59,18 @@
     <!-- http://knowrob.org/kb/knowrob.owl#pathToCadModel -->
 
     <owl:DatatypeProperty rdf:about="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#quaternion -->
+
+    <owl:DatatypeProperty rdf:about="http://knowrob.org/kb/suturo_object.owl#quaternion"/>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#translation -->
+
+    <owl:DatatypeProperty rdf:about="http://knowrob.org/kb/suturo_object.owl#translation"/>
     
 
 
@@ -124,6 +142,12 @@
     <!-- http://knowrob.org/kb/knowrob.owl#PackagingContainerProduct -->
 
     <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#PackagingContainerProduct"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#Pose -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#Pose"/>
     
 
 
@@ -350,6 +374,36 @@
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#EdekaRedBowl -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#EdekaRedBowl">
+        <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#EdekaRedBowl"/>
+        <graspableAt rdf:resource="http://knowrob.org/kb/suturo_object.owl#graspEdekaRedBowl"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#graspEdekaRedBowl -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspEdekaRedBowl">
+        <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Pose"/>
+        <quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</quaternion>
+        <translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</translation>
+    </owl:NamedIndividual>
 </rdf:RDF>
 
 
