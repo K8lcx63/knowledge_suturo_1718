@@ -1,0 +1,358 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://knowrob.org/kb/suturo_object.owl#"
+     xml:base="http://knowrob.org/kb/suturo_object.owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:knowrob="http://knowrob.org/kb/knowrob.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://knowrob.org/kb/suturo_object.owl">
+        <owl:imports rdf:resource="package://knowrob_common/owl/knowrob.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#normallyEatenAt -->
+
+    <owl:ObjectProperty rdf:about="http://knowrob.org/kb/suturo_object.owl#normallyEatenAt">
+        <rdfs:domain rdf:resource="http://knowrob.org/kb/knowrob.owl#FoodOrDrink"/>
+        <rdfs:range rdf:resource="http://knowrob.org/kb/suturo_object.owl#Meal"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#boundingBoxSize -->
+
+    <owl:DatatypeProperty rdf:about="http://knowrob.org/kb/knowrob.owl#boundingBoxSize"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#pathToCadModel -->
+
+    <owl:DatatypeProperty rdf:about="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#Bowl-Eating -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#Bowl-Eating"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#BreakfastCereal -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#BreakfastCereal"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#Chip-Food -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#Chip-Food"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#ContinuousTimeInterval -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#ContinuousTimeInterval"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#DrinkingBottle -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#DrinkingBottle"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#DrinkingMug -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#DrinkingMug"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#FoodOrDrink -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#FoodOrDrink"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#Ketchup -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#Ketchup"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#Milk -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#Milk"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#PackagingContainerProduct -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#PackagingContainerProduct"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#TomatoBasedSauce -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#TomatoBasedSauce"/>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#Breakfast -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/suturo_object.owl#Breakfast">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/suturo_object.owl#Meal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#CupEcoOrange -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/suturo_object.owl#CupEcoOrange">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/knowrob.owl#DrinkingMug"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge/meshes/cup_eco_orange/cup_eco_orange.dae</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#EdekaRedBowl -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/suturo_object.owl#EdekaRedBowl">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/knowrob.owl#Bowl-Eating"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge/meshes/edeka_red_bowl/edeka_red_bowl.dae</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#HelaCurryKetchup -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/suturo_object.owl#HelaCurryKetchup">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/knowrob.owl#Ketchup"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge/meshes/hela_curry_ketchup/hela_curry_ketchup.dae</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#IceTeaPackage -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/suturo_object.owl#IceTeaPackage">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/suturo_object.owl#Package"/>
+    </owl:Class>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#JaMilch -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/suturo_object.owl#JaMilch">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/knowrob.owl#Milk"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/suturo_object.owl#normallyEatenAt"/>
+                <owl:allValuesFrom rdf:resource="http://knowrob.org/kb/suturo_object.owl#Breakfast"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge/meshes/ja_milch/ja_milch.dae</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#KelloggsToppasMini -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/suturo_object.owl#KelloggsToppasMini">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/knowrob.owl#BreakfastCereal"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/suturo_object.owl#normallyEatenAt"/>
+                <owl:allValuesFrom rdf:resource="http://knowrob.org/kb/suturo_object.owl#Breakfast"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge/meshes/kelloggs_toppas_mini/kelloggs_toppas_mini.dae</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#KoellnMuesliKnusperHonigNuss -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/suturo_object.owl#KoellnMuesliKnusperHonigNuss">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/knowrob.owl#BreakfastCereal"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/suturo_object.owl#normallyEatenAt"/>
+                <owl:allValuesFrom rdf:resource="http://knowrob.org/kb/suturo_object.owl#Breakfast"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge/meshes/koelln_muesli_knusper_honig_nuss/koelln_muesli_knusper_honig_nuss.dae</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#Meal -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/suturo_object.owl#Meal">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/knowrob.owl#ContinuousTimeInterval"/>
+    </owl:Class>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#Package -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/suturo_object.owl#Package">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/knowrob.owl#PackagingContainerProduct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#PfannerIceTea2LPackage -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/suturo_object.owl#PfannerIceTea2LPackage">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/suturo_object.owl#IceTeaPackage"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#boundingBoxSize"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.09 0.26 0.09</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#Pringles -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/suturo_object.owl#Pringles">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/knowrob.owl#Chip-Food"/>
+    </owl:Class>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#PringlesPaprika -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/suturo_object.owl#PringlesPaprika">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/suturo_object.owl#Pringles"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge/meshes/pringles_paprika/pringles_paprika.dae</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#PringlesSalt -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/suturo_object.owl#PringlesSalt">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/suturo_object.owl#Pringles"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge/meshes/pringles_salt/pringles_salt.dae</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#SiggBottle -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/suturo_object.owl#SiggBottle">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/knowrob.owl#DrinkingBottle"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge/meshes/sigg_bottle/sigg_bottle.dae</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#TomatoSauce -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/suturo_object.owl#TomatoSauce">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/knowrob.owl#TomatoBasedSauce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#TomatoSauceOroDiParma -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/suturo_object.owl#TomatoSauceOroDiParma">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/suturo_object.owl#TomatoSauce"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge/meshes/tomato_sauce_oro_di_parma/tomato_sauce_oro_di_parma.dae</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+
