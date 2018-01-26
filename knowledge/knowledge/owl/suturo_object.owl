@@ -388,6 +388,15 @@
     
 
 
+    <!-- http://knowrob.org/kb/suturo_object.owl#CupEcoOrange -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#CupEcoOrange">
+        <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#CupEcoOrange"/>
+        <graspableAt rdf:resource="http://knowrob.org/kb/suturo_object.owl#graspCupEcoOrange"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://knowrob.org/kb/suturo_object.owl#EdekaRedBowl -->
 
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#EdekaRedBowl">
@@ -397,9 +406,161 @@
     
 
 
+    <!-- http://knowrob.org/kb/suturo_object.owl#HelaCurryKetchup -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#HelaCurryKetchup">
+        <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#HelaCurryKetchup"/>
+        <graspableAt rdf:resource="http://knowrob.org/kb/suturo_object.owl#graspHelaCurryKetchup"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#JaMilch -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#JaMilch">
+        <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#JaMilch"/>
+        <graspableAt rdf:resource="http://knowrob.org/kb/suturo_object.owl#graspJaMilch"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#KelloggsToppasMini -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#KelloggsToppasMini">
+        <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#KelloggsToppasMini"/>
+        <graspableAt rdf:resource="http://knowrob.org/kb/suturo_object.owl#graspKelloggsToppasMini"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#KoellnMuesliKnusperHonigNuss -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#KoellnMuesliKnusperHonigNuss">
+        <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#KoellnMuesliKnusperHonigNuss"/>
+        <graspableAt rdf:resource="http://knowrob.org/kb/suturo_object.owl#graspKoellnMuesliKnusperHonigNuss"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#PringlesPaprika -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#PringlesPaprika">
+        <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#PringlesPaprika"/>
+        <graspableAt rdf:resource="http://knowrob.org/kb/suturo_object.owl#graspPringles"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#PringlesSalt -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#PringlesSalt">
+        <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#PringlesSalt"/>
+        <graspableAt rdf:resource="http://knowrob.org/kb/suturo_object.owl#graspPringles"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#SiggBottle -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#SiggBottle">
+        <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#SiggBottle"/>
+        <graspableAt rdf:resource="http://knowrob.org/kb/suturo_object.owl#graspSiggBottle"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#TomatoSauceOroDiParma -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#TomatoSauceOroDiParma">
+        <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#TomatoSauceOroDiParma"/>
+        <graspableAt rdf:resource="http://knowrob.org/kb/suturo_object.owl#graspTomatoSauceOroDiParma"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#graspCupEcoOrange -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspCupEcoOrange">
+        <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Pose"/>
+        <quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</quaternion>
+        <translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</translation>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://knowrob.org/kb/suturo_object.owl#graspEdekaRedBowl -->
 
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspEdekaRedBowl">
+        <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Pose"/>
+        <quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</quaternion>
+        <translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</translation>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#graspHelaCurryKetchup -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspHelaCurryKetchup">
+        <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Pose"/>
+        <quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</quaternion>
+        <translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</translation>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#graspJaMilch -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspJaMilch">
+        <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Pose"/>
+        <quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</quaternion>
+        <translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</translation>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#graspKelloggsToppasMini -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspKelloggsToppasMini">
+        <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Pose"/>
+        <quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</quaternion>
+        <translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</translation>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#graspKoellnMuesliKnusperHonigNuss -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspKoellnMuesliKnusperHonigNuss">
+        <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Pose"/>
+        <quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</quaternion>
+        <translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</translation>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#graspPringles -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspPringles">
+        <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Pose"/>
+        <quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</quaternion>
+        <translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</translation>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#graspSiggBottle -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspSiggBottle">
+        <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Pose"/>
+        <quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</quaternion>
+        <translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</translation>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#graspTomatoSauceOroDiParma -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspTomatoSauceOroDiParma">
         <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Pose"/>
         <quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</quaternion>
         <translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</translation>
