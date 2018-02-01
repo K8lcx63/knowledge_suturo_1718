@@ -9,10 +9,12 @@
   <license>TODO</license>
 
   <buildtool_depend>catkin</buildtool_depend>
-  <run_depend>poke_position_calculation</run_depend>
-  <build_depend>poke_position_calculation</build_depend>
-  <run_depend>kitchen_model_export</run_depend>
-   <build_depend>kitchen_model_export</build_depend>
+  <run_depend>roscpp</run_depend>
+  <build_depend>roscpp</build_depend>
+  <run_depend>marker_publisher</run_depend>
+  <build_depend>marker_publisher</build_depend>
+  <run_depend>geometry_msgs</run_depend>
+  <build_depend>geometry_msgs</build_depend>
   <build_depend>json_prolog</build_depend>
   <run_depend>json_prolog</run_depend>
 </package>

@@ -112,33 +112,6 @@ bool get_fixed_kitchen_objects(knowledge_msgs::GetFixedKitchenObjects::Request  
 
     return succes;
 }
-
-bool get_fixed_kitchen_objects_2(knowledge_msgs::GetFixedKitchenObjects::Request  &req, knowledge_msgs::GetFixedKitchenObjects::Response &res)
-{
-    std::string query = "getFixedKitchenObjects2(ObjectName, Translation, Quaternion, MeshPath)";
-    Prolog pl;
-    PrologQueryProxy bdgs = pl.query(query);
-
-    bool succes = false;
-    for(PrologQueryProxy::iterator it=bdgs.begin(); it != bdgs.end(); it++)
-    {
-        succes = true;
-        PrologBindings bdg = *it;
-
-        res.names.push_back(bdg["ObjectName"]);
-        res.poses.push_back(toPoseMsgs(bdg));
-        //res.mesh_paths.push_back(bdg["MeshPath"]);
-    }
-
-    if(succes)
-    {
-        res.frame_id = "/map";
-    }
-
-    return succes;
-}
-
-
    
 int main(int argc, char **argv)
 {

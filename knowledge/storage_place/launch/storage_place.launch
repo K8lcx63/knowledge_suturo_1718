@@ -1,0 +1,6 @@
+<launch>
+  <param name="initial_package" type="string" value="storage_place" />
+ 
+  <node name="json_prolog_node" pkg="json_prolog" type="json_prolog_node" cwd="node" output="screen" />
+  <node name="storage_place_service" pkg="storage_place" type="storage_place_service" output="screen" />
+</launch>

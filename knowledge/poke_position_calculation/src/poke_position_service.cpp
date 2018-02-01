@@ -17,25 +17,25 @@ private:
     geometry_msgs::PointStamped transformedPoint;
     geometry_msgs::PointStamped knowledgePoint;
 
-    std::string createQuery(const int direction)
+    geometry_msgs::Point calculate(const int direction)
     {
-        std::string directionString;
+        geometry_msgs::Point point;
         switch(direction)
         {
-            case object_detection::PokeObject::Request::DIRECTION_LEFT: directionString = "left";
+            case object_detection::PokeObject::Request::DIRECTION_LEFT: point.x = transformedPoint.point.x+0.09;
+                                                                        point.y = transformedPoint.point.y+0.09;
+                                                                        point.z = transformedPoint.point.z+0.06;
             break;
-            case object_detection::PokeObject::Request::DIRECTION_RIGHT: directionString = "right";
+            case object_detection::PokeObject::Request::DIRECTION_RIGHT: point.x = transformedPoint.point.x+0.09;
+                                                                         point.y = transformedPoint.point.y-0.09;
+                                                                         point.z = transformedPoint.point.z+0.06;
             break;
-            default: directionString = "left";
+            default: point.x = transformedPoint.point.x+0.09;
+                     point.y = transformedPoint.point.y+0.09;
+                     point.z = transformedPoint.point.z+0.06;
         }
 
-        std::stringstream ss;
-        ss << "calculate_poke_position_" << directionString << "(" << transformedPoint.point.x << "," 
-                                                                   << transformedPoint.point.y << "," 
-                                                                   << transformedPoint.point.z << ","
-                                                                   << "RX, RY, RZ)";
-
-        return ss.str();
+        return point;
     }
 
 public:
@@ -80,32 +80,18 @@ public:
         ROS_INFO("Transformed point y: %g", transformedPoint.point.y);
         ROS_INFO("Transformed point z: %g", transformedPoint.point.z);
 	   
-        Prolog pl;
-  	    PrologBindings bdg = pl.once(createQuery(req.direction));
-
-        if(&bdg != NULL)
-        {
-            res.poke_position.header = transformedPoint.header;
-      	    res.poke_position.point.x = bdg["RX"];
-      	    res.poke_position.point.y = bdg["RY"];
-    	    res.poke_position.point.z = bdg["RZ"];
-    	    res.error_message = "";
+        res.poke_position.header = transformedPoint.header;
+        res.poke_position.point = calculate(req.direction);
+    	res.error_message = "";
             
-		    ROS_INFO_STREAM("Modified point frame_id: " << res.poke_position.header.frame_id);
-    	    ROS_INFO("Modified result from knowledge x: %g", res.poke_position.point.x);
-    	    ROS_INFO("Modified result from knowledge y: %g", res.poke_position.point.y);
-    	    ROS_INFO("Modified result from knowledge z: %g", res.poke_position.point.z);
-    	    ROS_INFO_STREAM("Errormessage: " << res.error_message);
-            knowledgePoint = res.poke_position;
+		ROS_INFO_STREAM("Modified point frame_id: " << res.poke_position.header.frame_id);
+    	ROS_INFO("Modified result from knowledge x: %g", res.poke_position.point.x);
+    	ROS_INFO("Modified result from knowledge y: %g", res.poke_position.point.y);
+    	ROS_INFO("Modified result from knowledge z: %g", res.poke_position.point.z);
+    	ROS_INFO_STREAM("Errormessage: " << res.error_message);
+        knowledgePoint = res.poke_position;
 
-            return true;
-        }
-        else
-        {
-        	res.error_message = "Failed to call service 'calculate_poke_position'. Prolog found no solution!";
-    	    ROS_ERROR("Failed to call service 'calculate_poke_position'. Prolog found no solution!");
-      	    return false;
-        }
+        return true;
     }
 };
    

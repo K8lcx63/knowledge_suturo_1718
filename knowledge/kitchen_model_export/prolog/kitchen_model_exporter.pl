@@ -1,14 +1,11 @@
-:- module(kitchen_model_exporter,[get_fixed_kitchen_objects/4, getFixedKitchenObjects2/4]).
+:- module(kitchen_model_exporter,[get_fixed_kitchen_objects/4]).
 
 :- use_module(library('semweb/rdfs')).
 :- use_module(library('semweb/rdf_db')).
 
 :- rdf_register_prefix(knowrob, 'http://knowrob.org/kb/knowrob.owl#').
-:- rdf_register_prefix(iai-map, 'http://knowrob.org/kb/IAI-kitchen.owl#').
 
 :- rdf_meta 
-  getTransform(r,-,-),
-  getMeshPath(r,-),
   get_rotation_matrix_value(r,r,-).
 
 %% get_fixed_kitchen_objects(-ObjectName, -Translation, -Quaternion, -[Width, Height, Depth])).
@@ -25,8 +22,7 @@ get_fixed_kitchen_objects(ObjectName, Translation, Quaternion, [Width, Height, D
   rdfs_individual_of(Instance, knowrob:'SemanticMapPerception'),
   rdf_has(Instance, knowrob:'eventOccursAt',RotationMatrix),
   rotation_matrix_to_list(RotationMatrix, RotationMatrixList),%rotmat_to_list
-  matrix_rotation(RotationMatrixList, Quaternion),
-  matrix_translation(RotationMatrixList, Translation),
+  matrix(RotationMatrixList, Translation, Quaternion),
   object_dimensions(ObjectName, Depth, Width, Height).
 
 %% rotation_matrix_to_list(+RotationMatrix, -[M00, M01, M02, M03, M10, M11, M12, M13, M20, M21, M22, M23, M30, M31, M32, M33]).
@@ -54,34 +50,3 @@ get_rotation_matrix_value(RotationMatrix, Property, Value):-
   rdf_has(RotationMatrix, Property, Value_R),
   strip_literal_type(Value_R , Value_S),
   atom_number(Value_S, Value).
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-getFixedKitchenObjects2(ObjectName, Translation, Quaternion, MeshPath):-
-  rdfs_individual_of(Object, knowrob:'SemanticMapPerception'),
-  rdf_has(Object, knowrob:'objectActedOn',ObjectName),
-  rdf_has(Object, knowrob:'eventOccursAt', Transformation),
-  getTransform(Transformation, Translation, Quaternion),
-  getMeshPath(ObjectName, MeshPath).
-
-
-getTransform(TransformationHandle, Translation, Quaternion):-
-  transform_data(TransformationHandle, (Translation, Quaternion)).
-
-getMeshPath(BoundingBoxHandle, MeshPath):-
-  rdf(BoundingBoxHandle, rdf:'type', Class),
-  get_model_path(Class, MeshPath).

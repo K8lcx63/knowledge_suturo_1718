@@ -1,0 +1,370 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://knowrob.org/kb/suturo_storage_place.owl#"
+     xml:base="http://knowrob.org/kb/suturo_storage_place.owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:knowrob="http://knowrob.org/kb/knowrob.owl#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://knowrob.org/kb/suturo_storage_place.owl">
+        <owl:imports rdf:resource="package://knowrob_common/owl/knowrob.owl"/>
+        <owl:imports rdf:resource="package://knowledge/owl/suturo_object.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#locatedAtAbsolute -->
+
+    <owl:ObjectProperty rdf:about="http://knowrob.org/kb/knowrob.owl#locatedAtAbsolute"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#pose -->
+
+    <owl:ObjectProperty rdf:about="http://knowrob.org/kb/knowrob.owl#pose"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#storedAtPlace -->
+
+    <owl:ObjectProperty rdf:about="http://knowrob.org/kb/knowrob.owl#storedAtPlace">
+        <owl:inverseOf rdf:resource="http://knowrob.org/kb/suturo_storage_place.owl#storagePlaceFor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#normallyEatenAt -->
+
+    <owl:ObjectProperty rdf:about="http://knowrob.org/kb/suturo_object.owl#normallyEatenAt"/>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_storage_place.owl#storagePlaceFor -->
+
+    <owl:ObjectProperty rdf:about="http://knowrob.org/kb/suturo_storage_place.owl#storagePlaceFor">
+        <rdfs:domain rdf:resource="http://knowrob.org/kb/knowrob.owl#Place"/>
+        <rdfs:range rdf:resource="http://knowrob.org/kb/knowrob.owl#HumanScaleObject"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#heightOfObject -->
+
+    <owl:DatatypeProperty rdf:about="http://knowrob.org/kb/knowrob.owl#heightOfObject"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#quaternion -->
+
+    <owl:DatatypeProperty rdf:about="http://knowrob.org/kb/knowrob.owl#quaternion"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#scale -->
+
+    <owl:DatatypeProperty rdf:about="http://knowrob.org/kb/knowrob.owl#scale"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#translation -->
+
+    <owl:DatatypeProperty rdf:about="http://knowrob.org/kb/knowrob.owl#translation"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#widthOfObject -->
+
+    <owl:DatatypeProperty rdf:about="http://knowrob.org/kb/knowrob.owl#widthOfObject"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#xCoord -->
+
+    <owl:DatatypeProperty rdf:about="http://knowrob.org/kb/knowrob.owl#xCoord"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#yCoord -->
+
+    <owl:DatatypeProperty rdf:about="http://knowrob.org/kb/knowrob.owl#yCoord"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#zCoord -->
+
+    <owl:DatatypeProperty rdf:about="http://knowrob.org/kb/knowrob.owl#zCoord"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#FoodVessel -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#FoodVessel"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#HumanScaleObject -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#HumanScaleObject"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#Place -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#Place"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#Point3D -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#Point3D"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#Pose -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#Pose"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#Sauce -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#Sauce"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#SnackFood -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#SnackFood"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#SpaceRegion -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#SpaceRegion"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#StorageConstruct -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#StorageConstruct"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#Transformation -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#Transformation"/>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#Breakfast -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/suturo_object.owl#Breakfast"/>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_storage_place.owl#StorageArea -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/suturo_storage_place.owl#StorageArea">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/knowrob.owl#SpaceRegion"/>
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/knowrob.owl#StorageConstruct"/>
+    </owl:Class>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_storage_place.owl#StorageAreaBreakfastFood -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/suturo_storage_place.owl#StorageAreaBreakfastFood">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/suturo_storage_place.owl#StorageArea"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/suturo_storage_place.owl#storagePlaceFor"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://knowrob.org/kb/suturo_object.owl#normallyEatenAt"/>
+                        <owl:allValuesFrom rdf:resource="http://knowrob.org/kb/suturo_object.owl#Breakfast"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_storage_place.owl#StorageAreaFoodVessel -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/suturo_storage_place.owl#StorageAreaFoodVessel">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/suturo_storage_place.owl#StorageArea"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/suturo_storage_place.owl#storagePlaceFor"/>
+                <owl:allValuesFrom rdf:resource="http://knowrob.org/kb/knowrob.owl#FoodVessel"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_storage_place.owl#StorageAreaSauce -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/suturo_storage_place.owl#StorageAreaSauce">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/suturo_storage_place.owl#StorageArea"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/suturo_storage_place.owl#storagePlaceFor"/>
+                <owl:allValuesFrom rdf:resource="http://knowrob.org/kb/knowrob.owl#Sauce"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_storage_place.owl#StorageAreaSnackFood -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/suturo_storage_place.owl#StorageAreaSnackFood">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/suturo_storage_place.owl#StorageArea"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/suturo_storage_place.owl#storagePlaceFor"/>
+                <owl:allValuesFrom rdf:resource="http://knowrob.org/kb/knowrob.owl#SnackFood"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_storage_place.owl#position_storage_area_breakfast_food -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_storage_place.owl#position_storage_area_breakfast_food">
+        <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Point3D"/>
+        <knowrob:xCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.51594</knowrob:xCoord>
+        <knowrob:yCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.38063</knowrob:yCoord>
+        <knowrob:zCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.9</knowrob:zCoord>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_storage_place.owl#position_storage_area_food_vessel -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_storage_place.owl#position_storage_area_food_vessel">
+        <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Point3D"/>
+        <knowrob:xCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.51594</knowrob:xCoord>
+        <knowrob:yCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.00563</knowrob:yCoord>
+        <knowrob:zCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.9</knowrob:zCoord>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_storage_place.owl#position_storage_area_snack_food -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_storage_place.owl#position_storage_area_snack_food">
+        <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Point3D"/>
+        <knowrob:xCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.51594</knowrob:xCoord>
+        <knowrob:yCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.75563</knowrob:yCoord>
+        <knowrob:zCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.9</knowrob:zCoord>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_storage_place.owl#position_storeage_area_sauce -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_storage_place.owl#position_storeage_area_sauce">
+        <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Point3D"/>
+        <knowrob:xCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.51594</knowrob:xCoord>
+        <knowrob:yCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.13063</knowrob:yCoord>
+        <knowrob:zCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.9</knowrob:zCoord>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_storage_place.owl#storage_area_breakfast_food -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_storage_place.owl#storage_area_breakfast_food">
+        <rdf:type rdf:resource="http://knowrob.org/kb/suturo_storage_place.owl#StorageAreaBreakfastFood"/>
+        <knowrob:locatedAtAbsolute rdf:resource="http://knowrob.org/kb/suturo_storage_place.owl#position_storage_area_breakfast_food"/>
+        <knowrob:heightOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.58</knowrob:heightOfObject>
+        <knowrob:widthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.375</knowrob:widthOfObject>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_storage_place.owl#storage_area_food_vessel -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_storage_place.owl#storage_area_food_vessel">
+        <rdf:type rdf:resource="http://knowrob.org/kb/suturo_storage_place.owl#StorageAreaFoodVessel"/>
+        <knowrob:locatedAtAbsolute rdf:resource="http://knowrob.org/kb/suturo_storage_place.owl#position_storage_area_food_vessel"/>
+        <knowrob:heightOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.58</knowrob:heightOfObject>
+        <knowrob:widthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.375</knowrob:widthOfObject>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_storage_place.owl#storage_area_sauce -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_storage_place.owl#storage_area_sauce">
+        <rdf:type rdf:resource="http://knowrob.org/kb/suturo_storage_place.owl#StorageAreaSauce"/>
+        <knowrob:locatedAtAbsolute rdf:resource="http://knowrob.org/kb/suturo_storage_place.owl#position_storeage_area_sauce"/>
+        <knowrob:heightOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.58</knowrob:heightOfObject>
+        <knowrob:widthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.375</knowrob:widthOfObject>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_storage_place.owl#storage_area_snack_food -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_storage_place.owl#storage_area_snack_food">
+        <rdf:type rdf:resource="http://knowrob.org/kb/suturo_storage_place.owl#StorageAreaSnackFood"/>
+        <knowrob:locatedAtAbsolute rdf:resource="http://knowrob.org/kb/suturo_storage_place.owl#position_storage_area_snack_food"/>
+        <knowrob:heightOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.58</knowrob:heightOfObject>
+        <knowrob:widthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.375</knowrob:widthOfObject>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+
