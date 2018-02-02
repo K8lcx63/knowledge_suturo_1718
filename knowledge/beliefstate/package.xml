@@ -21,7 +21,5 @@
   <run_depend>knowledge_msgs</run_depend>
   <build_depend>geometry_msgs</build_depend>
   <run_depend>geometry_msgs</run_depend>
-  <build_depend>tfjava</build_depend>
-  <run_depend>tfjava</run_depend>
 
 </package>
