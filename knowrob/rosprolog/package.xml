@@ -1,0 +1,35 @@
+<package>
+  <name>rosprolog</name>
+  <version>1.0.0</version>
+  <description>
+    Script to execute Prolog and set the Prolog library paths
+    to other ROS Prolog packages.
+  </description>
+  <maintainer email="danielb@cs.uni-bremen.de">Daniel Beßler</maintainer>
+
+  <license>BSD, GPL</license>
+
+  <url type="website">http://www.ros.org/wiki/rosprolog</url>
+  <url type="bugtracker">https://github.com/knowrob/knowrob/issues</url>
+
+  <author>Lorenz Moesenlechner</author>
+  <author email="danielb@cs.uni-bremen.de">Daniel Beßler</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roslib</build_depend>
+  <build_depend>rospack</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>tf</build_depend>
+  
+  <run_depend>swi-prolog</run_depend>
+  <run_depend>swi-prolog-java</run_depend>
+  <run_depend>roslib</run_depend>
+  <run_depend>rospack</run_depend>
+  <run_depend>roscpp</run_depend>
+  
+  <export>
+    <rosdoc config="rosdoc.yaml"/>
+  </export>
+
+</package>
