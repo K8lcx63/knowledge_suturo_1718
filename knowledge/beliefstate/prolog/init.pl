@@ -1,5 +1,4 @@
 :- register_ros_package(knowrob_common).
-:- register_ros_package(tfjava).
 
 :- use_module(beliefstate,
     [
@@ -11,4 +10,4 @@
 
 :- owl_parser:owl_parse('package://beliefstate/owl/suturo_actions.owl').
 
-:- tfjava:tfjava_start_listener.
+:- rosprolog:tf_listener_start.
