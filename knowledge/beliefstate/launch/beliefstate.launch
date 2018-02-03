@@ -1,14 +1,10 @@
 <launch>
-    <param name="initial_package" type="string" value="knowledge" />
+    <param name="initial_package" type="string" value="beliefstate" />
  
     <node name="json_prolog_node" pkg="json_prolog" type="json_prolog_node" cwd="node" output="screen" />
-    <node name="poke_position_service" pkg="poke_position_calculation" type="poke_position_service" output="screen" />
-   
     <node name="svm_classifier" pkg="svm_classifier" type="svm_classifier.py" output="screen" />
     <node name="beliefstate" pkg="beliefstate" type="beliefstate" output="screen" >
         <param name="test_mode" value="true"/>
         <param name="dummy_class" value="hela_curry_ketchup"/>
     </node>
-    <node name="storage_place_service" pkg="storage_place" type="storage_place_service" output="screen" />
-    <include file="$(find kitchen_model_export)/launch/knowledge_export_service.launch" />
 </launch>

@@ -1,7 +1,5 @@
 <launch>
   <include file="$(find kitchen_model_export)/launch/knowledge_upload_iai_kitchen.launch" />
 
-  <param name="initial_package" type="string" value="kitchen_model_export" />
- 
   <node name="kitchen_model_service" pkg="kitchen_model_export" type="kitchen_model_service" output="screen" />
 </launch>

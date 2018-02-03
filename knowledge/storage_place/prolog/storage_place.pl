@@ -1,4 +1,4 @@
-:- module(storage_area,
+:- module(storage_place,
     [
         storage_place/4
     ]).
