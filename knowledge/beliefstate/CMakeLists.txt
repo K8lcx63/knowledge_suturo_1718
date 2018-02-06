@@ -36,5 +36,5 @@ target_link_libraries(perceive_object ${catkin_LIBRARIES})
 add_executable(grasp_object src/grasp_object.cpp)
 target_link_libraries(grasp_object ${catkin_LIBRARIES})
 
-add_executable(empty_gripper src/empty_gripper.cpp)
-target_link_libraries(empty_gripper ${catkin_LIBRARIES})
+#add_executable(empty_gripper src/empty_gripper.cpp)
+#target_link_libraries(empty_gripper ${catkin_LIBRARIES})
