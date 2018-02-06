@@ -6,7 +6,7 @@ import pickle
 import numpy as np
 import sklearn
 from sklearn.preprocessing import LabelEncoder
-from knowledge_msgs.srv import Classify
+from knowledge_msgs.srv import *
 
 def classify(req):
     prediction = clf.predict(scaler.transform(req.features))
