@@ -1,5 +1,5 @@
-#include <ros/ros.h>
-#include <knowledge_msgs/EmptyGripper.h>
+/*#include <ros/ros.h>
+//#include <knowledge_msgs/EmptyGripper.h>
    
 int main(int argc, char **argv)
 {
@@ -21,4 +21,4 @@ int main(int argc, char **argv)
   }
 
   return 0;
-}
+}*/

@@ -2,7 +2,7 @@
 #include "sstream"
 #include <ros/ros.h>
 #include <knowledge_msgs/PerceivedObject.h>
-#include <knowledge_msgs/EmptyGripper.h>
+//#include <knowledge_msgs/EmptyGripper.h>
 #include <knowledge_msgs/Classify.h>
 #include <knowledge_msgs/GraspObject.h>
 #include <knowledge_msgs/DropObject.h>
@@ -109,10 +109,8 @@ bool process_perveive_action(knowledge_msgs::PerceivedObject::Request  &req, kno
   {
     std::string object_label = dummy_class;
 
-    std::string query = createQuery(req.object_pose, object_label);
-    ROS_INFO_STREAM(query);
     Prolog pl;
-    PrologBindings bdg = pl.once(query);
+    PrologBindings bdg = pl.once(createQuery(req.object_pose, object_label));
 
     ROS_INFO_STREAM("Perceived Object " << object_label);
     res.label = object_label;
@@ -138,7 +136,7 @@ bool process_perveive_action(knowledge_msgs::PerceivedObject::Request  &req, kno
   }
 }
 
-bool gripper_empty(knowledge_msgs::EmptyGripper::Request  &req, knowledge_msgs::EmptyGripper::Response &res)
+/*bool gripper_empty(knowledge_msgs::EmptyGripper::Request  &req, knowledge_msgs::EmptyGripper::Response &res)
 {
   Prolog pl;
   PrologBindings bdg_left_gripper = pl.once(createQuery(knowledge_msgs::Gripper::LEFT_GRIPPER));
@@ -148,7 +146,7 @@ bool gripper_empty(knowledge_msgs::EmptyGripper::Request  &req, knowledge_msgs::
   res.right_gripper = &bdg_right_gripper == NULL;
 
   return true;
-}
+}*/
    
 int main(int argc, char **argv)
 {
@@ -159,7 +157,7 @@ int main(int argc, char **argv)
   ros::ServiceServer beliefstate_service = nh.advertiseService("perceive_action", process_perveive_action);
   ros::Subscriber graspActionSubscriber = nh.subscribe("grasp_action", 1000, process_grasp_action);
   ros::Subscriber dropActionSubscriber = nh.subscribe("drop_action", 1000, process_drop_action);
-  ros::ServiceServer gripper_service = nh.advertiseService("gripper_empty", gripper_empty);
+  //ros::ServiceServer gripper_service = nh.advertiseService("gripper_empty", gripper_empty);
 
   if (!nh.getParam("test_mode", test_mode))
   {
