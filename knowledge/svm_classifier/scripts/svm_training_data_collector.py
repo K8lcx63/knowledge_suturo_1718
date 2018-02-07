@@ -28,10 +28,10 @@ def get_features(label, color_histogram_file, normals_histogram_file):
     return np.concatenate((color_histogram, normals_histogram))
 
 def collect_training_data():
-    labels = ['tomato_sauce_oro_di_parma', 'hela_curry_ketchup', 
-              'pringles_paprika', 'pringles_salt', 
-              'ja_milch', 'koelln_muesli_knusper_honig_nuss', 'kelloggs_toppas_mini',
-              'cup_eco_orange', 'edeka_red_bowl', 'sigg_bottle']
+    labels = ['TomatoSauceOroDiParma', 'HelaCurryKetchup', 
+              'PringlesPaprika', 'PringlesSalt', 
+              'JaMilch', 'KoellnMuesliKnusperHonigNuss', 'KellogsToppasMini',
+              'CupEcoOrange', 'EdekaRedBowl', 'SiggBottle']
 
     for label in labels:
         color_histogram_files = os.listdir(packagePath + '/data/histograms/color_histograms/' + label)

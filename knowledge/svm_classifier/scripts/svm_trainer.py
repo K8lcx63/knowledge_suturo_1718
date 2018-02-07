@@ -33,7 +33,7 @@ def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix'
 if __name__ == '__main__':
   # Load training data from disk
   rospack = rospkg.RosPack()
-  packagePath = rospack.get_path('training_data_generator')
+  packagePath = rospack.get_path('svm_classifier')
   fullPath = packagePath + '/data/training_set.sav'
   training_set = pickle.load(open(fullPath, 'rb'))
 
