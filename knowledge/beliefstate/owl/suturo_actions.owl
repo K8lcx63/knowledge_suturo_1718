@@ -44,6 +44,14 @@
     
 
 
+    <!-- http://knowrob.org/kb/knowrob.owl#GraspingSomething -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#GraspingSomething">
+        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/knowrob.owl#VoluntaryBodyMovement"/>
+    </owl:Class>
+    
+
+
     <!-- http://knowrob.org/kb/knowrob.owl#LeftHand -->
 
     <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#LeftHand"/>
@@ -53,6 +61,12 @@
     <!-- http://knowrob.org/kb/knowrob.owl#RightHand -->
 
     <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#RightHand"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#VoluntaryBodyMovement -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#VoluntaryBodyMovement"/>
     
 
 
