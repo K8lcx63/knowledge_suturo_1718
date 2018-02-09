@@ -47,7 +47,7 @@ process_perceive_action(ObjectClass, PoseList, ReferenceFrame):-
     assert_new_individual(ObjectClass, ObjectIndividual),
     nth0(0, PoseList, Position),
     nth0(1, PoseList, Quaternion),
-    rosprolog:tf_transform_pose(ReferenceFrame, '/map', pose(Position, Quaternion), pose(MapPosition, MapQuaternion)),
+    tf_transform_pose(ReferenceFrame, '/map', pose(Position, Quaternion), pose(MapPosition, MapQuaternion)),
     assert_new_pose([MapPosition, MapQuaternion], '/map', PoseIndividual),
     rdf_assert(PerceptionActionIndividual, knowrob:'detectedObject', ObjectIndividual),
     rdf_assert(PerceptionActionIndividual, knowrob:'eventOccursAt', PoseIndividual),
@@ -55,9 +55,9 @@ process_perceive_action(ObjectClass, PoseList, ReferenceFrame):-
     
 process_grasp_action(ObjectClass, GripperIndividual):-
     assert_new_individual(knowrob:'GraspingSomething', GraspActionIndividual),
+    rdfs_individual_of(ObjectIndividual, ObjectClass),
     get_latest_action_associated_with_object(ObjectIndividual, LatestActionIndividual),
     rdf_assert(LatestActionIndividual, knowrob:'nextEvent', GraspActionIndividual),
-    rdfs_individual_of(ObjectIndividual, ObjectClass),
     rdf_has(LatestActionIndividual, knowrob:'eventOccursAt', LatestPoseIndividual),
     get_pose(LatestPoseIndividual, MapPoseList),
     assert_new_pose_in_gripper_frame(GripperIndividual, MapPoseList, LocalPoseIndividual),
@@ -112,20 +112,20 @@ assert_new_pose_in_gripper_frame(GripperIndividual, MapPoseList, LocalPoseIndivi
     nth0(0, MapPoseList, Position),
     nth0(1, MapPoseList, Quaternion),
     (rdf_equal(GripperIndividual, suturo_action:'left_gripper') ->
-        rosprolog:tf_transform_pose('/map', '/l_gripper_led_frame', pose(Position, Quaternion), pose(LocalGripperPosition, LocalGripperQuaternion)),
+        tf_transform_pose('/map', '/l_gripper_led_frame', pose(Position, Quaternion), pose(LocalGripperPosition, LocalGripperQuaternion)),
         assert_new_pose([LocalGripperPosition, LocalGripperQuaternion], 'l_gripper_led_frame', LocalPoseIndividual)
         ;
-        rosprolog:tf_transform_pose('/map', '/l_gripper_led_frame', pose(Position, Quaternion), pose(LocalGripperPosition, LocalGripperQuaternion)),
+        tf_transform_pose('/map', '/l_gripper_led_frame', pose(Position, Quaternion), pose(LocalGripperPosition, LocalGripperQuaternion)),
         assert_new_pose([LocalGripperPosition, LocalGripperQuaternion], 'r_gripper_led_frame', LocalPoseIndividual)).
 
 assert_new_pose_from_gripper_frame(GripperIndividual, LocalPoseList, GlobalPoseIndividual):-
     nth0(0, LocalPoseList, Position),
     nth0(1, LocalPoseList, Quaternion),
     (rdf_equal(GripperIndividual, suturo_action:'left_gripper') ->
-        rosprolog:tf_transform_pose('/l_gripper_led_frame', '/map', pose(Position, Quaternion), pose(GlobalPosition, GlobalQuaternion)),
+        tf_transform_pose('/l_gripper_led_frame', '/map', pose(Position, Quaternion), pose(GlobalPosition, GlobalQuaternion)),
         assert_new_pose([GlobalPosition, GlobalQuaternion], '/map', GlobalPoseIndividual)
         ;
-        rosprolog:tf_transform_pose('/r_gripper_led_frame', '/map', pose(Position, Quaternion), pose(GlobalPosition, GlobalQuaternion)),
+        tf_transform_pose('/r_gripper_led_frame', '/map', pose(Position, Quaternion), pose(GlobalPosition, GlobalQuaternion)),
         assert_new_pose([GlobalPosition, GlobalQuaternion], '/map', GlobalPoseIndividual)).
 
 get_pose(PoseIndividual, PoseList):-
@@ -154,19 +154,22 @@ get_reference_frame(PoseIndividual, ReferenceFrame):-
 
 print_beliefstate:-
     get_all_object_individuals(ObjectIndividualList),
-    print_beliefstate_intern(ObjectIndividualList).
+    print_beliefstate_intern(ObjectIndividualList),!.
 
 print_beliefstate_intern([]).
 
 print_beliefstate_intern([H|T]):-
-    rosprolog:ros_info(H),
+    ros_info(H),
     get_actions_associated_with_object(H, ActionIndvidualList),
     print_actions(ActionIndvidualList),
     print_beliefstate_intern(T).
 
 get_all_object_individuals(ObjectIndividualList):-
     findall(Temp, 
-           (rdfs_individual_of(Temp, knowrob:'DrinkOrFood'); 
+           (rdfs_individual_of(Temp, knowrob:'Sauce'); 
+            rdfs_individual_of(Temp, knowrob:'Snacks');
+            rdfs_individual_of(Temp, knowrob:'BreakfastCereal');
+            rdfs_individual_of(Temp, knowrob:'Drink');
             rdfs_individual_of(Temp, knowrob:'FoodVessel')), 
             ObjectIndividualList).
 
@@ -194,32 +197,25 @@ print_actions([H|T]):-
     print_actions(T).
 
 print_action_info(ActionIndvidual):-
-    rdfs_individual_of(ActionIndvidual, knowrob:'SiftPerception'),
+    (rdfs_individual_of(ActionIndvidual, knowrob:'SiftPerception') ->
+        ros_info('Perception')
+        ;
+        (rdfs_individual_of(ActionIndvidual, knowrob:'GraspingSomething') ->
+            ros_info('Grasp')
+            ;
+            ros_info('Drop')
+        ),
+        rdf_has(ActionIndvidual, knowrob:'deviceUsed', GripperIndividual),
+        print_used_gripper(GripperIndividual)
+    ),
     rdf_has(ActionIndvidual, knowrob:'eventOccursAt', PoseIndividual),
-    rosprolog:ros_info('SiftPerception'),
-    print_pose(PoseIndividual).
-
-print_action_info(ActionIndvidual):-
-    rdfs_individual_of(ActionIndvidual, knowrob:'GraspingSomething'),
-    rdf_has(ActionIndvidual, knowrob:'deviceUsed', GripperIndividual),
-    rdf_has(ActionIndvidual, knowrob:'eventOccursAt', PoseIndividual),
-    rosprolog:ros_info('GraspingSomething'),
-    print_used_gripper(GripperIndividual),
-    print_pose(PoseIndividual).
-
-print_action_info(ActionIndvidual):-
-    rdfs_individual_of(ActionIndvidual, knowrob:'RealisingGraspOfSomething'),
-    rdf_has(ActionIndvidual, knowrob:'deviceUsed', GripperIndividual),
-    rdf_has(ActionIndvidual, knowrob:'eventOccursAt', PoseIndividual),
-    rosprolog:ros_info('RealisingGraspOfSomething'),
-    print_used_gripper(GripperIndividual),
     print_pose(PoseIndividual).
 
 print_used_gripper(GripperIndividual):-
     (rdf_equal(GripperIndividual, suturo_action:'left_gripper') ->
-        rosprolog:ros_info('deviceUsed: left gripper')
+        ros_info('deviceUsed: left gripper')
         ;
-        rosprolog:ros_info('deviceUsed: right gripper')).
+        ros_info('deviceUsed: right gripper')).
 
 print_pose(PoseIndividual):-
     get_reference_frame(PoseIndividual, ReferenceFrame),
@@ -233,7 +229,7 @@ print_pose(PoseIndividual):-
     nth0(1, Quaternion, YQ),
     nth0(2, Quaternion, ZQ),
     nth0(3, Quaternion, WQ),
-    rosprolog:ros_info('Pose:'),
+    ros_info('Pose:'),
     print_reference_frame(ReferenceFrame),
     print_pose_element('X', X),
     print_pose_element('Y', Y),
@@ -246,8 +242,8 @@ print_pose(PoseIndividual):-
 print_pose_element(Identifier, PoseElement):-
     atom_concat(Identifier, ': ', FirstPart),
     atom_concat(FirstPart, PoseElement, Result),
-    rosprolog:ros_info(Result).
+    ros_info(Result).
 
 print_reference_frame(ReferenceFrame):-
     atom_concat('referenceFrame: ', ReferenceFrame, Result),
-    rosprolog:ros_info(Result).
+    ros_info(Result).
