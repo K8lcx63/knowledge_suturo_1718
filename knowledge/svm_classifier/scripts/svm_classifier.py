@@ -15,8 +15,11 @@ def classify(req):
   
 if __name__ == '__main__':
     rospy.init_node('svm_classifier')
-
-    model = pickle.load(open('model.sav', 'rb'))
+    
+    rospack = rospkg.RosPack()
+    packagePath = rospack.get_path('svm_classifier')
+    fullPath = packagePath + '/data/svm_model.sav'
+    model = pickle.load(open(fullPath, 'rb'))
     clf = model['classifier']
     encoder = LabelEncoder()
     encoder.classes_ = model['classes']
