@@ -2,7 +2,7 @@
 #include <sstream>
 #include <ros/ros.h>
 #include <knowledge_msgs/StoragePlace.h>
-#include <knowledge/prolog_util.h>
+#include <knowledge_common/prolog_util.h>
 #include <json_prolog/prolog.h>
   
 using namespace json_prolog;
@@ -11,7 +11,7 @@ std::string createQuery(std::string object_label)
 {
   std::stringstream ss;
     ss << "storage_place(suturo_object:\'" 
-       << PrologUtil::toCamelCase(object_label) << "\',"
+       << object_label << "\',"
        << "Position, Width, Height)";
     
   return ss.str();
@@ -19,8 +19,6 @@ std::string createQuery(std::string object_label)
 
 bool find_storage_place(knowledge_msgs::StoragePlace::Request &req, knowledge_msgs::StoragePlace::Response &res)
 {
-    ROS_INFO_STREAM("object" << req.object_label);
-    ROS_INFO_STREAM(createQuery(req.object_label));
     Prolog pl;
     PrologBindings bdg = pl.once(createQuery(req.object_label));
 

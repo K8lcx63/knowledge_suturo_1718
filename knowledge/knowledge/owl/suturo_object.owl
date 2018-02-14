@@ -259,9 +259,9 @@
     
 
 
-    <!-- http://knowrob.org/kb/suturo_object.owl#KelloggsToppasMini -->
+    <!-- http://knowrob.org/kb/suturo_object.owl#KellogsToppasMini -->
 
-    <owl:Class rdf:about="http://knowrob.org/kb/suturo_object.owl#KelloggsToppasMini">
+    <owl:Class rdf:about="http://knowrob.org/kb/suturo_object.owl#KellogsToppasMini">
         <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/knowrob.owl#BreakfastCereal"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -272,13 +272,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://knowrob.org/kb/suturo_object.owl#graspableAt"/>
-                <owl:hasValue rdf:resource="http://knowrob.org/kb/suturo_object.owl#graspKelloggsToppasMini"/>
+                <owl:hasValue rdf:resource="http://knowrob.org/kb/suturo_object.owl#graspKellogsToppasMini"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
-                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge/meshes/kelloggs_toppas_mini/kelloggs_toppas_mini.dae</owl:hasValue>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge/meshes/kellogs_toppas_mini/kellogs_toppas_mini.dae</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -488,9 +488,9 @@
     
 
 
-    <!-- http://knowrob.org/kb/suturo_object.owl#graspKelloggsToppasMini -->
+    <!-- http://knowrob.org/kb/suturo_object.owl#graspKellogsToppasMini -->
 
-    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspKelloggsToppasMini">
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspKellogsToppasMini">
         <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Pose"/>
         <quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</quaternion>
         <translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</translation>

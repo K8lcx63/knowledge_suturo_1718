@@ -13,8 +13,8 @@
   <run_depend>knowrob_common</run_depend>
   <build_depend>roscpp</build_depend>
   <run_depend>roscpp</run_depend>
-  <build_depend>knowledge</build_depend>
-  <run_depend>knowledge</run_depend>
+  <build_depend>knowledge_common</build_depend>
+  <run_depend>knowledge_common</run_depend>
   <build_depend>json_prolog</build_depend>
   <run_depend>json_prolog</run_depend>
   <build_depend>knowledge_msgs</build_depend>
