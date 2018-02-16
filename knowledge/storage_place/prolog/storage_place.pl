@@ -1,5 +1,6 @@
 :- module(storage_place,
     [
+        storage_area/2,
         storage_place/4
     ]).
 
@@ -11,6 +12,7 @@
 :- rdf_register_prefix(suturo_object, 'http://knowrob.org/kb/suturo_object.owl#').
 
 :- rdf_meta 
+    storage_area(r, -),
 	storage_place(r, -, -, -),
     get_position(r, -, -, -),
     get_scale(r, -, -).
@@ -34,41 +36,21 @@ get_scale(StorageAreaIndividual, Width, Height):-
     strip_literal_type(HRaw, HValue),
     atom_number(HValue, Height).
 
-storage_place(ObjectClass, [X, Y, Z], Width, Height):-
+storage_area(ObjectClass, StorageAreaIndividual):-
     rdfs_individual_of(StorageAreaIndividual, suturo_storage_place:'StorageArea'),
     rdfs_type_of(StorageAreaIndividual, StorageAreaClass),
     owl_class_properties_all(StorageAreaClass, suturo_storage_place:'storagePlaceFor', StorageAreaForClass),
-    rdfs_subclass_of(ObjectClass, StorageAreaForClass),
-    rdf_has(StorageAreaIndividual, knowrob:'locatedAtAbsolute', PositionIndividual),
-    get_position(PositionIndividual, X, Y, Z),
-    get_scale(StorageAreaIndividual, Width, Height).
+    rdfs_subclass_of(ObjectClass, StorageAreaForClass).
 
-storage_place(ObjectClass, [X, Y, Z], Width, Height):-
+storage_area(ObjectClass, StorageAreaIndividual):-
     rdfs_individual_of(StorageAreaIndividual, suturo_storage_place:'StorageArea'),
     rdfs_type_of(StorageAreaIndividual, StorageAreaClass),
     owl_class_properties_all(StorageAreaClass, suturo_storage_place:'storagePlaceFor', StorageAreaForRestriction),
     owl_restriction(StorageAreaForRestriction, restriction(Property,all_values_from(Range))),
-    owl_class_properties_all(ObjectClass, Property, Range),
+    owl_class_properties_all(ObjectClass, Property, Range).
+
+storage_place(ObjectClass, [X, Y, Z], Width, Height):-
+    storage_area(ObjectClass, StorageAreaIndividual),
     rdf_has(StorageAreaIndividual, knowrob:'locatedAtAbsolute', PositionIndividual),
     get_position(PositionIndividual, X, Y, Z),
     get_scale(StorageAreaIndividual, Width, Height).
-
-
-
-%objects_on_kitchen_island_counter(ObjectList):- true.
-    
-%two_objects_with_same_storage_place(ObjectList, Object1, Object2):-
-%   length(ObjectList, Length),
-%   Length > 2,
-%    get_storage_places(ObjectList, StorageAreaList),
-%    occurs_twice(StorageAreaList, Indeces),
-%    Indices >= 2,
-%    nth0(0, Indices, Index1),
-%    nth0(1, Indices, Index2),
-%    nth0(Index1, ObjectList, Object1),
-%    nth0(Index2, ObjectList, Object2)).
-
-%occurs_twice(X, [X|T]) :-
-%    member(X, T).
-%occurs_twice(X, [_|T]) :-
-%    twice(X, T). 

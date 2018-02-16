@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package>
-  <name>knowledge</name>
+  <name>knowledge_common</name>
   <version>0.0.0</version>
   <description>The knowledge package</description>
 
@@ -11,12 +11,10 @@
   <buildtool_depend>catkin</buildtool_depend>
   <run_depend>roscpp</run_depend>
   <build_depend>roscpp</build_depend>
-  <run_depend>marker_publisher</run_depend>
-  <build_depend>marker_publisher</build_depend>
+  <run_depend>knowrob_common</run_depend>
+  <build_depend>knowrob_common</build_depend>
   <run_depend>geometry_msgs</run_depend>
   <build_depend>geometry_msgs</build_depend>
-  <build_depend>json_prolog</build_depend>
   <run_depend>json_prolog</run_depend>
-  <build_depend>interactiv_marker_publisher</build_depend>
-  <run_depend>interactiv_marker_publisher</run_depend>
+  <build_depend>json_prolog</build_depend>
 </package>

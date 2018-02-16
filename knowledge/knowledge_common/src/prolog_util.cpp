@@ -1,5 +1,5 @@
 #include <ros/ros.h>
-#include <knowledge/prolog_util.h>
+#include <knowledge_common/prolog_util.h>
 #include <sstream>
 #include <vector>
 

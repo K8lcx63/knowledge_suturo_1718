@@ -12,10 +12,10 @@ int main(int argc, char **argv)
    
   ros::ServiceClient storage_place_service = nh.serviceClient<knowledge_msgs::StoragePlace>("/storage_place_service/storage_place");
   
-  const std::string object_label_array[] = {"hela_curry_ketchup", "tomato_sauce_oro_di_parma", 
-                                            "pringles_paprika", "pringles_salt", "ja_milch", 
-                                            "koelln_muesli_knusper_honig_nuss", "kelloggs_toppas_mini",
-                                            "cup_eco_orange", "edeka_red_bowl", "sigg_bottle"};
+  const std::string object_label_array[] = {"HelaCurryKetchup", "TomatoSauceOroDiParma", 
+                                            "PringlesPaprika", "PringlesSalt", 
+                                            "JaMilch", "KoellnMuesliKnusperHonigNuss", "KelloggsToppasMini",
+                                            "CupEcoOrange", "EdekaRedBowl", "SiggBottle"};
 
   for(int i = 0; i < 10; i++)
   {

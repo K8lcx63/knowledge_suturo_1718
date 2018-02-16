@@ -2,9 +2,5 @@
     <param name="initial_package" type="string" value="beliefstate" />
  
     <node name="json_prolog_node" pkg="json_prolog" type="json_prolog_node" cwd="node" output="screen" />
-    <node name="svm_classifier" pkg="svm_classifier" type="svm_classifier.py" output="screen" />
-    <node name="beliefstate" pkg="beliefstate" type="beliefstate" output="screen" >
-        <param name="test_mode" value="true"/>
-        <param name="dummy_class" value="hela_curry_ketchup"/>
-    </node>
+    <node name="beliefstate" pkg="beliefstate" type="beliefstate.py" output="screen" />
 </launch>

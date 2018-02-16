@@ -1,3 +1,0 @@
-<launch>
-	<node name="map_tf_listener" pkg="map_tf_listener" type="map_tf_listener" output="screen" />
-</launch>

@@ -7,12 +7,19 @@
    
 int main(int argc, char **argv)
 {
-  ros::init(argc, argv, "perceive_object");
+  ros::init(argc, argv, "ja_milch_perceive_object");
   ros::NodeHandle nh("~");
    
-  ros::ServiceClient  perceive_object_service = nh.serviceClient<knowledge_msgs::PerceivedObject>("/beliefstate/perceive_action");
+  ros::Publisher perceive_pub = nh.advertise<knowledge_msgs::PerceivedObject>("/beliefstate/perceive_action", 1000);
   
-  knowledge_msgs::PerceivedObject perceive_object_srv;
+  ros::Rate poll_rate(10);
+  while(perceive_pub.getNumSubscribers() < 1)
+  {
+    poll_rate.sleep();
+    ROS_INFO_STREAM("wait...");
+  }
+
+  knowledge_msgs::PerceivedObject perceive_msg;
   geometry_msgs::PoseStamped object_pose;
   object_pose.header.stamp = ros::Time::now();
   object_pose.header.frame_id = "/head_mount_kinect_ir_optical_frame";
@@ -23,16 +30,11 @@ int main(int argc, char **argv)
   object_pose.pose.orientation.y = 0.0;
   object_pose.pose.orientation.z = 0.0;
   object_pose.pose.orientation.w = 1.0;
-  perceive_object_srv.request.object_pose = object_pose;
 
-  if(perceive_object_service.call(perceive_object_srv))
-  {
-    ROS_INFO_STREAM("Perceived test succeded " << perceive_object_srv.response.label);
-  }
-  else
-  {
-    ROS_INFO_STREAM("Perceive test failed!!!!");
-  }
+  perceive_msg.object_label = "JaMilch";
+  perceive_msg.object_pose = object_pose;
+
+  perceive_pub.publish(perceive_msg);
 
   return 0;
 }

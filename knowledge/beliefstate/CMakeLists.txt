@@ -6,7 +6,7 @@ add_definitions(-std=c++11)
 find_package(catkin REQUIRED COMPONENTS 
 	roscpp
 	knowrob_common
-	knowledge
+	knowledge_common
 	json_prolog
 	knowledge_msgs
 	geometry_msgs
@@ -17,7 +17,7 @@ catkin_package(
 CATKIN_DEPENDS 
 	roscpp
 	knowrob_common
-	knowledge
+	knowledge_common
 	json_prolog
 	knowledge_msgs
 	geometry_msgs
@@ -27,14 +27,29 @@ include_directories(
   include ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(beliefstate src/beliefstate.cpp)
-target_link_libraries(beliefstate ${catkin_LIBRARIES})
+add_executable(ja_milch_perceive_object src/ja_milch_perceive_object.cpp)
+target_link_libraries(ja_milch_perceive_object ${catkin_LIBRARIES})
 
-add_executable(perceive_object src/perceive_object.cpp)
-target_link_libraries(perceive_object ${catkin_LIBRARIES})
+add_executable(ja_milch_grasp_object src/ja_milch_grasp_object.cpp)
+target_link_libraries(ja_milch_grasp_object ${catkin_LIBRARIES})
 
-add_executable(grasp_object src/grasp_object.cpp)
-target_link_libraries(grasp_object ${catkin_LIBRARIES})
+add_executable(ja_milch_drop_object src/ja_milch_drop_object.cpp)
+target_link_libraries(ja_milch_drop_object ${catkin_LIBRARIES})
 
-#add_executable(empty_gripper src/empty_gripper.cpp)
-#target_link_libraries(empty_gripper ${catkin_LIBRARIES})
+add_executable(hela_curry_ketchup_perceive_object src/hela_curry_ketchup_perceive_object.cpp)
+target_link_libraries(hela_curry_ketchup_perceive_object ${catkin_LIBRARIES})
+
+add_executable(hela_curry_ketchup_grasp_object src/hela_curry_ketchup_grasp_object.cpp)
+target_link_libraries(hela_curry_ketchup_grasp_object ${catkin_LIBRARIES})
+
+add_executable(hela_curry_ketchup_drop_object src/hela_curry_ketchup_drop_object.cpp)
+target_link_libraries(hela_curry_ketchup_drop_object ${catkin_LIBRARIES})
+
+add_executable(kellogs_toppas_mini_perceive_object src/kellogs_toppas_mini_perceive_object.cpp)
+target_link_libraries(kellogs_toppas_mini_perceive_object ${catkin_LIBRARIES})
+
+add_executable(kellogs_toppas_mini_grasp_object src/kellogs_toppas_mini_grasp_object.cpp)
+target_link_libraries(kellogs_toppas_mini_grasp_object ${catkin_LIBRARIES})
+
+add_executable(kellogs_toppas_mini_drop_object src/kellogs_toppas_mini_drop_object.cpp)
+target_link_libraries(kellogs_toppas_mini_drop_object ${catkin_LIBRARIES})

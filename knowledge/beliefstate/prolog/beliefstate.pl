@@ -3,7 +3,10 @@
       process_perceive_action/3,         
       process_grasp_action/2,         
       process_drop_action/1,
-      object_attached_to_gripper/2
+      object_attached_to_gripper/2,
+      get_latest_object_pose/2,
+      get_objects_on_kitchen_island_counter/1,
+      get_two_objects_on_kitchen_island_counter_with_same_storage_place/2
     ]).
 
 :- use_module(library('semweb/rdfs')).
@@ -27,20 +30,15 @@
     assert_new_pose(+, +, -),
     assert_new_pose_in_gripper_frame(r, +, -),
     assert_new_pose_from_gripper_frame(r, +, -),
-    get_pose(r, -),
-    get_translation(+, -),
-    get_rotation(+, -),
     print_beliefstate_intern(+),
     get_all_object_individuals(-),
-    get_actions_associated_with_object(r, -),
     get_first_actions_associated_with_object(r, -),
+    get_actions_associated_with_object(r, -),
     get_actions_associated_with_object_intern(r, +, -),
     print_actions(+),
     print_action_info(r),
-    print_used_gripper(r),
-    print_pose(r),
-    print_pose_element(+, +),
-    print_reference_frame(+).
+    get_pose_info(r, -),
+    get_used_gripper_info(r, +, -).
 
 process_perceive_action(ObjectClass, PoseList, ReferenceFrame):-
     assert_new_individual(knowrob:'SiftPerception', PerceptionActionIndividual),
@@ -128,38 +126,35 @@ assert_new_pose_from_gripper_frame(GripperIndividual, LocalPoseList, GlobalPoseI
         tf_transform_pose('/r_gripper_led_frame', '/map', pose(Position, Quaternion), pose(GlobalPosition, GlobalQuaternion)),
         assert_new_pose([GlobalPosition, GlobalQuaternion], '/map', GlobalPoseIndividual)).
 
-get_pose(PoseIndividual, PoseList):-
-    transform_data(PoseIndividual, (Translation, Rotation)),
-    append([Translation], [Rotation], PoseList).
+get_objects_on_kitchen_island_counter(ObjectIndividualList):-
+    findall(ObjectIndividual , 
+           (rdfs_individual_of(ActionIndvidual, knowrob:'SiftPerception'),
+           \+(rdf_has(ActionIndvidual, knowrob:'nextEvent', _)),
+           rdf_has(ActionIndvidual, knowrob:'objectActedOn', ObjectIndividual)),
+           ObjectIndividualList).
 
-get_translation([[X, Y, Z], _], Translation):-
-    atom_concat(X, ' ', XTemp),
-    atom_concat(Y, ' ', YTemp),
-    atom_concat(XTemp, YTemp, Temp),
-    atom_concat(Temp, Z, Translation).
-
-get_rotation([_, [X, Y, Z, W]], Rotation):-
-    atom_concat(X, ' ', XTemp),
-    atom_concat(Y, ' ', YTemp),
-    atom_concat(Z, ' ', ZTemp),
-    atom_concat(XTemp, YTemp, Temp1),
-    atom_concat(ZTemp, W, Temp2),
-    atom_concat(Temp1, Temp2, Rotation).
-
-get_reference_frame(PoseIndividual, ReferenceFrame):-
-    rdf_has(PoseIndividual, suturo_action:'referenceFrame', FRaw),
-    strip_literal_type(FRaw, ReferenceFrame).
+get_two_objects_on_kitchen_island_counter_with_same_storage_place(Object1, Object2):-
+    get_objects_on_kitchen_island_counter(ObjectList),
+    member(Object1, ObjectList),
+    member(Object2, ObjectList),
+    \+rdf_equal(Object1, Object2),
+    storage_area(Object1, StorageArea1),
+    storage_area(Object2, StorageArea2),
+    rdf_equal(StorageArea1, StorageArea2).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 print_beliefstate:-
+    ros_info('###################################'),
     get_all_object_individuals(ObjectIndividualList),
     print_beliefstate_intern(ObjectIndividualList),!.
 
 print_beliefstate_intern([]).
 
 print_beliefstate_intern([H|T]):-
-    ros_info(H),
+    rdf_split_url(_,SimpleName, H),
+    blue_atom(SimpleName, BlueSimpleName),
+    ros_info(BlueSimpleName),
     get_actions_associated_with_object(H, ActionIndvidualList),
     print_actions(ActionIndvidualList),
     print_beliefstate_intern(T).
@@ -173,13 +168,13 @@ get_all_object_individuals(ObjectIndividualList):-
             rdfs_individual_of(Temp, knowrob:'FoodVessel')), 
             ObjectIndividualList).
 
-get_actions_associated_with_object(ObjectIndividual, ActionIndvidualList):-
-    get_first_actions_associated_with_object(ObjectIndividual, FirstActionIndividual),
-    get_actions_associated_with_object_intern(FirstActionIndividual, [FirstActionIndividual], ActionIndvidualList).
-
 get_first_actions_associated_with_object(ObjectIndividual, ActionIndvidual):-
     rdfs_individual_of(ActionIndvidual, knowrob:'SiftPerception'),
     rdf_has(ActionIndvidual, knowrob:'objectActedOn', ObjectIndividual).
+
+get_actions_associated_with_object(ObjectIndividual, ActionIndvidualList):-
+    get_first_actions_associated_with_object(ObjectIndividual, FirstActionIndividual),
+    get_actions_associated_with_object_intern(FirstActionIndividual, [FirstActionIndividual], ActionIndvidualList).
 
 get_actions_associated_with_object_intern(CurrentActionIndividual, TempActionIndividualList, ActionIndvidualList):-
     \+(rdf_has(CurrentActionIndividual, knowrob:'nextEvent', _)),
@@ -197,53 +192,34 @@ print_actions([H|T]):-
     print_actions(T).
 
 print_action_info(ActionIndvidual):-
+    get_pose_info(ActionIndvidual, PoseInfoAtom),
     (rdfs_individual_of(ActionIndvidual, knowrob:'SiftPerception') ->
-        ros_info('Perception')
+        atom_concat('PerceiveAction', ': ', ActionInfoAtom),
+        atom_concat(ActionInfoAtom, PoseInfoAtom, WholeInfoAtom)
         ;
         (rdfs_individual_of(ActionIndvidual, knowrob:'GraspingSomething') ->
-            ros_info('Grasp')
+            atom_concat('GraspAction', ': ', ActionInfoAtom)
             ;
-            ros_info('Drop')
+            atom_concat('DropAction', ': ', ActionInfoAtom)
         ),
         rdf_has(ActionIndvidual, knowrob:'deviceUsed', GripperIndividual),
-        print_used_gripper(GripperIndividual)
+        get_used_gripper_info(GripperIndividual, ActionInfoAtom, CurrentInfoAtom),
+        atom_concat(CurrentInfoAtom, PoseInfoAtom, WholeInfoAtom)
     ),
+    yellow_atom(WholeInfoAtom, WholeInfoYelloqAtom),
+    ros_info(WholeInfoYelloqAtom).
+
+get_pose_info(ActionIndvidual, PoseInfoAtom):-
     rdf_has(ActionIndvidual, knowrob:'eventOccursAt', PoseIndividual),
-    print_pose(PoseIndividual).
-
-print_used_gripper(GripperIndividual):-
-    (rdf_equal(GripperIndividual, suturo_action:'left_gripper') ->
-        ros_info('deviceUsed: left gripper')
-        ;
-        ros_info('deviceUsed: right gripper')).
-
-print_pose(PoseIndividual):-
-    get_reference_frame(PoseIndividual, ReferenceFrame),
     get_pose(PoseIndividual, PoseList),
-    nth0(0, PoseList, Position),
-    nth0(1, PoseList, Quaternion),
-    nth0(0, Position, X),
-    nth0(1, Position, Y),
-    nth0(2, Position, Z),
-    nth0(0, Quaternion, XQ),
-    nth0(1, Quaternion, YQ),
-    nth0(2, Quaternion, ZQ),
-    nth0(3, Quaternion, WQ),
-    ros_info('Pose:'),
-    print_reference_frame(ReferenceFrame),
-    print_pose_element('X', X),
-    print_pose_element('Y', Y),
-    print_pose_element('Z', Z),
-    print_pose_element('XQ', XQ),
-    print_pose_element('YQ', YQ),
-    print_pose_element('ZQ', ZQ),
-    print_pose_element('WQ', WQ).
+    get_reference_frame(PoseIndividual, ReferenceFrame),
+    atom_concat(ReferenceFrame, ', ', TempReferenceFrame),
+    pose_list_to_atom(PoseList, PoseListAtom),
+    atom_concat(TempReferenceFrame, PoseListAtom, PoseInfoAtom).
 
-print_pose_element(Identifier, PoseElement):-
-    atom_concat(Identifier, ': ', FirstPart),
-    atom_concat(FirstPart, PoseElement, Result),
-    ros_info(Result).
-
-print_reference_frame(ReferenceFrame):-
-    atom_concat('referenceFrame: ', ReferenceFrame, Result),
-    ros_info(Result).
+get_used_gripper_info(GripperIndividual, CurrentInfoAtom, ModifiedInfoAtom):-
+    (rdf_equal(GripperIndividual, suturo_action:'left_gripper') ->
+        atom_concat(CurrentInfoAtom, 'leftGripper, ', ModifiedInfoAtom)
+        ;
+        atom_concat(CurrentInfoAtom, 'rightGripper, ', ModifiedInfoAtom)
+    ).
