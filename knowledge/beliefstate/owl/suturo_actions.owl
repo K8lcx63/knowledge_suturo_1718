@@ -9,7 +9,7 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <owl:Ontology rdf:about="http://knowrob.org/kb/suturo_storage_place.owl">
         <owl:imports rdf:resource="package://knowrob_common/owl/knowrob.owl"/>
-        <owl:imports rdf:resource="package://knowledge/owl/suturo_object.owl"/>
+        <owl:imports rdf:resource="package://knowledge_common/owl/suturo_object.owl"/>
     </owl:Ontology>
     
 

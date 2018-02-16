@@ -3,4 +3,4 @@
 
 :- use_module(kitchen_model_exporter,[get_fixed_kitchen_objects/4]).
 
-:- owl_parser:owl_parse('package://knowledge/owl/room.owl').
+:- owl_parser:owl_parse('package://kitchen_model_export/owl/room.owl').
