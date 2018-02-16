@@ -14,7 +14,7 @@ int main(int argc, char **argv)
   
   const std::string object_label_array[] = {"HelaCurryKetchup", "TomatoSauceOroDiParma", 
                                             "PringlesPaprika", "PringlesSalt", 
-                                            "JaMilch", "KoellnMuesliKnusperHonigNuss", "KelloggsToppasMini",
+                                            "JaMilch", "KoellnMuesliKnusperHonigNuss", "KellogsToppasMini",
                                             "CupEcoOrange", "EdekaRedBowl", "SiggBottle"};
 
   for(int i = 0; i < 10; i++)
