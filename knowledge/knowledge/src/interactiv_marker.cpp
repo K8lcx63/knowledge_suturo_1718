@@ -4,9 +4,10 @@
 int main(int argc, char **argv)
 {
   ros::init(argc, argv, "interactiv_marker");
+  ros::NodeHandle nh("~");
    
-  InteractivMarkerPublisher pub;
-  pub.addInteractivMarker("test", 0.58, 0.375, Color::RED);
+  InteractivMarkerPublisher pub(nh);
+  pub.make6DofMarker();
 
   ros::spin();
    

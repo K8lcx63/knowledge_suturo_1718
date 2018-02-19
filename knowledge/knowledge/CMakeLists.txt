@@ -6,6 +6,7 @@ add_definitions(-std=c++11)
 find_package(catkin REQUIRED COMPONENTS 
     roscpp
     marker_publisher
+    interactive_markers
     interactiv_marker_publisher
     geometry_msgs
 	json_prolog
@@ -16,6 +17,7 @@ catkin_package(
 CATKIN_DEPENDS 
     roscpp
     marker_publisher
+    interactive_markers
     interactiv_marker_publisher
     geometry_msgs
 	json_prolog

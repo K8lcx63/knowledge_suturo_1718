@@ -19,4 +19,6 @@
   <run_depend>json_prolog</run_depend>
   <build_depend>interactiv_marker_publisher</build_depend>
   <run_depend>interactiv_marker_publisher</run_depend>
+  <build_depend>interactive_markers</build_depend>
+  <run_depend>interactive_markers</run_depend>
 </package>
