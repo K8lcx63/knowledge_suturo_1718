@@ -6,28 +6,28 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "marker");
    
   geometry_msgs::PointStamped center_sauce;
-  center_sauce.header.frame_id = "/map";
-  center_sauce.point.x = 1.51594; 
-  center_sauce.point.y = 1.13063;
-  center_sauce.point.z = 0.9;
+  center_sauce.header.frame_id = "iai_kitchen/sink_area_surface";
+  center_sauce.point.x = 0.0; 
+  center_sauce.point.y = -0.845;
+  center_sauce.point.z = 0.0;
 
   geometry_msgs::PointStamped center_snacks;
-  center_snacks.header.frame_id = "/map";
-  center_snacks.point.x = 1.51594;
-  center_snacks.point.y = 0.75563;
-  center_snacks.point.z = 0.9;
+  center_snacks.header.frame_id = "iai_kitchen/sink_area_surface";
+  center_snacks.point.x = 0.0;
+  center_snacks.point.y = -0.47;
+  center_snacks.point.z = 0.0;
 
   geometry_msgs::PointStamped center_breakfast_food;
-  center_breakfast_food.header.frame_id = "/map";
-  center_breakfast_food.point.x = 1.51594;
-  center_breakfast_food.point.y = 0.38063;
-  center_breakfast_food.point.z = 0.9;
+  center_breakfast_food.header.frame_id = "iai_kitchen/sink_area_surface";
+  center_breakfast_food.point.x = 0.0;
+  center_breakfast_food.point.y = -0.095;
+  center_breakfast_food.point.z = 0.0;
 
   geometry_msgs::PointStamped center_food_vessel;
-  center_food_vessel.header.frame_id = "/map";
-  center_food_vessel.point.x = 1.51594;
-  center_food_vessel.point.y = 0.00563;
-  center_food_vessel.point.z = 0.9;
+  center_food_vessel.header.frame_id = "iai_kitchen/sink_area_surface";
+  center_food_vessel.point.x = 0.0;
+  center_food_vessel.point.y = 0.28;
+  center_food_vessel.point.z = 0.0;
 
   geometry_msgs::PointStamped test_point;
   test_point.header.frame_id = "/map";

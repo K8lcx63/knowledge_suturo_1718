@@ -281,9 +281,9 @@
 
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_storage_place.owl#position_storage_area_breakfast_food">
         <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Point3D"/>
-        <knowrob:xCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.51594</knowrob:xCoord>
-        <knowrob:yCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.38063</knowrob:yCoord>
-        <knowrob:zCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.9</knowrob:zCoord>
+        <knowrob:xCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</knowrob:xCoord>
+        <knowrob:yCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-0.095</knowrob:yCoord>
+        <knowrob:zCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</knowrob:zCoord>
     </owl:NamedIndividual>
     
 
@@ -292,9 +292,9 @@
 
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_storage_place.owl#position_storage_area_food_vessel">
         <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Point3D"/>
-        <knowrob:xCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.51594</knowrob:xCoord>
-        <knowrob:yCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.00563</knowrob:yCoord>
-        <knowrob:zCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.9</knowrob:zCoord>
+        <knowrob:xCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</knowrob:xCoord>
+        <knowrob:yCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.28</knowrob:yCoord>
+        <knowrob:zCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</knowrob:zCoord>
     </owl:NamedIndividual>
     
 
@@ -303,20 +303,20 @@
 
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_storage_place.owl#position_storage_area_snack_food">
         <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Point3D"/>
-        <knowrob:xCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.51594</knowrob:xCoord>
-        <knowrob:yCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.75563</knowrob:yCoord>
-        <knowrob:zCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.9</knowrob:zCoord>
+        <knowrob:xCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</knowrob:xCoord>
+        <knowrob:yCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-0.47</knowrob:yCoord>
+        <knowrob:zCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</knowrob:zCoord>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://knowrob.org/kb/suturo_storage_place.owl#position_storeage_area_sauce -->
+    <!-- http://knowrob.org/kb/suturo_storage_place.owl#position_storage_area_sauce -->
 
-    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_storage_place.owl#position_storeage_area_sauce">
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_storage_place.owl#position_storage_area_sauce">
         <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Point3D"/>
-        <knowrob:xCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.51594</knowrob:xCoord>
-        <knowrob:yCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1.13063</knowrob:yCoord>
-        <knowrob:zCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.9</knowrob:zCoord>
+        <knowrob:xCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</knowrob:xCoord>
+        <knowrob:yCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">-0.845</knowrob:yCoord>
+        <knowrob:zCoord rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.0</knowrob:zCoord>
     </owl:NamedIndividual>
     
 
@@ -347,7 +347,7 @@
 
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_storage_place.owl#storage_area_sauce">
         <rdf:type rdf:resource="http://knowrob.org/kb/suturo_storage_place.owl#StorageAreaSauce"/>
-        <knowrob:locatedAtAbsolute rdf:resource="http://knowrob.org/kb/suturo_storage_place.owl#position_storeage_area_sauce"/>
+        <knowrob:locatedAtAbsolute rdf:resource="http://knowrob.org/kb/suturo_storage_place.owl#position_storage_area_sauce"/>
         <knowrob:heightOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.58</knowrob:heightOfObject>
         <knowrob:widthOfObject rdf:datatype="http://www.w3.org/2001/XMLSchema#double">0.375</knowrob:widthOfObject>
     </owl:NamedIndividual>
