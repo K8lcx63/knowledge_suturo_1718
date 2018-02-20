@@ -1,0 +1,3 @@
+<launch>
+  <node name="kitchen_model_service" pkg="kitchen_model_export" type="kitchen_model_service" output="screen" />
+</launch>
