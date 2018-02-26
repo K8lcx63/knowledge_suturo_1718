@@ -1,5 +1,6 @@
 :- module(beliefstate,
     [
+      object_exists/1,
       process_perceive_action/3,         
       process_grasp_action/2,         
       process_drop_action/1,
@@ -20,6 +21,7 @@
 :- rdf_register_prefix(suturo_object, 'http://knowrob.org/kb/suturo_object.owl#').
 
 :-  rdf_meta
+    object_exists(r),
     process_perceive_action(r,+, +),
     process_grasp_action(r,r),
     process_drop_action(r),
@@ -40,9 +42,17 @@
     get_pose_info(r, -),
     get_used_gripper_info(r, +, -).
 
+object_exists(ObjectClass):-
+    rdfs_individual_of(_, ObjectClass).
+
 process_perceive_action(ObjectClass, PoseList, ReferenceFrame):-
     assert_new_individual(knowrob:'SiftPerception', PerceptionActionIndividual),
-    assert_new_individual(ObjectClass, ObjectIndividual),
+    (rdfs_individual_of(ObjectIndividual, ObjectClass) ->
+        get_latest_action_associated_with_object(ObjectIndividual, LatestActionIndividual),
+        rdf_assert(LatestActionIndividual, knowrob:'nextEvent', PerceptionActionIndividual)
+        ;
+        assert_new_individual(ObjectClass, ObjectIndividual)
+    ),
     nth0(0, PoseList, Position),
     nth0(1, PoseList, Quaternion),
     tf_transform_pose(ReferenceFrame, '/map', pose(Position, Quaternion), pose(MapPosition, MapQuaternion)),
@@ -168,12 +178,13 @@ get_all_object_individuals(ObjectIndividualList):-
             rdfs_individual_of(Temp, knowrob:'FoodVessel')), 
             ObjectIndividualList).
 
-get_first_actions_associated_with_object(ObjectIndividual, ActionIndvidual):-
-    rdfs_individual_of(ActionIndvidual, knowrob:'SiftPerception'),
-    rdf_has(ActionIndvidual, knowrob:'objectActedOn', ObjectIndividual).
+get_first_action_associated_with_object(ObjectIndividual, ActionIndvidual):-
+    rdfs_individual_of(ActionIndvidual, knowrob:'Event'),
+    rdf_has(ActionIndvidual, knowrob:'objectActedOn', ObjectIndividual),
+    \+(rdf_has(_, knowrob:'nextEvent', ActionIndvidual)).
 
 get_actions_associated_with_object(ObjectIndividual, ActionIndvidualList):-
-    get_first_actions_associated_with_object(ObjectIndividual, FirstActionIndividual),
+    get_first_action_associated_with_object(ObjectIndividual, FirstActionIndividual),
     get_actions_associated_with_object_intern(FirstActionIndividual, [FirstActionIndividual], ActionIndvidualList).
 
 get_actions_associated_with_object_intern(CurrentActionIndividual, TempActionIndividualList, ActionIndvidualList):-
