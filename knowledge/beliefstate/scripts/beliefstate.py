@@ -155,7 +155,7 @@ def spawn_object_mesh(object_name):
     mesh_marker.header.frame_id = object_frame
     mesh_marker.header.stamp = rospy.get_rostime()
     mesh_marker.pose.orientation.w = 1
-    mesh_marker.ns = "mesh_marker"
+    mesh_marker.ns = object_name
     mesh_marker.id = 1
     mesh_marker.action = Marker.ADD
     mesh_marker.type = Marker.MESH_RESOURCE
@@ -197,6 +197,7 @@ if __name__ == '__main__':
             transform_broadcaster.sendTransform(pose_stamped_to_position_tupel(frame_pose), pose_stamped_to_quaternion_tupel(frame_pose), rospy.Time.now(), frame_id, frame_pose.header.frame_id)
             
         for marker in object_marker:
+            marker.header.stamp = rospy.get_rostime()
             marker_pub.publish(marker)
 
         rate.sleep()
