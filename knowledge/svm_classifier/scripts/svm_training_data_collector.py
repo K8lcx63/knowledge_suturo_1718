@@ -28,7 +28,7 @@ def get_features(label, color_histogram_file):
     normals_histogram_path = packagePath + '/data/histograms/normals_histograms/' + label + '/' + normals_histogram_file
 
     color_histogram_reader = csv.reader(open(color_histogram_path))
-    color_histogram = np.array(map(int, next(color_histogram_reader)[:-1]))
+    color_histogram = np.array(map(int, next(color_histogram_reader)))
 
     normals_histogram_reader = csv.reader(open(normals_histogram_path))
     normals_histogram = np.array(map(int, next(normals_histogram_reader)))
