@@ -22,10 +22,10 @@ def get_feature(test_directory, color_histogram_file):
     normals_histogram_path = packagePath + '/data/test/' + test_directory + '/normals_histograms/' + normals_histogram_file
 
     color_histogram_reader = csv.reader(open(color_histogram_path))
-    color_histogram = np.array(map(int, next(color_histogram_reader)[:-1]))
+    color_histogram = np.array(map(int, next(color_histogram_reader)))
 
     normals_histogram_reader = csv.reader(open(normals_histogram_path))
-    normals_histogram = np.array(map(int, next(normals_histogram_reader)[:-1]))
+    normals_histogram = np.array(map(int, next(normals_histogram_reader)))
 
     return np.concatenate((color_histogram, normals_histogram))
 
@@ -51,4 +51,4 @@ if __name__ == '__main__':
     rospack = rospkg.RosPack()
     packagePath = rospack.get_path('svm_classifier')
 
-    run_test('2_pringles_paprika_salt')
+    run_test('koelln_toppas_sigg_hela_overlap')

@@ -9,9 +9,7 @@ from sklearn.preprocessing import LabelEncoder
 from knowledge_msgs.srv import *
 
 def classify(req):
-    temp = map(float, req.features)
-    np_array = np.array(temp)
-    prediction = clf.predict(scaler.transform(np_array.reshape(1,-1)))
+    prediction = clf.predict(scaler.transform([np.array(req.features)]))
     label = encoder.inverse_transform(prediction)[0]
     return ClassifyResponse(label)
   

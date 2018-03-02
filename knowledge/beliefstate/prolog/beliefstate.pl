@@ -1,5 +1,6 @@
 :- module(beliefstate,
     [
+      object_exists/1,
       process_perceive_action/3,         
       process_grasp_action/2,         
       process_drop_action/1,
@@ -20,6 +21,7 @@
 :- rdf_register_prefix(suturo_object, 'http://knowrob.org/kb/suturo_object.owl#').
 
 :-  rdf_meta
+    object_exists(r),
     process_perceive_action(r,+, +),
     process_grasp_action(r,r),
     process_drop_action(r),
@@ -40,16 +42,24 @@
     get_pose_info(r, -),
     get_used_gripper_info(r, +, -).
 
+object_exists(ObjectClass):-
+    rdfs_individual_of(_, ObjectClass).
+
 process_perceive_action(ObjectClass, PoseList, ReferenceFrame):-
     assert_new_individual(knowrob:'SiftPerception', PerceptionActionIndividual),
-    assert_new_individual(ObjectClass, ObjectIndividual),
+    (rdfs_individual_of(ObjectIndividual, ObjectClass) ->
+        get_latest_action_associated_with_object(ObjectIndividual, LatestActionIndividual),
+        rdf_assert(LatestActionIndividual, knowrob:'nextEvent', PerceptionActionIndividual)
+        ;
+        assert_new_individual(ObjectClass, ObjectIndividual)
+    ),!,
     nth0(0, PoseList, Position),
     nth0(1, PoseList, Quaternion),
     tf_transform_pose(ReferenceFrame, '/map', pose(Position, Quaternion), pose(MapPosition, MapQuaternion)),
     assert_new_pose([MapPosition, MapQuaternion], '/map', PoseIndividual),
     rdf_assert(PerceptionActionIndividual, knowrob:'detectedObject', ObjectIndividual),
     rdf_assert(PerceptionActionIndividual, knowrob:'eventOccursAt', PoseIndividual),
-    print_beliefstate.
+    print_beliefstate,!.
     
 process_grasp_action(ObjectClass, GripperIndividual):-
     assert_new_individual(knowrob:'GraspingSomething', GraspActionIndividual),
@@ -62,7 +72,7 @@ process_grasp_action(ObjectClass, GripperIndividual):-
     rdf_assert(GraspActionIndividual, knowrob:'objectActedOn', ObjectIndividual),
     rdf_assert(GraspActionIndividual, knowrob:'deviceUsed', GripperIndividual),
     rdf_assert(GraspActionIndividual, knowrob:'eventOccursAt', LocalPoseIndividual),
-    print_beliefstate.
+    print_beliefstate,!.
     
 process_drop_action(GripperIndividual):-
     assert_new_individual(knowrob:'RealisingGraspOfSomething', DropActionIndividual),
@@ -75,7 +85,7 @@ process_drop_action(GripperIndividual):-
     rdf_assert(DropActionIndividual, knowrob:'objectActedOn', ObjectIndividual),
     rdf_assert(DropActionIndividual, knowrob:'deviceUsed', GripperIndividual),
     rdf_assert(DropActionIndividual, knowrob:'eventOccursAt', GlobalPoseIndividual),
-    print_beliefstate.
+    print_beliefstate,!.
 
 object_attached_to_gripper(GripperIndividual, ObjectIndividual):-
     rdfs_individual_of(GraspActionIndividual, knowrob:'GraspingSomething'),
@@ -147,7 +157,12 @@ get_two_objects_on_kitchen_island_counter_with_same_storage_place(Object1, Objec
 print_beliefstate:-
     ros_info('###################################'),
     get_all_object_individuals(ObjectIndividualList),
-    print_beliefstate_intern(ObjectIndividualList),!.
+    print_beliefstate_intern(ObjectIndividualList),
+    get_objects_on_kitchen_island_counter(ObjectList),
+    object_list_to_atom(ObjectList, ObjectListAtom),
+    atom_concat('Remaining objects: ' , ObjectListAtom, Temp),
+    red_atom(Temp, RedObjectListAtom),
+    ros_info(RedObjectListAtom).
 
 print_beliefstate_intern([]).
 
@@ -168,12 +183,13 @@ get_all_object_individuals(ObjectIndividualList):-
             rdfs_individual_of(Temp, knowrob:'FoodVessel')), 
             ObjectIndividualList).
 
-get_first_actions_associated_with_object(ObjectIndividual, ActionIndvidual):-
-    rdfs_individual_of(ActionIndvidual, knowrob:'SiftPerception'),
-    rdf_has(ActionIndvidual, knowrob:'objectActedOn', ObjectIndividual).
+get_first_action_associated_with_object(ObjectIndividual, ActionIndvidual):-
+    rdfs_individual_of(ActionIndvidual, knowrob:'Event'),
+    rdf_has(ActionIndvidual, knowrob:'objectActedOn', ObjectIndividual),
+    \+(rdf_has(_, knowrob:'nextEvent', ActionIndvidual)).
 
 get_actions_associated_with_object(ObjectIndividual, ActionIndvidualList):-
-    get_first_actions_associated_with_object(ObjectIndividual, FirstActionIndividual),
+    get_first_action_associated_with_object(ObjectIndividual, FirstActionIndividual),
     get_actions_associated_with_object_intern(FirstActionIndividual, [FirstActionIndividual], ActionIndvidualList).
 
 get_actions_associated_with_object_intern(CurrentActionIndividual, TempActionIndividualList, ActionIndvidualList):-
