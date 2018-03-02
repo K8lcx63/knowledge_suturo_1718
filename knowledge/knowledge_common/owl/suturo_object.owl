@@ -448,6 +448,14 @@
     
 
 
+    <!-- http://knowrob.org/kb/suturo_object.owl#TestIndividualEdekaRedBowl -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#TestIndividualEdekaRedBowl">
+        <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#EdekaRedBowl"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://knowrob.org/kb/suturo_object.owl#graspCupEcoOrange -->
 
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspCupEcoOrange">

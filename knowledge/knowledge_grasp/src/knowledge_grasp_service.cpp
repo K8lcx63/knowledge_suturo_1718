@@ -12,7 +12,7 @@ std::string createQuery(std::string object_label)
   std::stringstream ss;
     ss << "find_grasp_pose(suturo_object:\'" 
        << object_label << "\',"
-       << "[[X1,Y1,Z1],[X2,Y2,Z2,W]])";
+       << "Pose)";
     
   return ss.str();
 }
@@ -26,14 +26,17 @@ bool find_grasp_pose(knowledge_msgs::GraspIndividual::Request &req, knowledge_ms
     {
        res.grasp_pose.header.frame_id = "/" + req.object_label;
       
-	     res.grasp_pose.pose.position.x = bdg["X1"];
-	     res.grasp_pose.pose.position.y = bdg["Y1"];
-	     res.grasp_pose.pose.position.z = bdg["Z1"];
-	  
-	     res.grasp_pose.pose.orientation.x = bdg["X2"];
-	     res.grasp_pose.pose.orientation.y = bdg["Y2"];
-	     res.grasp_pose.pose.orientation.z = bdg["Z2"];
-	     res.grasp_pose.pose.orientation.w = bdg["W"];
+	     std::string s = bdg["Pose"];
+        std::string::size_type sz;
+
+        res.grasp_pose.pose.position.x = std::stod (s,&sz);
+        res.grasp_pose.pose.position.y = std::stod (s.substr(sz),&sz);
+        res.grasp_pose.pose.position.z = std::stod (s.substr(sz),&sz);
+
+        res.grasp_pose.pose.orientation.x = std::stod (s.substr(sz),&sz);
+        res.grasp_pose.pose.orientation.y = std::stod (s.substr(sz),&sz);
+        res.grasp_pose.pose.orientation.z = std::stod (s.substr(sz),&sz);
+        res.grasp_pose.pose.orientation.w = std::stod (s.substr(sz),&sz);
 	  } 
     return false; 
 }
