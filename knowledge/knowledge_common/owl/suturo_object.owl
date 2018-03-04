@@ -459,9 +459,9 @@
     <!-- http://knowrob.org/kb/suturo_object.owl#graspCupEcoOrange -->
 
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspCupEcoOrange">
-        <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Pose"/>
-        <quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</quaternion>
-        <translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</translation>
+          <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
+        <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</knowrob:quaternion>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</knowrob:translation>
     </owl:NamedIndividual>
     
 
@@ -469,9 +469,9 @@
     <!-- http://knowrob.org/kb/suturo_object.owl#graspEdekaRedBowl -->
 
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspEdekaRedBowl">
-        <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Pose"/>
-        <quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</quaternion>
-        <translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</translation>
+          <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
+        <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</knowrob:quaternion>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</knowrob:translation>
     </owl:NamedIndividual>
     
 
@@ -479,9 +479,9 @@
     <!-- http://knowrob.org/kb/suturo_object.owl#graspHelaCurryKetchup -->
 
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspHelaCurryKetchup">
-        <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Pose"/>
-        <quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</quaternion>
-        <translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</translation>
+          <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
+        <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</knowrob:quaternion>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</knowrob:translation>
     </owl:NamedIndividual>
     
 
@@ -489,9 +489,9 @@
     <!-- http://knowrob.org/kb/suturo_object.owl#graspJaMilch -->
 
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspJaMilch">
-        <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Pose"/>
-        <quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</quaternion>
-        <translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</translation>
+        <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
+        <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</knowrob:quaternion>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</knowrob:translation>
     </owl:NamedIndividual>
     
 
@@ -499,9 +499,9 @@
     <!-- http://knowrob.org/kb/suturo_object.owl#graspKellogsToppasMini -->
 
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspKellogsToppasMini">
-        <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Pose"/>
-        <quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</quaternion>
-        <translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</translation>
+          <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
+        <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</knowrob:quaternion>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</knowrob:translation>
     </owl:NamedIndividual>
     
 
@@ -509,9 +509,9 @@
     <!-- http://knowrob.org/kb/suturo_object.owl#graspKoellnMuesliKnusperHonigNuss -->
 
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspKoellnMuesliKnusperHonigNuss">
-        <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Pose"/>
-        <quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</quaternion>
-        <translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</translation>
+          <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
+        <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</knowrob:quaternion>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</knowrob:translation>
     </owl:NamedIndividual>
     
 
@@ -519,9 +519,9 @@
     <!-- http://knowrob.org/kb/suturo_object.owl#graspPringles -->
 
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspPringles">
-        <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Pose"/>
-        <quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</quaternion>
-        <translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</translation>
+         <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
+        <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</knowrob:quaternion>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</knowrob:translation>
     </owl:NamedIndividual>
     
 
@@ -529,9 +529,9 @@
     <!-- http://knowrob.org/kb/suturo_object.owl#graspSiggBottle -->
 
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspSiggBottle">
-        <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Pose"/>
-        <quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</quaternion>
-        <translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</translation>
+          <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
+        <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</knowrob:quaternion>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</knowrob:translation>
     </owl:NamedIndividual>
     
 
@@ -539,9 +539,9 @@
     <!-- http://knowrob.org/kb/suturo_object.owl#graspTomatoSauceOroDiParma -->
 
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspTomatoSauceOroDiParma">
-        <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Pose"/>
-        <quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</quaternion>
-        <translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</translation>
+          <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
+        <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1.0 0.0 0.0 0.0</knowrob:quaternion>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.0</knowrob:translation>
     </owl:NamedIndividual>
 </rdf:RDF>
 

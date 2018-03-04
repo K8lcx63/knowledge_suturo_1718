@@ -1,6 +1,6 @@
 :- module(knowledge_grasp,
     [
-      find_grasp_pose/2
+      find_grasp_pose/3
     ]).
 
 :- use_module(library('semweb/rdfs')).
@@ -14,15 +14,8 @@
 :- rdf_register_prefix(suturo_object, 'http://knowrob.org/kb/suturo_object.owl#').
 
 :-  rdf_meta
-    find_grasp_pose(r,-).
+    find_grasp_pose(r,-, -).
 
-find_grasp_pose(ObjectClassLabel, Pose):-
+find_grasp_pose(ObjectClassLabel, Translation, Quaternion):-
 	 owl_class_properties_value(ObjectClassLabel, suturo_object:'graspableAt', GraspPose),
-	 rdf_has(GraspPose, suturo_object:'translation', Translation),
-	 rdf_has(GraspPose, suturo_object:'quaternion', Quaternion),
-	 strip_literal_type(Translation, TranslationStripped),
-	 strip_literal_type(Quaternion, QuaternionStripped),
-	 atom_string(SAtom1, TranslationStripped),
-	 atom_string(SAtom2, QuaternionStripped),
-	 atom_concat(SAtom1, ' ', Temp1),
-	 atom_concat(Temp1, SAtom2, Pose).
+	 transform_data(GraspPose, (Translation, Quaternion)).

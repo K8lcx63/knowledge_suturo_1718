@@ -89,3 +89,30 @@ std::string PrologUtil::poseToPrologList(geometry_msgs::Pose pose)
             << PrologUtil::quaternionToPrologList(pose.orientation) << "]";
   return ss.str();
 }
+
+geometry_msgs::Quaternion PrologUtil::prologBindingToQuaternion(PrologBindings bdg, std::string field_name)
+{
+    std::vector<PrologValue> quaternion_list = bdg[field_name].as<std::vector<PrologValue>>();
+
+    double x = prologValueToDouble(quaternion_list.at(0));
+    double y = prologValueToDouble(quaternion_list.at(1));
+    double z = prologValueToDouble(quaternion_list.at(2));
+    double w = prologValueToDouble(quaternion_list.at(3));
+
+    geometry_msgs::Quaternion quaternion;
+    quaternion.x = x;
+    quaternion.y = y;
+    quaternion.z = z;
+    quaternion.w = w;
+
+    return quaternion;
+}
+
+geometry_msgs::Pose PrologUtil::prologBindingToPose(PrologBindings bdg, std::string position_field_name, std::string rotation_field_name)
+{
+    geometry_msgs::Pose pose;
+    pose.position = PrologUtil::prologBindingToPoint(bdg, position_field_name);
+    pose.orientation = PrologUtil::prologBindingToQuaternion(bdg, rotation_field_name);
+
+    return pose;
+}

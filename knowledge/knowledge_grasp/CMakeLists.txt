@@ -31,3 +31,6 @@ include_directories(
 
 add_executable(knowledge_grasp_service src/knowledge_grasp_service.cpp)
 target_link_libraries(knowledge_grasp_service ${catkin_LIBRARIES})
+
+add_executable(test_client src/test_client.cpp)
+target_link_libraries(test_client ${catkin_LIBRARIES})

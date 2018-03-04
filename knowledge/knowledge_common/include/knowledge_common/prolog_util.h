@@ -25,6 +25,10 @@ public:
     static std::string quaternionToPrologList(geometry_msgs::Quaternion quaternion);
 
     static std::string poseToPrologList(geometry_msgs::Pose pose);
+
+    static geometry_msgs::Quaternion prologBindingToQuaternion(PrologBindings bdg, std::string field_name);
+
+    static geometry_msgs::Pose prologBindingToPose(PrologBindings bdg, std::string position_field_name, std::string rotation_field_name);
 };
 
 #endif
