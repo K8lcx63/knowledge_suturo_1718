@@ -2,6 +2,8 @@
 #include <sstream>
 #include <locale>
 #include <ros/ros.h>
+#include <tf/transform_datatypes.h>
+#include <geometry_msgs/Quaternion.h>
 #include <knowledge_msgs/GraspIndividual.h>
 #include <knowledge_common/prolog_util.h>
 #include <json_prolog/prolog.h>
@@ -46,6 +48,13 @@ bool find_grasp_pose(knowledge_msgs::GraspIndividual::Request &req, knowledge_ms
       PrologBindings bdg = *it;
       res.grasp_pose.header.frame_id = "/" + translateToUnderscore(req.object_label);
 	    res.grasp_pose.pose =  PrologUtil::prologBindingToPose(bdg, "Position", "Quaternion");
+      geometry_msgs::Quaternion quat = res.grasp_pose.pose.orientation;
+      tf::Quaternion new_quat;
+      quaternionMsgToTF(quat, new_quat);
+      new_quat.normalize();
+      quaternionTFToMsg(new_quat, quat);
+      res.grasp_pose.pose.orientation = quat;
+
       return true;
 	  }
     ROS_ERROR_STREAM("LABEL \"" << req.object_label << "\"NICHT ERKANNT! BITTE EINGABEN PRUEFEN!");
