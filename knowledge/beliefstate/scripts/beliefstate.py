@@ -124,6 +124,10 @@ def spawn_object_frame(object_name, object_pose):
     object_pose.header.frame_id = source_frame_id
     object_pose.header.stamp = rospy.Time(0)
     map_pose = transform_listener.transformPose("map", object_pose)
+    map_pose.pose.orientation.x = 0.0
+    map_pose.pose.orientation.y = 0.0
+    map_pose.pose.orientation.z = 0.0
+    map_pose.pose.orientation.w = 1.0
     map_pose.header.frame_id = "map"
     object_frames[object_frame] = map_pose
 
@@ -138,6 +142,10 @@ def update_object_frame(object_name, object_pose):
     object_pose.header.frame_id = source_frame_id
     object_pose.header.stamp = rospy.Time(0)
     map_pose = transform_listener.transformPose("map", object_pose)
+    map_pose.pose.orientation.x = 0.0
+    map_pose.pose.orientation.y = 0.0
+    map_pose.pose.orientation.z = 0.0
+    map_pose.pose.orientation.w = 1.0
     map_pose.header.frame_id = "map"
     object_frames[object_frame] = map_pose
 
