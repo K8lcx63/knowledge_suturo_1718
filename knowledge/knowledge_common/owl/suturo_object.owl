@@ -548,7 +548,7 @@
 
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspSiggBottle">
         <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
-        <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0626438 -0.685808 -0.0762239 0.721064</knowrob:quaternion>
+        <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0626438 0.685808 -0.0762239 0.721064</knowrob:quaternion>
         <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.000 0.001 0.087</knowrob:translation>
     </owl:NamedIndividual>
     

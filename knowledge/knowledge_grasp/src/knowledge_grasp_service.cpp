@@ -54,6 +54,7 @@ bool find_grasp_pose(knowledge_msgs::GraspIndividual::Request &req, knowledge_ms
       new_quat.normalize();
       quaternionTFToMsg(new_quat, quat);
       res.grasp_pose.pose.orientation = quat;
+      res.grasp_pose.header.stamp = ros::Time::now();
 
       return true;
 	  }
