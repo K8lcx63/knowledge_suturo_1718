@@ -22,10 +22,10 @@ int main(int argc, char **argv)
   knowledge_msgs::PerceivedObject perceive_msg;
   geometry_msgs::PoseStamped object_pose;
   object_pose.header.stamp = ros::Time::now();
-  object_pose.header.frame_id = "/head_mount_kinect_ir_optical_frame";
-  object_pose.pose.position.x = 5.5;
-  object_pose.pose.position.y = -3.5;
-  object_pose.pose.position.z = -1.0;
+  object_pose.header.frame_id = "/map";
+  object_pose.pose.position.x = 0.25;
+  object_pose.pose.position.y = 0.0;
+  object_pose.pose.position.z = 0.8;
   object_pose.pose.orientation.x = 0.0;
   object_pose.pose.orientation.y = 0.0;
   object_pose.pose.orientation.z = 0.0;

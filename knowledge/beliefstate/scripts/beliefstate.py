@@ -124,10 +124,10 @@ def spawn_object_frame(object_name, object_pose):
     object_pose.header.frame_id = source_frame_id
     object_pose.header.stamp = rospy.Time(0)
     map_pose = transform_listener.transformPose("map", object_pose)
-    map_pose.pose.orientation.x = 0.0
-    map_pose.pose.orientation.y = 0.0
-    map_pose.pose.orientation.z = 0.0
-    map_pose.pose.orientation.w = 1.0
+    #map_pose.pose.orientation.x = 0.0
+    #map_pose.pose.orientation.y = 0.0
+    #map_pose.pose.orientation.z = 0.0
+    #map_pose.pose.orientation.w = 1.0
     map_pose.header.frame_id = "map"
     object_frames[object_frame] = map_pose
 
@@ -142,10 +142,10 @@ def update_object_frame(object_name, object_pose):
     object_pose.header.frame_id = source_frame_id
     object_pose.header.stamp = rospy.Time(0)
     map_pose = transform_listener.transformPose("map", object_pose)
-    map_pose.pose.orientation.x = 0.0
-    map_pose.pose.orientation.y = 0.0
-    map_pose.pose.orientation.z = 0.0
-    map_pose.pose.orientation.w = 1.0
+    #map_pose.pose.orientation.x = 0.0
+    #map_pose.pose.orientation.y = 0.0
+    #map_pose.pose.orientation.z = 0.0
+    #map_pose.pose.orientation.w = 1.0
     map_pose.header.frame_id = "map"
     object_frames[object_frame] = map_pose
 
@@ -175,6 +175,15 @@ def spawn_object_mesh(object_name):
 
     object_marker.append(mesh_marker)
 
+def object_frame_broadcast(event):
+    for frame_id, frame_pose in object_frames.iteritems():
+      transform_broadcaster.sendTransform(pose_stamped_to_position_tupel(frame_pose), pose_stamped_to_quaternion_tupel(frame_pose), rospy.Time.now(), frame_id, frame_pose.header.frame_id)
+
+def object_mesh_broadcast(event):
+    for marker in object_marker:
+      marker.header.stamp = rospy.get_rostime()
+      marker_pub.publish(marker)
+
 if __name__ == '__main__':
     rospy.init_node('beliefstate')
 
@@ -187,25 +196,22 @@ if __name__ == '__main__':
     rospy.Service('/beliefstate/objects_to_pick', ObjectsToPick, objects_to_pick)
     marker_pub = rospy.Publisher("/visualization_marker", Marker, queue_size=1)
 
-    # p = PoseStamped()
-    # p.header.frame_id = '/head_mount_kinect_ir_optical_frame'
-    # p.pose.position.x = 0.5
-    # p.pose.position.y = 2.6
-    # p.pose.position.z = -1.5
-    # p.pose.orientation.w = 1.0
-
     object_marker = []
     object_frames = {}
     transform_listener = tf.TransformListener()
     transform_broadcaster = tf.TransformBroadcaster()
-    #spawn_object_frame('JaMilch', p)
-    rate = rospy.Rate(10.0)
-    while not rospy.is_shutdown():
-        for frame_id, frame_pose in object_frames.iteritems():
-            transform_broadcaster.sendTransform(pose_stamped_to_position_tupel(frame_pose), pose_stamped_to_quaternion_tupel(frame_pose), rospy.Time.now(), frame_id, frame_pose.header.frame_id)
-            
-        for marker in object_marker:
-            marker.header.stamp = rospy.get_rostime()
-            marker_pub.publish(marker)
 
-        rate.sleep()
+    rospy.Timer(rospy.Duration(0.02), object_frame_broadcast)
+    rospy.Timer(rospy.Duration(0.02), object_mesh_broadcast)
+    rospy.spin()
+
+    # rate = rospy.Rate(50.0)
+    # while not rospy.is_shutdown():
+    #     for frame_id, frame_pose in object_frames.iteritems():
+    #         transform_broadcaster.sendTransform(pose_stamped_to_position_tupel(frame_pose), pose_stamped_to_quaternion_tupel(frame_pose), rospy.Time.now(), frame_id, frame_pose.header.frame_id)
+            
+    #     for marker in object_marker:
+    #         marker.header.stamp = rospy.get_rostime()
+    #         marker_pub.publish(marker)
+
+    #     rate.sleep()
