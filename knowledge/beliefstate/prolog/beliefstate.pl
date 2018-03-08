@@ -147,10 +147,12 @@ get_two_objects_on_kitchen_island_counter_with_same_storage_place(Object1, Objec
     get_objects_on_kitchen_island_counter(ObjectList),
     member(Object1, ObjectList),
     member(Object2, ObjectList),
-    \+rdf_equal(Object1, Object2),
-    storage_area(Object1, StorageArea1),
-    storage_area(Object2, StorageArea2),
-    rdf_equal(StorageArea1, StorageArea2).
+    Object1 \= Object2,
+    rdfs_individual_of(Object1, ObjectClass1),
+    rdfs_individual_of(Object2, ObjectClass2),
+    storage_area(ObjectClass1, StorageArea1),
+    storage_area(ObjectClass2, StorageArea2),
+    StorageArea1 == StorageArea2.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
