@@ -468,7 +468,7 @@
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspCupEcoOrange">
         <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0626438 0.685808 -0.0762239 0.721064</knowrob:quaternion>
-        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.006 -0.035 0.016</knowrob:translation>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 -0.035 0.016</knowrob:translation>
     </owl:NamedIndividual>
     
 
@@ -478,7 +478,7 @@
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspEdekaRedBowl">
         <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.089813 0.688156 -0.00787817 0.71994</knowrob:quaternion>
-        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.003 -0.061 0.020</knowrob:translation>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 -0.061 0.020</knowrob:translation>
     </owl:NamedIndividual>
     
 
@@ -488,7 +488,7 @@
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspHelaCurryKetchup">
         <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0626438 0.685808 -0.0762239 0.721064</knowrob:quaternion>
-        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.001 0.001 0.0081</knowrob:translation>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.0 0.0 0.0081</knowrob:translation>
     </owl:NamedIndividual>
     
 
@@ -498,7 +498,7 @@
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspJaMilch">
         <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.0331417 0.687865 0.0245859 0.724664</knowrob:quaternion>
-        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.009 0.001 0.050</knowrob:translation>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.050</knowrob:translation>
     </owl:NamedIndividual>
     
 
@@ -508,7 +508,7 @@
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspKellogsToppasMini">
         <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.0263379 0.688159 0.0174186 0.724872</knowrob:quaternion>
-        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.011 -0.001 0.083</knowrob:translation>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.083</knowrob:translation>
     </owl:NamedIndividual>
     
 
@@ -518,7 +518,7 @@
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspKoellnMuesliKnusperHonigNuss">
         <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.010888 0.688577 0.00114702 0.72508</knowrob:quaternion>
-        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.004 0.001 0.079</knowrob:translation>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.079</knowrob:translation>
     </owl:NamedIndividual>
     
 
@@ -538,7 +538,7 @@
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspSiggBottle">
         <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0626438 0.685808 -0.0762239 0.721064</knowrob:quaternion>
-        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.000 0.001 0.087</knowrob:translation>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.087</knowrob:translation>
     </owl:NamedIndividual>
     
 
