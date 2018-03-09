@@ -10,6 +10,7 @@ find_package(catkin REQUIRED COMPONENTS
     json_prolog
     knowledge_msgs
     geometry_msgs
+    tf
 	)
 
 
@@ -21,6 +22,7 @@ CATKIN_DEPENDS
     json_prolog
     knowledge_msgs
     geometry_msgs
+    tf
 )
 
 include_directories(
