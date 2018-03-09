@@ -498,7 +498,7 @@
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspJaMilch">
         <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.0331417 0.687865 0.0245859 0.724664</knowrob:quaternion>
-        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.009 0.001 0.070</knowrob:translation>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.009 0.001 0.050</knowrob:translation>
     </owl:NamedIndividual>
     
 
