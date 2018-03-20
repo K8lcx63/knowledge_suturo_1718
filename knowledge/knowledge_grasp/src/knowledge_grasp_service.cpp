@@ -56,16 +56,16 @@ bool find_grasp_pose(knowledge_msgs::GraspIndividual::Request &req, knowledge_ms
       res.grasp_pose.pose.orientation = quat;
       res.grasp_pose.header.stamp = ros::Time::now();
 	  
-      if(req.object_label == "JaMilch"){res.force = 0.0d};
-      if(req.object_label == "TomatoSauceOroDiParma"){res.force = 0.0d};
-      if(req.object_label == "SiggBottle"){res.force = 0.0d};
-      if(req.object_label == "EdekaRedBowl"){res.force = 0.0d};
-      if(req.object_label == "CupEcoOrange"){res.force = 0.0d};
-      if(req.object_label == "KoellnMuesliKnusperHonigNuss"){res.force = 0.0d};
-      if(req.object_label == "PringlesPaprika"){res.force = 0.0d};
-      if(req.object_label == "PringlesSalt"){res.force = 0.0d};
-      if(req.object_label == "HelaCurryKetchup"){res.force = 0.0d};
-      if(req.object_label == "KeloggsToppasMini"){res.force = 0.0d};
+      if(req.object_label == "JaMilch"){res.force = 0.0d;}
+      if(req.object_label == "TomatoSauceOroDiParma"){res.force = 0.0d;}
+      if(req.object_label == "SiggBottle"){res.force = 0.0d;}
+      if(req.object_label == "EdekaRedBowl"){res.force = 0.0d;}
+      if(req.object_label == "CupEcoOrange"){res.force = 0.0d;}
+      if(req.object_label == "KoellnMuesliKnusperHonigNuss"){res.force = 0.0d;}
+      if(req.object_label == "PringlesPaprika"){res.force = 0.0d;}
+      if(req.object_label == "PringlesSalt"){res.force = 0.0d;}
+      if(req.object_label == "HelaCurryKetchup"){res.force = 0.0d;}
+      if(req.object_label == "KeloggsToppasMini"){res.force = 0.0d;}
 
       return true;
 	  }
