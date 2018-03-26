@@ -1,6 +1,7 @@
 #include <ros/ros.h>
 #include <knowledge_msgs/GraspObject.h>
 #include <knowledge_msgs/Gripper.h>
+#include <geometry_msgs/PoseStamped.h>
    
 int main(int argc, char **argv)
 {
@@ -19,6 +20,15 @@ int main(int argc, char **argv)
     knowledge_msgs::GraspObject grasp_msg;
     grasp_msg.object_label = "JaMilch";
     grasp_msg.gripper.gripper = knowledge_msgs::Gripper::LEFT_GRIPPER;
+    grasp_msg.grasp_pose.header.frame_id = "ja_milch";
+    grasp_msg.grasp_pose.header.stamp = ros::Time::now();
+    grasp_msg.grasp_pose.pose.position.x = 0.009;
+    grasp_msg.grasp_pose.pose.position.x = 0.001;
+    grasp_msg.grasp_pose.pose.position.x = 0.070;
+    grasp_msg.grasp_pose.pose.orientation.x = -0.0331417;
+    grasp_msg.grasp_pose.pose.orientation.y = 0.687865;
+    grasp_msg.grasp_pose.pose.orientation.z = 0.0245859;
+    grasp_msg.grasp_pose.pose.orientation.w = 0.724664;
     grasp_pub.publish(grasp_msg);
 
     return 0;

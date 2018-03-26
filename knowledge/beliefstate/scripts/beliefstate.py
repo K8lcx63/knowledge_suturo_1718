@@ -49,7 +49,7 @@ def create_query_for_perceive_object(perceive_object_msg):
   return "process_perceive_action(suturo_object:\'" + perceive_object_msg.object_label + "\',"+ pose_to_prolog_list(perceive_object_msg.object_pose) + ",\'" + perceive_object_msg.object_pose.header.frame_id +"\')"
 
 def create_query_for_grasp_object(grasp_object_msg):
-  return "process_grasp_action(suturo_object:\'" + grasp_object_msg.object_label + "\',suturo_action:\'" + gripper_as_string(grasp_object_msg.gripper.gripper) + "\')"
+  return "process_grasp_action(suturo_object:\'" + grasp_object_msg.object_label + "\',suturo_action:\'" + gripper_as_string(grasp_object_msg.gripper.gripper) + "\'," + pose_to_prolog_list(grasp_object_msg.grasp_pose) + ")"
 
 def create_query_for_drop_object(drop_object_msg):
   return "process_drop_action(suturo_action:\'" + gripper_as_string(drop_object_msg.gripper.gripper) + "\')"

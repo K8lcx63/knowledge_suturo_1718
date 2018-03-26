@@ -47,19 +47,10 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
 
+    <!-- http://knowrob.org/kb/knowrob.owl#heightOfObject -->
 
-    <!-- http://knowrob.org/kb/knowrob.owl#boundingBoxSize -->
-
-    <owl:DatatypeProperty rdf:about="http://knowrob.org/kb/knowrob.owl#boundingBoxSize"/>
-    
-
-
-    <!-- http://knowrob.org/kb/knowrob.owl#pathToCadModel -->
-
-    <owl:DatatypeProperty rdf:about="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
-    
+    <owl:DatatypeProperty rdf:about="http://knowrob.org/kb/knowrob.owl#heightOfObject"/>
 
 
     <!-- http://knowrob.org/kb/knowrob.owl#quaternion -->
@@ -71,18 +62,6 @@
     <!-- http://knowrob.org/kb/knowrob.owl#translation -->
 
     <owl:DatatypeProperty rdf:about="http://knowrob.org/kb/knowrob.owl#translation"/>
-    
-
-
-    <!-- http://knowrob.org/kb/suturo_object.owl#quaternion -->
-
-    <owl:DatatypeProperty rdf:about="http://knowrob.org/kb/suturo_object.owl#quaternion"/>
-    
-
-
-    <!-- http://knowrob.org/kb/suturo_object.owl#translation -->
-
-    <owl:DatatypeProperty rdf:about="http://knowrob.org/kb/suturo_object.owl#translation"/>
     
 
 
@@ -148,19 +127,6 @@
     <!-- http://knowrob.org/kb/knowrob.owl#Milk -->
 
     <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#Milk"/>
-    
-
-
-    <!-- http://knowrob.org/kb/knowrob.owl#PackagingContainerProduct -->
-
-    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#PackagingContainerProduct"/>
-    
-
-
-    <!-- http://knowrob.org/kb/knowrob.owl#Pose -->
-
-    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#Pose"/>
-    
 
 
     <!-- http://knowrob.org/kb/knowrob.owl#TomatoBasedSauce -->
@@ -195,8 +161,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
-                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge/meshes/cup_eco_orange/cup_eco_orange.dae</owl:hasValue>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#heightOfObject"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.09</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -215,8 +181,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
-                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge/meshes/edeka_red_bowl/edeka_red_bowl.dae</owl:hasValue>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#heightOfObject"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.07</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -235,18 +201,10 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
-                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge/meshes/hela_curry_ketchup/hela_curry_ketchup.dae</owl:hasValue>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#heightOfObject"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.205</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://knowrob.org/kb/suturo_object.owl#IceTeaPackage -->
-
-    <owl:Class rdf:about="http://knowrob.org/kb/suturo_object.owl#IceTeaPackage">
-        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/suturo_object.owl#Package"/>
     </owl:Class>
     
 
@@ -269,8 +227,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
-                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge/meshes/ja_milch/ja_milch.dae</owl:hasValue>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#heightOfObject"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.195</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -295,8 +253,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
-                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge/meshes/kellogs_toppas_mini/kellogs_toppas_mini.dae</owl:hasValue>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#heightOfObject"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.23</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -321,8 +279,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
-                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge/meshes/koelln_muesli_knusper_honig_nuss/koelln_muesli_knusper_honig_nuss.dae</owl:hasValue>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#heightOfObject"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.22</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -334,30 +292,6 @@
     <owl:Class rdf:about="http://knowrob.org/kb/suturo_object.owl#Meal">
         <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/knowrob.owl#ContinuousTimeInterval"/>
     </owl:Class>
-    
-
-
-    <!-- http://knowrob.org/kb/suturo_object.owl#Package -->
-
-    <owl:Class rdf:about="http://knowrob.org/kb/suturo_object.owl#Package">
-        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/knowrob.owl#PackagingContainerProduct"/>
-    </owl:Class>
-    
-
-
-    <!-- http://knowrob.org/kb/suturo_object.owl#PfannerIceTea2LPackage -->
-
-    <owl:Class rdf:about="http://knowrob.org/kb/suturo_object.owl#PfannerIceTea2LPackage">
-        <rdfs:subClassOf rdf:resource="http://knowrob.org/kb/suturo_object.owl#IceTeaPackage"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#boundingBoxSize"/>
-                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.09 0.26 0.09</owl:hasValue>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
 
     <!-- http://knowrob.org/kb/suturo_object.owl#Pringles -->
 
@@ -379,8 +313,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
-                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge/meshes/pringles_paprika/pringles_paprika.dae</owl:hasValue>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#heightOfObject"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.255</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -399,8 +333,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
-                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge/meshes/pringles_salt/pringles_salt.dae</owl:hasValue>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#heightOfObject"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.255</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -419,8 +353,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
-                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge/meshes/sigg_bottle/sigg_bottle.dae</owl:hasValue>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#heightOfObject"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.21</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -447,8 +381,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
-                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge/meshes/tomato_sauce_oro_di_parma/tomato_sauce_oro_di_parma.dae</owl:hasValue>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#heightOfObject"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.11</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -463,12 +397,15 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
     <!-- http://knowrob.org/kb/suturo_object.owl#graspCupEcoOrange -->
 
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspCupEcoOrange">
         <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0626438 0.685808 -0.0762239 0.721064</knowrob:quaternion>
-        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.02 -0.035 0.016</knowrob:translation>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.006 -0.035 0.016</knowrob:translation>
     </owl:NamedIndividual>
     
 
@@ -478,7 +415,7 @@
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspEdekaRedBowl">
         <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.089813 0.688156 -0.00787817 0.71994</knowrob:quaternion>
-        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.02 -0.061 0.020</knowrob:translation>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.003 -0.061 0.020</knowrob:translation>
     </owl:NamedIndividual>
     
 
@@ -488,7 +425,7 @@
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspHelaCurryKetchup">
         <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0626438 0.685808 -0.0762239 0.721064</knowrob:quaternion>
-        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.02 0.0 0.0081</knowrob:translation>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.001 0.001 0.0081</knowrob:translation>
     </owl:NamedIndividual>
     
 
@@ -498,7 +435,7 @@
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspJaMilch">
         <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.0331417 0.687865 0.0245859 0.724664</knowrob:quaternion>
-        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.02 0.0 0.050</knowrob:translation>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.009 0.001 0.070</knowrob:translation>
     </owl:NamedIndividual>
     
 
@@ -508,7 +445,7 @@
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspKellogsToppasMini">
         <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.0263379 0.688159 0.0174186 0.724872</knowrob:quaternion>
-        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.02 0.0 0.083</knowrob:translation>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.011 -0.001 0.083</knowrob:translation>
     </owl:NamedIndividual>
     
 
@@ -518,7 +455,7 @@
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspKoellnMuesliKnusperHonigNuss">
         <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.010888 0.688577 0.00114702 0.72508</knowrob:quaternion>
-        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.02 0.0 0.079</knowrob:translation>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.004 0.001 0.079</knowrob:translation>
     </owl:NamedIndividual>
     
 
@@ -528,7 +465,7 @@
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspPringles">
         <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0626438 0.685808 -0.0762239 0.721064</knowrob:quaternion>
-        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.02 0.0 0.078</knowrob:translation>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.078</knowrob:translation>
     </owl:NamedIndividual>
     
 
@@ -538,7 +475,7 @@
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspSiggBottle">
         <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0626438 0.685808 -0.0762239 0.721064</knowrob:quaternion>
-        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.02 0.0 0.087</knowrob:translation>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.000 0.001 0.087</knowrob:translation>
     </owl:NamedIndividual>
     
 
@@ -548,11 +485,10 @@
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspTomatoSauceOroDiParma">
         <rdf:type rdf:resource="http://knowrob.org/kb/knowrob.owl#Transformation"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0626438 0.685808 -0.0762239 0.721064</knowrob:quaternion>
-        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.02 0.0 0.026</knowrob:translation>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.026</knowrob:translation>
     </owl:NamedIndividual>
 </rdf:RDF>
 
 
 
 <!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
-

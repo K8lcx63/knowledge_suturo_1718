@@ -17,6 +17,33 @@
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#pose -->
+
+    <owl:ObjectProperty rdf:about="http://knowrob.org/kb/knowrob.owl#pose"/>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_storage_place.owl#gripperPose -->
+
+    <owl:ObjectProperty rdf:about="http://knowrob.org/kb/suturo_storage_place.owl#gripperPose">
+        <rdfs:subPropertyOf rdf:resource="http://knowrob.org/kb/knowrob.owl#pose"/>
+        <rdfs:domain rdf:resource="http://knowrob.org/kb/knowrob.owl#Event"/>
+        <rdfs:range rdf:resource="http://knowrob.org/kb/knowrob.owl#Pose"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
     // Data properties
     //
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -44,6 +71,12 @@
     
 
 
+    <!-- http://knowrob.org/kb/knowrob.owl#Event -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#Event"/>
+    
+
+
     <!-- http://knowrob.org/kb/knowrob.owl#GraspingSomething -->
 
     <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#GraspingSomething">
@@ -52,9 +85,21 @@
     
 
 
+    <!-- http://knowrob.org/kb/knowrob.owl#HolderGripper -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#HolderGripper"/>
+    
+
+
     <!-- http://knowrob.org/kb/knowrob.owl#LeftHand -->
 
     <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#LeftHand"/>
+    
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#Pose -->
+
+    <owl:Class rdf:about="http://knowrob.org/kb/knowrob.owl#Pose"/>
     
 
 
