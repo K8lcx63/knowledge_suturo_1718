@@ -62,6 +62,10 @@ def object_exists(object_class):
   return prolog_query_true(query_result)
 
 def process_perceive_action(perceive_object_msg):
+    perceive_object_msg.object_pose.pose.orientation.x = 0.0
+    perceive_object_msg.object_pose.pose.orientation.y = 0.0
+    perceive_object_msg.object_pose.pose.orientation.z = 0.0
+    perceive_object_msg.object_pose.pose.orientation.w = 1.0
     exists = object_exists(perceive_object_msg.object_label)
     prolog.once(create_query_for_perceive_object(perceive_object_msg))
     if not exists:
