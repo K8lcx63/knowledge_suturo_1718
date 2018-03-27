@@ -188,6 +188,14 @@ def object_mesh_broadcast(event):
       marker.header.stamp = rospy.get_rostime()
       marker_pub.publish(marker)
 
+def object_attached_to_gripper(req):
+    query_result = prolog.once(create_query_object_attached_to_gripper(req.gripper.gripper))
+    if(prolog_query_true(query_result)):
+        object_name = object_url_to_object_name(query_result["ObjectIndividual"])
+        return GetObjectAttachedToGripperResponse(object_name)
+    else:
+        return GetObjectAttachedToGripperResponse("")
+
 if __name__ == '__main__':
     rospy.init_node('beliefstate')
 
@@ -198,6 +206,7 @@ if __name__ == '__main__':
     rospy.Subscriber("/beliefstate/drop_action", DropObject, process_drop_action)
     rospy.Service('/beliefstate/gripper_empty', EmptyGripper, gripper_empty)
     rospy.Service('/beliefstate/objects_to_pick', ObjectsToPick, objects_to_pick)
+    rospy.Service('/beliefstate/object_attached_to_gripper', GetObjectAttachedToGripper, object_attached_to_gripper)
     marker_pub = rospy.Publisher("/visualization_marker", Marker, queue_size=1)
 
     object_marker = []
