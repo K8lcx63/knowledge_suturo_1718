@@ -24,7 +24,7 @@ bool find_storage_place(knowledge_msgs::StoragePlace::Request &req, knowledge_ms
 
     if(&bdg != NULL)
     {
-      res.storage_place_position = PrologUtil::prologBindingToPoint(bdg, "Position", "iai_kitchen/sink_area_surface");
+      res.storage_place_position = PrologUtil::prologBindingToPoint(bdg, "Position", "/map");
       res.storage_place_width = PrologUtil::prologValueToDouble(bdg["Width"]);
       res.storage_place_height = PrologUtil::prologValueToDouble(bdg["Height"]);
 
