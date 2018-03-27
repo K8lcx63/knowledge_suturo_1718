@@ -58,10 +58,10 @@ if __name__ == '__main__':
     rospy.init_node('place_object')
 
     prolog = json_prolog.Prolog()
-    place_z_map = {"JaMilch":101.75, "KellogsToppasMini":104.8, "KoellnMuesliKnusperHonigNuss":103.9,
-                    "HelaCurryKetchup":103.35, "TomatoSauceOroDiParma":93.1,
-                    "PringlesPaprika":105.55, "PringlesSalt":105.55,
-                    "SiggBottle":104.2, "EdekaRedBowl":90.5, "CupEcoOrange":91.1}
+    place_z_map = {"JaMilch":1.0125, "KellogsToppasMini":1.048, "KoellnMuesliKnusperHonigNuss":1.039,
+                    "HelaCurryKetchup":1.0335, "TomatoSauceOroDiParma":0.931,
+                    "PringlesPaprika":1.0555, "PringlesSalt":1.0555,
+                    "SiggBottle":1.042, "EdekaRedBowl":0.905, "CupEcoOrange":0.911}
     transform_listener = tf.TransformListener()
     rospy.Service('/place_object/place', PlaceObject, place_object)
    
