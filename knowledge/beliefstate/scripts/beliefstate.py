@@ -10,7 +10,7 @@ from knowledge_msgs.srv import *
 from geometry_msgs.msg import *
 import re
 import tf
-from std_msgs.msg import ColorRGBA
+from std_msgs.msg import *
 from visualization_msgs.msg import InteractiveMarker, InteractiveMarkerControl, InteractiveMarkerFeedback, Marker
 
 
@@ -70,6 +70,8 @@ def process_perceive_action(perceive_object_msg):
     prolog.once(create_query_for_perceive_object(perceive_object_msg))
     if not exists:
         spawn_object_frame(perceive_object_msg.object_label, perceive_object_msg.object_pose)
+        rospy.sleep(1.0)
+        publish_collision_object(perceive_object_msg)
     else:
         update_object_frame(perceive_object_msg.object_label, perceive_object_msg.object_pose)
 
@@ -179,9 +181,20 @@ def spawn_object_mesh(object_name):
 
     object_marker.append(mesh_marker)
 
+def publish_collision_object(perceive_object_msg):
+  query_result = prolog.once("mesh_path(suturo_object:\'" + perceive_object_msg.object_label + "\', MeshPath)")
+  mesh_path = query_result["MeshPath"]
+
+  collision_object_msg = PerceivedObjectBoundingBox()
+  collision_object_msg.object_label = perceive_object_msg.object_label
+  collision_object_msg.mesh_path = mesh_path[1:-1]
+  collision_object_msg.pose = perceive_object_msg.object_pose
+  collision_object_publisher.publish(collision_object_msg)
+
 def object_frame_broadcast(event):
     for frame_id, frame_pose in object_frames.iteritems():
-      transform_broadcaster.sendTransform(pose_stamped_to_position_tupel(frame_pose), pose_stamped_to_quaternion_tupel(frame_pose), rospy.Time.now(), frame_id, frame_pose.header.frame_id)
+        print(frame_id)
+        transform_broadcaster.sendTransform(pose_stamped_to_position_tupel(frame_pose), pose_stamped_to_quaternion_tupel(frame_pose), rospy.Time.now(), frame_id, frame_pose.header.frame_id)
 
 def object_mesh_broadcast(event):
     for marker in object_marker:
@@ -196,11 +209,17 @@ def object_attached_to_gripper(req):
     else:
         return GetObjectAttachedToGripperResponse("")
 
+def clear_beliefstate(msg):
+    prolog.once("clear")
+    del object_marker[:]
+    object_frames.clear()
+
 if __name__ == '__main__':
     rospy.init_node('beliefstate')
 
     prolog = json_prolog.Prolog()
 
+    rospy.Subscriber("/beliefstate/clear", String, clear_beliefstate)
     rospy.Subscriber("/beliefstate/perceive_action", PerceivedObject, process_perceive_action)
     rospy.Subscriber("/beliefstate/grasp_action", GraspObject, process_grasp_action)
     rospy.Subscriber("/beliefstate/drop_action", DropObject, process_drop_action)
@@ -208,6 +227,7 @@ if __name__ == '__main__':
     rospy.Service('/beliefstate/objects_to_pick', ObjectsToPick, objects_to_pick)
     rospy.Service('/beliefstate/object_attached_to_gripper', GetObjectAttachedToGripper, object_attached_to_gripper)
     marker_pub = rospy.Publisher("/visualization_marker", Marker, queue_size=1)
+    collision_object_publisher = rospy.Publisher("perceived_object_bounding_box", PerceivedObjectBoundingBox, queue_size=100)
 
     object_marker = []
     object_frames = {}
