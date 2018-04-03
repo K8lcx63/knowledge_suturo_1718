@@ -87,8 +87,8 @@ process_grasp_action(ObjectClass, GripperIndividual, GraspPoseList):-
     rdf_assert(GraspActionIndividual, knowrob:'objectActedOn', ObjectIndividual),
     rdf_assert(GraspActionIndividual, knowrob:'deviceUsed', GripperIndividual),
     rdf_assert(GraspActionIndividual, knowrob:'eventOccursAt', LocalPoseIndividual),
-    %assert_new_pose(GraspPoseList, '/object_frame', GraspPoseIndividual),
-    %rdf_assert(GraspActionIndividual, suturo_action:'gripperPose', GraspPoseIndividual),
+    assert_new_pose(GraspPoseList, 'object_frame', GraspPoseIndividual),
+    rdf_assert(GraspActionIndividual, suturo_action:'gripperPose', GraspPoseIndividual),
     print_beliefstate,!.
     
 process_drop_action(GripperIndividual):-
