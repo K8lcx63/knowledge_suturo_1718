@@ -193,7 +193,6 @@ def publish_collision_object(perceive_object_msg):
 
 def object_frame_broadcast(event):
     for frame_id, frame_pose in object_frames.iteritems():
-        print(frame_id)
         transform_broadcaster.sendTransform(pose_stamped_to_position_tupel(frame_pose), pose_stamped_to_quaternion_tupel(frame_pose), rospy.Time.now(), frame_id, frame_pose.header.frame_id)
 
 def object_mesh_broadcast(event):
