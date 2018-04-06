@@ -16,11 +16,12 @@
 
 object_height(ObjectClass, Height):-
     owl_class_properties_value(ObjectClass, knowrob:'heightOfObject', HeightRaw),
-    strip_literal_type(HeightRaw, Height).
+    strip_literal_type(HeightRaw, AtomHeight),
+    atom_number(AtomHeight, Height).
 
 calculate_place_z_position(GripperIndividual, Z):-
     object_attached_to_gripper(GripperIndividual, ObjectIndividual),
-    get_latest_grasp_pose(ObjectIndividual, [[_,_,GraspPoseZ], _]),
     rdfs_individual_of(ObjectIndividual, ObjectClass),
+    get_latest_grasp_pose(ObjectClass, [_,_,GraspPoseZ,_,_,_,_]),
 	object_height(ObjectClass, Height),
-    Z is GraspPoseZ + (Height/2) + 0.85. %Tischhöhe
+    Z is GraspPoseZ + (Height/2) + 0.85.%Tischhöhe=0.85

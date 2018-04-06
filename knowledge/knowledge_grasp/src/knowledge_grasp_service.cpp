@@ -55,7 +55,8 @@ bool find_grasp_pose(knowledge_msgs::GraspIndividual::Request &req, knowledge_ms
       quaternionTFToMsg(new_quat, quat);
       res.grasp_pose.pose.orientation = quat;
       res.grasp_pose.header.stamp = ros::Time::now();
-	  
+	    
+      res.force = 0.0;
       if(req.object_label == "JaMilch"){res.force = 30.0;}
       if(req.object_label == "TomatoSauceOroDiParma"){res.force = 40.0;}
       if(req.object_label == "SiggBottle"){res.force = 50.0;}
@@ -67,9 +68,10 @@ bool find_grasp_pose(knowledge_msgs::GraspIndividual::Request &req, knowledge_ms
       if(req.object_label == "HelaCurryKetchup"){res.force = 25.0;}
       if(req.object_label == "KeloggsToppasMini"){res.force = 15.0;}
 
+
       return true;
 	  }
-    ROS_ERROR_STREAM("LABEL \"" << req.object_label << "\"NICHT ERKANNT! BITTE EINGABEN PRUEFEN!");
+    ROS_ERROR_STREAM("LABEL \"" << req.object_label << "\" NICHT ERKANNT! BITTE EINGABEN PRUEFEN!");
     return false; 
 }
    

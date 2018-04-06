@@ -1,5 +1,7 @@
 :- module(beliefstate,
     [
+      clear/0,
+      mesh_path/2,
       object_exists/1,
       process_perceive_action/3,         
       process_grasp_action/3,         
@@ -13,6 +15,7 @@
 
 :- use_module(library('semweb/rdfs')).
 :- use_module(library('semweb/rdf_db')).
+:- use_module(library('knowrob/rdfs')).
 
 :- rdf_db:rdf_register_ns(knowrob, 'http://knowrob.org/kb/knowrob.owl#',  [keep(true)]).
 :- rdf_db:rdf_register_ns(rdf, 'http://www.w3.org/1999/02/22-rdf-syntax-ns#', [keep(true)]).
@@ -22,6 +25,7 @@
 :- rdf_register_prefix(suturo_object, 'http://knowrob.org/kb/suturo_object.owl#').
 
 :-  rdf_meta
+    mesh_path(r, -),
     object_exists(r),
     process_perceive_action(r,+, +),
     process_grasp_action(r,r, +),
@@ -43,6 +47,15 @@
     print_action_info(r),
     get_pose_info(r, -),
     get_used_gripper_info(r, +, -).
+
+clear:-
+    forall(rdf(J, _, _, belief_state), rdf_retractall(J,_,_)),
+    ros_info('beliefstate cleared!!!!'),
+    ros_info('###################################').
+
+mesh_path(ObjectClass, MeshPath):-
+    owl_class_properties_value(ObjectClass, knowrob:'pathToCadModel', Temp),
+    strip_literal_type(Temp, MeshPath).
 
 object_exists(ObjectClass):-
     rdfs_individual_of(_, ObjectClass).
@@ -74,8 +87,8 @@ process_grasp_action(ObjectClass, GripperIndividual, GraspPoseList):-
     rdf_assert(GraspActionIndividual, knowrob:'objectActedOn', ObjectIndividual),
     rdf_assert(GraspActionIndividual, knowrob:'deviceUsed', GripperIndividual),
     rdf_assert(GraspActionIndividual, knowrob:'eventOccursAt', LocalPoseIndividual),
-    %assert_new_pose(GraspPoseList, '/object_frame', GraspPoseIndividual),
-    %rdf_assert(GraspActionIndividual, suturo_action:'gripperPose', GraspPoseIndividual),
+    assert_new_pose(GraspPoseList, 'object_frame', GraspPoseIndividual),
+    rdf_assert(GraspActionIndividual, suturo_action:'gripperPose', GraspPoseIndividual),
     print_beliefstate,!.
     
 process_drop_action(GripperIndividual):-
