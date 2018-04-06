@@ -64,7 +64,7 @@ process_perceive_action(ObjectClass, PoseList, ReferenceFrame):-
     assert_new_individual(knowrob:'SiftPerception', PerceptionActionIndividual),
     (rdfs_individual_of(ObjectIndividual, ObjectClass) ->
         get_latest_action_associated_with_object(ObjectIndividual, LatestActionIndividual),
-        rdf_assert(LatestActionIndividual, knowrob:'nextEvent', PerceptionActionIndividual)
+        rdf_assert(LatestActionIndividual, knowrob:'nextEvent', PerceptionActionIndividual, belief_state)
         ;
         assert_new_individual(ObjectClass, ObjectIndividual)
     ),!,
@@ -72,36 +72,36 @@ process_perceive_action(ObjectClass, PoseList, ReferenceFrame):-
     nth0(1, PoseList, Quaternion),
     tf_transform_pose(ReferenceFrame, '/map', pose(Position, Quaternion), pose(MapPosition, MapQuaternion)),
     assert_new_pose([MapPosition, MapQuaternion], '/map', PoseIndividual),
-    rdf_assert(PerceptionActionIndividual, knowrob:'detectedObject', ObjectIndividual),
-    rdf_assert(PerceptionActionIndividual, knowrob:'eventOccursAt', PoseIndividual),
+    rdf_assert(PerceptionActionIndividual, knowrob:'detectedObject', ObjectIndividual, belief_state),
+    rdf_assert(PerceptionActionIndividual, knowrob:'eventOccursAt', PoseIndividual, belief_state),
     print_beliefstate,!.
     
 process_grasp_action(ObjectClass, GripperIndividual, GraspPoseList):-
     assert_new_individual(knowrob:'GraspingSomething', GraspActionIndividual),
     rdfs_individual_of(ObjectIndividual, ObjectClass),
     get_latest_action_associated_with_object(ObjectIndividual, LatestActionIndividual),
-    rdf_assert(LatestActionIndividual, knowrob:'nextEvent', GraspActionIndividual),
+    rdf_assert(LatestActionIndividual, knowrob:'nextEvent', GraspActionIndividual, belief_state),
     rdf_has(LatestActionIndividual, knowrob:'eventOccursAt', LatestPoseIndividual),
     get_pose(LatestPoseIndividual, MapPoseList),
     assert_new_pose_in_gripper_frame(GripperIndividual, MapPoseList, LocalPoseIndividual),
-    rdf_assert(GraspActionIndividual, knowrob:'objectActedOn', ObjectIndividual),
-    rdf_assert(GraspActionIndividual, knowrob:'deviceUsed', GripperIndividual),
-    rdf_assert(GraspActionIndividual, knowrob:'eventOccursAt', LocalPoseIndividual),
+    rdf_assert(GraspActionIndividual, knowrob:'objectActedOn', ObjectIndividual, belief_state),
+    rdf_assert(GraspActionIndividual, knowrob:'deviceUsed', GripperIndividual, belief_state),
+    rdf_assert(GraspActionIndividual, knowrob:'eventOccursAt', LocalPoseIndividual, belief_state),
     assert_new_pose(GraspPoseList, 'object_frame', GraspPoseIndividual),
-    rdf_assert(GraspActionIndividual, suturo_action:'gripperPose', GraspPoseIndividual),
+    rdf_assert(GraspActionIndividual, suturo_action:'gripperPose', GraspPoseIndividual, belief_state),
     print_beliefstate,!.
     
 process_drop_action(GripperIndividual):-
     assert_new_individual(knowrob:'RealisingGraspOfSomething', DropActionIndividual),
     object_attached_to_gripper(GripperIndividual, ObjectIndividual),
     get_latest_action_associated_with_object(ObjectIndividual, GraspActionIndividual),
-    rdf_assert(GraspActionIndividual, knowrob:'nextEvent', DropActionIndividual),
+    rdf_assert(GraspActionIndividual, knowrob:'nextEvent', DropActionIndividual, belief_state),
     rdf_has(GraspActionIndividual, knowrob:'eventOccursAt', LatestPoseIndividual),
     get_pose(LatestPoseIndividual, LocalPoseList),
     assert_new_pose_from_gripper_frame(GripperIndividual, LocalPoseList, GlobalPoseIndividual),
-    rdf_assert(DropActionIndividual, knowrob:'objectActedOn', ObjectIndividual),
-    rdf_assert(DropActionIndividual, knowrob:'deviceUsed', GripperIndividual),
-    rdf_assert(DropActionIndividual, knowrob:'eventOccursAt', GlobalPoseIndividual),
+    rdf_assert(DropActionIndividual, knowrob:'objectActedOn', ObjectIndividual, belief_state),
+    rdf_assert(DropActionIndividual, knowrob:'deviceUsed', GripperIndividual, belief_state),
+    rdf_assert(DropActionIndividual, knowrob:'eventOccursAt', GlobalPoseIndividual, belief_state),
     print_beliefstate,!.
 
 object_attached_to_gripper(GripperIndividual, ObjectIndividual):-
@@ -126,7 +126,7 @@ get_latest_grasp_pose(ObjectClass, GraspPoseList):-
     rdf(ActionIndvidual, rdf:type, knowrob:'GraspingSomething'),
     rdf_has(ActionIndvidual, suturo_action:'gripperPose', GraspPoseIndividual),
     transform_data(GraspPoseIndividual, (GraspPoseTranslation, GraspPoseQuaternion)),
-    append(GraspPoseTranslation, GraspPoseQuaternion, GraspPoseList).
+    append([GraspPoseTranslation], [GraspPoseQuaternion], GraspPoseList).
 
 assert_new_individual(ObjectClass, ObjectIndividual):-
     rdf_instance_from_class(ObjectClass, belief_state, ObjectIndividual),
@@ -137,9 +137,9 @@ assert_new_pose(PoseList, ReferenceFrame, PoseIndividual):-
     get_rotation(PoseList, Rotation),
     rdf_instance_from_class(knowrob:'Pose', belief_state, PoseIndividual),
     rdf_assert(PoseIndividual, rdf:type, owl:'NamedIndividual', belief_state),
-    rdf_assert(PoseIndividual, knowrob:'translation', literal(type(xsd:string,Translation))),
-    rdf_assert(PoseIndividual, knowrob:'quaternion', literal(type(xsd:string,Rotation))),
-    rdf_assert(PoseIndividual, suturo_action:'referenceFrame', literal(type(xsd:string,ReferenceFrame))).
+    rdf_assert(PoseIndividual, knowrob:'translation', literal(type(xsd:string,Translation)), belief_state),
+    rdf_assert(PoseIndividual, knowrob:'quaternion', literal(type(xsd:string,Rotation)), belief_state),
+    rdf_assert(PoseIndividual, suturo_action:'referenceFrame', literal(type(xsd:string,ReferenceFrame)), belief_state).
 
 assert_new_pose_in_gripper_frame(GripperIndividual, MapPoseList, LocalPoseIndividual):-
     nth0(0, MapPoseList, Position),
