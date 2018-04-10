@@ -30,8 +30,11 @@ include_directories(
 add_executable(ja_milch_perceive_object src/ja_milch_perceive_object.cpp)
 target_link_libraries(ja_milch_perceive_object ${catkin_LIBRARIES})
 
-add_executable(ja_milch_grasp_object src/ja_milch_grasp_object.cpp)
-target_link_libraries(ja_milch_grasp_object ${catkin_LIBRARIES})
+add_executable(ja_milch_top_grasp_object src/ja_milch_top_grasp_object.cpp)
+target_link_libraries(ja_milch_top_grasp_object ${catkin_LIBRARIES})
+
+add_executable(ja_milch_side_grasp_object src/ja_milch_side_grasp_object.cpp)
+target_link_libraries(ja_milch_side_grasp_object ${catkin_LIBRARIES})
 
 add_executable(ja_milch_drop_object src/ja_milch_drop_object.cpp)
 target_link_libraries(ja_milch_drop_object ${catkin_LIBRARIES})

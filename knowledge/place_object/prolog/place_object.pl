@@ -1,6 +1,6 @@
 :- module(place_object,
     [
-      calculate_place_z_position/2
+      calculate_place_pose/3
     ]).
 
 :- use_module(library('semweb/rdfs')).
@@ -11,17 +11,41 @@
 :- rdf_register_prefix(suturo_object, 'http://knowrob.org/kb/suturo_object.owl#').
 
 :- rdf_meta
+    get_grasp_pose_individual(r, +, -),
     object_height(r,-),
-    calculate_place_z_position(r, -).
+    calculate_place_pose(r, -, -).
+
+get_grasp_pose_individual(ObjectClass, [[X,Y,Z],[QX,QY,QZ,QW]], GraspPoseIndividual):-
+    owl_class_properties_value(ObjectClass, suturo_object:'graspableAt', GraspPoseIndividual),
+    get_pose(GraspPoseIndividual, [[GX,GY,GZ],[GQX,GQY,GQZ,GQW]]),
+    GX =:= X,
+    GY =:= Y,
+    GZ =:= Z,
+    GQX =:= QX,
+    GQY =:= QY,
+    GQZ =:= QZ,
+    GQW =:= QW.
 
 object_height(ObjectClass, Height):-
     owl_class_properties_value(ObjectClass, knowrob:'heightOfObject', HeightRaw),
     strip_literal_type(HeightRaw, AtomHeight),
     atom_number(AtomHeight, Height).
 
-calculate_place_z_position(GripperIndividual, Z):-
+calculate_place_pose(GripperIndividual, Z, [QX, QY, QZ, QW]):-
     object_attached_to_gripper(GripperIndividual, ObjectIndividual),
     rdfs_individual_of(ObjectIndividual, ObjectClass),
-    get_latest_grasp_pose(ObjectClass, [_,_,GraspPoseZ,_,_,_,_]),
+    get_latest_grasp_pose(ObjectClass, [[GX,GY,GZ],[GQX,GQY,GQZ,GQW]]),
+    get_grasp_pose_individual(ObjectClass, [[GX,GY,GZ],[GQX,GQY,GQZ,GQW]], GraspPoseIndividual),
+    (rdfs_individual_of(GraspPoseIndividual, suturo_object:'TopGrasp') ->
+        QX is 0.0,
+        QY is 0.707,
+        QZ is 0.0,
+        QW is 0.707
+        ;
+        QX is 0.0,
+        QY is 0.0,
+        QZ is 0.0,
+        QW is 1.0
+    ),
 	object_height(ObjectClass, Height),
-    Z is GraspPoseZ + (Height/2) + 0.85.%Tischhöhe=0.85
+    Z is GZ + (Height/2) + 0.85.%Tischhöhe=0.85

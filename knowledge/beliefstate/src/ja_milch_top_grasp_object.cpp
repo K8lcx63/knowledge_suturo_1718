@@ -5,7 +5,7 @@
    
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "ja_milch_grasp_object");
+    ros::init(argc, argv, "ja_milch_top_grasp_object");
     ros::NodeHandle nh("~");
 
     ros::Publisher grasp_pub = nh.advertise<knowledge_msgs::GraspObject>("/beliefstate/grasp_action", 1000);
