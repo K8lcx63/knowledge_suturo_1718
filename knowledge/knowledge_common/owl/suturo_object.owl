@@ -178,7 +178,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
-                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge_common/meshes/cup_eco_orange/cup_eco_orange.dae</owl:hasValue>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge_common/meshes/CupEcoOrange/CupEcoOrange.dae</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -204,7 +204,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
-                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge_common/meshes/edeka_red_bowl/edeka_red_bowl.dae</owl:hasValue>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge_common/meshes/EdekaRedBowl/EdekaRedBowl.dae</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -230,7 +230,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
-                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge_common/meshes/hela_curry_ketchup/hela_curry_ketchup.dae</owl:hasValue>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge_common/meshes/HelaCurryKetchup/HelaCurryKetchup.dae</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -274,7 +274,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
-                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge_common/meshes/ja_milch/ja_milch.dae</owl:hasValue>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge_common/meshes/JaMilch/JaMilch.dae</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -306,7 +306,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
-                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge_common/meshes/kellogs_toppas_mini/kellogs_toppas_mini.dae</owl:hasValue>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge_common/meshes/KellogsToppasMini/KellogsToppasMini.dae</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -338,7 +338,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
-                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge_common/meshes/koelln_muesli_knusper_honig_nuss/koelln_muesli_knusper_honig_nuss.dae</owl:hasValue>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge_common/meshes/KoellnMuesliKnusperHonigNuss/KoellnMuesliKnusperHonigNuss.dae</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -404,7 +404,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
-                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge_common/meshes/pringles_paprika/pringles_paprika.dae</owl:hasValue>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge_common/meshes/PringlesPaprika/PringlesPaprika.dae</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -454,7 +454,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
-                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge_common/meshes/pringles_salt/pringles_salt.dae</owl:hasValue>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge_common/meshes/PringlesSalt/PringlesSalt.dae</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -512,7 +512,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
-                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge_common/meshes/sigg_bottle/sigg_bottle.dae</owl:hasValue>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge_common/meshes/SiggBottle/SiggBottle.dae</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -546,7 +546,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#pathToCadModel"/>
-                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge_common/meshes/tomato_sauce_oro_di_parma/tomato_sauce_oro_di_parma.dae</owl:hasValue>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">package://knowledge_common/meshes/TomatoSauceOroDiParma/TomatoSauceOroDiParma.dae</owl:hasValue>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
