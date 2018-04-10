@@ -1,0 +1,6 @@
+<launch>
+    <param name="initial_package" type="string" value="knowledge_grasp_verify" />
+ 
+    <node name="json_prolog_node" pkg="json_prolog" type="json_prolog_node" cwd="node" output="screen" />
+    <node name="knowledge_grasp_verify" pkg="knowledge_grasp_verify" type="knowledge_grasp_verify" respawn="true" respawn_delay="30" output="screen" />
+</launch>

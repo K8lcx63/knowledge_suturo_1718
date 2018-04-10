@@ -539,6 +539,30 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/suturo_object.owl#graspableAt"/>
+                <owl:hasValue rdf:resource="http://knowrob.org/kb/suturo_object.owl#sidegraspTomatoSauceOroDiParma_1"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/suturo_object.owl#graspableAt"/>
+                <owl:hasValue rdf:resource="http://knowrob.org/kb/suturo_object.owl#sidegraspTomatoSauceOroDiParma_2"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/suturo_object.owl#graspableAt"/>
+                <owl:hasValue rdf:resource="http://knowrob.org/kb/suturo_object.owl#sidegraspTomatoSauceOroDiParma_3"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/suturo_object.owl#graspableAt"/>
+                <owl:hasValue rdf:resource="http://knowrob.org/kb/suturo_object.owl#sidegraspTomatoSauceOroDiParma_4"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://knowrob.org/kb/knowrob.owl#heightOfObject"/>
                 <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.11</owl:hasValue>
             </owl:Restriction>
@@ -607,7 +631,7 @@
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#graspJaMilch">
         <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#TopGrasp"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.0331417 0.687865 0.0245859 0.724664</knowrob:quaternion>
-        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.009 0.001 0.070</knowrob:translation>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.009 0.001 0.040</knowrob:translation>
     </owl:NamedIndividual>
     
 
@@ -758,6 +782,46 @@
         <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#SideGrasp"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0170715 0.00433055 0.710304 0.703674</knowrob:quaternion>
         <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 -0.03</knowrob:translation>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#sidegraspTomatoSauceOroDiParma_1 -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#sidegraspTomatoSauceOroDiParma_1">
+        <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#SideGrasp"/>
+        <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.00896335 0.0247261 0.00468777 0.999643</knowrob:quaternion>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.02 0.0 0.0</knowrob:translation>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#sidegraspTomatoSauceOroDiParma_2 -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#sidegraspTomatoSauceOroDiParma_2">
+        <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#SideGrasp"/>
+        <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.0111123 0.0238379 -0.702533 0.711165</knowrob:quaternion>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.02 0.0</knowrob:translation>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#sidegraspTomatoSauceOroDiParma_3 -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#sidegraspTomatoSauceOroDiParma_3">
+        <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#SideGrasp"/>
+        <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0247332 -0.00894416 0.999646 -0.00391113</knowrob:quaternion>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.02 0.0 0.0</knowrob:translation>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#sidegraspTomatoSauceOroDiParma_4 -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#sidegraspTomatoSauceOroDiParma_4">
+        <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#SideGrasp"/>
+        <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0236374 0.0115326 0.698618 0.715011</knowrob:quaternion>
+        <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 -0.02 0.0</knowrob:translation>
     </owl:NamedIndividual>
 </rdf:RDF>
 
