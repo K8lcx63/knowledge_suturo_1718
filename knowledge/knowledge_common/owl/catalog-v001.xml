@@ -3,6 +3,6 @@
     <uri id="User Entered Import Resolution" name="http://knowrob.org/kb/knowrob_common.owl" uri="file:/home/max-phillip/suturo_repo/suturo/02_code/catkin_ws/src/knowledge_suturo_1718/knowrob/knowrob_common/owl/knowrob_common.owl"/>
     <uri id="User Entered Import Resolution" name="package://knowrob_common/owl/knowrob.owl" uri="file:/home/max-phillip/suturo_repo/suturo/02_code/catkin_ws/src/knowledge_suturo_1718/knowrob/knowrob_common/owl/knowrob_common.owl"/>
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1523352326249" name="http://knowrob.org/kb/suturo_object.owl" uri="suturo_object.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1523971439670" name="http://knowrob.org/kb/suturo_object.owl" uri="suturo_object.owl"/>
     </group>
 </catalog>
