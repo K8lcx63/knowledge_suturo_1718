@@ -179,6 +179,19 @@ get_two_objects_on_kitchen_island_counter_with_same_storage_place(Object1, Objec
     storage_area(ObjectClass2, StorageArea2),
     StorageArea1 == StorageArea2.
 
+two_objects_stored_at_same_storage_place(StorageArea):-
+    get_latest_action_associated_with_object(ObjectIndividual1, ActionIndvidual1),
+    get_latest_action_associated_with_object(ObjectIndividual2, ActionIndvidual2),
+    ObjectIndividual1 \= ObjectIndividual2,
+    rdfs_individual_of(ActionIndvidual1, knowrob:'RealisingGraspOfSomething'),
+    rdfs_individual_of(ActionIndvidual2, knowrob:'RealisingGraspOfSomething'),
+    rdfs_individual_of(ObjectIndividual1, ObjectClass1),
+    rdfs_individual_of(ObjectIndividual2, ObjectClass2),
+    storage_area(ObjectClass1, StorageArea),
+    storage_area(ObjectClass2, StorageArea).
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 print_beliefstate:-

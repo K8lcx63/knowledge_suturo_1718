@@ -8,5 +8,6 @@
     <node name="storage_place_service" pkg="storage_place" type="storage_place_service" output="screen" />
     <node name="knowledge_grasp" pkg="knowledge_grasp" type="knowledge_grasp_service" output="screen" />
     <node name="place_object" pkg="place_object" type="place_object.py" output="screen" />
+    <node name="push_object" pkg="push_object" type="push_object.py" output="screen" />
     <include file="$(find kitchen_model_export)/launch/knowledge_export_service.launch" />
 </launch>

@@ -31,16 +31,16 @@ int main(int argc, char **argv)
 
   geometry_msgs::PointStamped test_point;
   test_point.header.frame_id = "/map";
-  test_point.point.x = 0.0;
-  test_point.point.y = 0.0;
-  test_point.point.z = 1.0;
+  test_point.point.x = 1.47094;
+  test_point.point.y = 0.00563;
+  test_point.point.z = 0.89875;
 
 
   MarkerPublisher sauce_pub("sauce", Color::RED, 0.58, 0.375);
   MarkerPublisher snacks_pub("snacks", Color::BLUE, 0.58, 0.375);
   MarkerPublisher breakfast_food_pub("breakfastFood", Color::YELLOW, 0.58, 0.375);
   MarkerPublisher food_vessel_pub("foodVessels", Color::WHITE, 0.58, 0.375);
-  MarkerPublisher test_pub("ja_milch", "package://knowledge_common/meshes/ja_milch/ja_milch.dae");
+  MarkerPublisher test_pub("ja_milch", Color::RED);
 
 
   ros::Rate rate(10);
