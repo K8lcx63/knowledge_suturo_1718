@@ -68,6 +68,10 @@ def object_exists(object_label):
         return prolog_query_true(query_result)
 
 def process_perceive_action(perceive_object_msg):
+    perceive_object_msg.object_pose.pose.orientation.x = 0.0 
+    perceive_object_msg.object_pose.pose.orientation.y = 0.0 
+    perceive_object_msg.object_pose.pose.orientation.z = 0.0 
+    perceive_object_msg.object_pose.pose.orientation.w = 1.0 
     if not is_known_object_label(perceive_object_msg.object_label):
         rospy.logerr("Label: \'" + perceive_object_msg.object_label + "\' is an unknonw label!")
         return
@@ -180,10 +184,10 @@ def spawn_object_frame(object_frame, object_pose):
     object_pose.header.frame_id = source_frame_id
     object_pose.header.stamp = rospy.Time(0)
     map_pose = transform_listener.transformPose("map", object_pose)
-    #map_pose.pose.orientation.x = 0.0
-    #map_pose.pose.orientation.y = 0.0
-    #map_pose.pose.orientation.z = 0.0
-    #map_pose.pose.orientation.w = 1.0
+    map_pose.pose.orientation.x = 0.0
+    map_pose.pose.orientation.y = 0.0
+    map_pose.pose.orientation.z = 0.0
+    map_pose.pose.orientation.w = 1.0
     map_pose.header.frame_id = "map"
     object_frames[object_frame] = map_pose
 
@@ -197,10 +201,10 @@ def update_object_frame(object_frame, object_pose):
     object_pose.header.frame_id = source_frame_id
     object_pose.header.stamp = rospy.Time(0)
     map_pose = transform_listener.transformPose("map", object_pose)
-    #map_pose.pose.orientation.x = 0.0
-    #map_pose.pose.orientation.y = 0.0
-    #map_pose.pose.orientation.z = 0.0
-    #map_pose.pose.orientation.w = 1.0
+    map_pose.pose.orientation.x = 0.0
+    map_pose.pose.orientation.y = 0.0
+    map_pose.pose.orientation.z = 0.0
+    map_pose.pose.orientation.w = 1.0
     map_pose.header.frame_id = "map"
     object_frames[object_frame] = map_pose
 
