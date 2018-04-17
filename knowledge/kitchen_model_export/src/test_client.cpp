@@ -16,7 +16,7 @@ int main(int argc, char **argv)
      for(int i = 0; i < srv.response.names.size(); i++)
      {
           ROS_INFO_STREAM("name: " << srv.response.names.at(i));
-          ROS_INFO_STREAM("position: ");
+          /*ROS_INFO_STREAM("position: ");
           ROS_INFO_STREAM("\t x: " << srv.response.poses.at(i).position.x);
           ROS_INFO_STREAM("\t y: " << srv.response.poses.at(i).position.y);
           ROS_INFO_STREAM("\t z: " << srv.response.poses.at(i).position.z);
@@ -28,7 +28,9 @@ int main(int argc, char **argv)
           ROS_INFO_STREAM("bounding_box: ");
           ROS_INFO_STREAM("\t width: " << srv.response.bounding_boxes.at(i).x);
           ROS_INFO_STREAM("\t height: " << srv.response.bounding_boxes.at(i).y);
-          ROS_INFO_STREAM("\t depth: " << srv.response.bounding_boxes.at(i).z);
+          ROS_INFO_STREAM("\t depth: " << srv.response.bounding_boxes.at(i).z);*/
+         ROS_INFO_STREAM("path: " << srv.response.meshes.at(i));
+         ROS_INFO_STREAM("frame: " << srv.response.frames.at(i));
      }
      
      return 0;

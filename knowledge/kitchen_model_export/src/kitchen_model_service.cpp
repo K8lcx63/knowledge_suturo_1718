@@ -11,7 +11,7 @@
 using namespace json_prolog;
 
 
-double prologValueToDouble(PrologValue value)
+/*double prologValueToDouble(PrologValue value)
 {
     double result;
 
@@ -86,31 +86,43 @@ geometry_msgs::Vector3 toBoundingBoxMsgs(PrologBindings bdg)
     boundingBoxMsgs.z = depth;
     
     return boundingBoxMsgs;
-}
+}*/
 
 bool get_fixed_kitchen_objects(knowledge_msgs::GetFixedKitchenObjects::Request  &req, knowledge_msgs::GetFixedKitchenObjects::Response &res)
 {
-    std::string query = "get_fixed_kitchen_objects(ObjectName, Translation, Quaternion, BoundingBox)";
+    //std::string query = "get_fixed_kitchen_objects(ObjectName, Translation, Quaternion, BoundingBox)";
+    std::string query = "get_fixed_kitchen_objects(ObjectName, Path, Frame)";
     Prolog pl;
   	PrologQueryProxy bdgs = pl.query(query);
 
-    bool succes = false;
+    //bool succes = false;
     for(PrologQueryProxy::iterator it=bdgs.begin(); it != bdgs.end(); it++)
     {
-        succes = true;
+        //succes = true;
         PrologBindings bdg = *it;
 
-        res.names.push_back(bdg["ObjectName"]);
+        /*res.names.push_back(bdg["ObjectName"]);
         res.poses.push_back(toPoseMsgs(bdg));
         res.bounding_boxes.push_back(toBoundingBoxMsgs(bdg));
-    }
+    }*/
 
-    if(succes)
+        std::string pathTemp = bdg["Path"].toString();
+        std::string path = pathTemp.substr(1, pathTemp.size() - 2);
+
+        /*if(succes)
     {
-        res.frame_id = "/map";
+        res.frame_id = "/map";*/
+
+        std::string frameTemp = bdg["Frame"].toString();
+        std::string frame = frameTemp.substr(1, frameTemp.size() - 2);
+
+        res.names.push_back(bdg["ObjectName"]);
+        res.meshes.push_back(path);
+        res.frames.push_back(frame);
     }
 
-    return succes;
+    //return succes;
+    return true;
 }
    
 int main(int argc, char **argv)
