@@ -24,7 +24,7 @@ int main(int argc, char **argv)
     grasp_msg.grasp_pose.header.stamp = ros::Time::now();
     grasp_msg.grasp_pose.pose.position.x = 0.009;
     grasp_msg.grasp_pose.pose.position.y = 0.001;
-    grasp_msg.grasp_pose.pose.position.z = 0.070;
+    grasp_msg.grasp_pose.pose.position.z = 0.040;
     grasp_msg.grasp_pose.pose.orientation.x = -0.0331417;
     grasp_msg.grasp_pose.pose.orientation.y = 0.687865;
     grasp_msg.grasp_pose.pose.orientation.z = 0.0245859;
