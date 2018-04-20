@@ -14,14 +14,13 @@ int main(int argc, char **argv)
      srv.request.object_label = "JaMilch";
 
      client.call(srv);
-
-     //ROS_INFO_STREAM("x: " << srv.response.grasp_pose.pose.position.x);
-     //ROS_INFO_STREAM("y: " << srv.response.grasp_pose.pose.position.y);
-     //ROS_INFO_STREAM("z: " << srv.response.grasp_pose.pose.position.z);
-     //ROS_INFO_STREAM("x: " << srv.response.grasp_pose.pose.orientation.x);
-     //ROS_INFO_STREAM("y: " << srv.response.grasp_pose.pose.orientation.y);
-     //ROS_INFO_STREAM("z: " << srv.response.grasp_pose.pose.orientation.z);
-     //ROS_INFO_STREAM("w: " << srv.response.grasp_pose.pose.orientation.w);
+     ROS_INFO_STREAM("x: " << srv.response.grasp_pose.pose.position.x);
+     ROS_INFO_STREAM("y: " << srv.response.grasp_pose.pose.position.y);
+     ROS_INFO_STREAM("z: " << srv.response.grasp_pose.pose.position.z);
+     ROS_INFO_STREAM("x: " << srv.response.grasp_pose.pose.orientation.x);
+     ROS_INFO_STREAM("y: " << srv.response.grasp_pose.pose.orientation.y);
+     ROS_INFO_STREAM("z: " << srv.response.grasp_pose.pose.orientation.z);
+     ROS_INFO_STREAM("w: " << srv.response.grasp_pose.pose.orientation.w);
      
      return 0;
 }

@@ -80,12 +80,6 @@
     
 
 
-    <!-- http://knowrob.org/kb/suturo_object.owl#graspDirection -->
-
-    <owl:DatatypeProperty rdf:about="http://knowrob.org/kb/suturo_object.owl#graspDirection"/>
-    
-
-
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -695,7 +689,6 @@
         <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#TopGrasp"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0626438 0.685808 -0.0762239 0.721064</knowrob:quaternion>
         <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 0.078</knowrob:translation>
-        <graspDirection rdf:datatype="http://www.w3.org/2001/XMLSchema#string">oben</graspDirection>
     </owl:NamedIndividual>
     
 
@@ -706,7 +699,6 @@
         <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#TopGrasp"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0626438 0.685808 -0.0762239 0.721064</knowrob:quaternion>
         <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.000 0.001 0.087</knowrob:translation>
-        <graspDirection rdf:datatype="http://www.w3.org/2001/XMLSchema#string">oben</graspDirection>
     </owl:NamedIndividual>
     
 
@@ -736,7 +728,7 @@
 
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#sidegraspJaMilch_2">
         <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#SideGrasp"/>
-        <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.0209739 0.00917910 0.999944 -0.00226114</knowrob:quaternion>
+        <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.0209739 -0.00917910 0.999944 -0.00226114</knowrob:quaternion>
         <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 -0.02</knowrob:translation>
         <graspDirection rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hinten</graspDirection>
     </owl:NamedIndividual>
@@ -749,7 +741,6 @@
         <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#SideGrasp"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.00888222 0.0417427 0.00483966 0.999077</knowrob:quaternion>
         <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 -0.1</knowrob:translation>
-        <graspDirection rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hinten</graspDirection>
     </owl:NamedIndividual>
     
 
@@ -760,7 +751,6 @@
         <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#SideGrasp"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.0236295 0.0355386 -0.710827 0.702071</knowrob:quaternion>
         <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 -0.1</knowrob:translation>
-        <graspDirection rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rechts</graspDirection>
     </owl:NamedIndividual>
     
 
@@ -771,7 +761,6 @@
         <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#SideGrasp"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0417409 -0.00889062 0.999076 -0.00503415</knowrob:quaternion>
         <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 -0.1</knowrob:translation>
-        <graspDirection rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vorne</graspDirection>
     </owl:NamedIndividual>
     
 
@@ -782,7 +771,6 @@
         <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#SideGrasp"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0355212 0.0236557 0.701546 0.711345</knowrob:quaternion>
         <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 -0.1</knowrob:translation>
-        <graspDirection rdf:datatype="http://www.w3.org/2001/XMLSchema#string">links</graspDirection>
     </owl:NamedIndividual>
     
 
@@ -793,7 +781,6 @@
         <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#SideGrasp"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.00900792 0.0151342 0.00460155 0.999834</knowrob:quaternion>
         <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 -0.03</knowrob:translation>
-        <graspDirection rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hinten</graspDirection>
     </owl:NamedIndividual>
     
 
@@ -804,7 +791,6 @@
         <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#SideGrasp"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.00425236 0.0170911 -0.700423 0.713511</knowrob:quaternion>
         <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 -0.03</knowrob:translation>
-        <graspDirection rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rechts</graspDirection>
     </owl:NamedIndividual>
     
 
@@ -815,7 +801,6 @@
         <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#SideGrasp"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0151849 -0.00892223 0.999844 0.00105985</knowrob:quaternion>
         <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 -0.03</knowrob:translation>
-        <graspDirection rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vorne</graspDirection>
     </owl:NamedIndividual>
     
 
@@ -826,7 +811,6 @@
         <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#SideGrasp"/>
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0170715 0.00433055 0.710304 0.703674</knowrob:quaternion>
         <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.0 -0.03</knowrob:translation>
-        <graspDirection rdf:datatype="http://www.w3.org/2001/XMLSchema#string">links</graspDirection>
     </owl:NamedIndividual>
     
 
@@ -835,7 +819,7 @@
 
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#sidegraspTomatoSauceOroDiParma_1">
         <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#SideGrasp"/>
-        <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.00896335 -0.0247261 0.00468777 0.999643</knowrob:quaternion>
+        <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.00896335 0.0247261 0.00468777 0.999643</knowrob:quaternion>
         <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.02 0.0 0.0</knowrob:translation>
     </owl:NamedIndividual>
     
@@ -845,7 +829,7 @@
 
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#sidegraspTomatoSauceOroDiParma_2">
         <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#SideGrasp"/>
-        <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.0111123 -0.0238379 -0.702533 0.711165</knowrob:quaternion>
+        <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.0111123 0.0238379 -0.702533 0.711165</knowrob:quaternion>
         <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 0.02 0.0</knowrob:translation>
     </owl:NamedIndividual>
     
@@ -855,7 +839,7 @@
 
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#sidegraspTomatoSauceOroDiParma_3">
         <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#SideGrasp"/>
-        <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0247332 0.00894416 0.999646 -0.00391113</knowrob:quaternion>
+        <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0247332 -0.00894416 0.999646 -0.00391113</knowrob:quaternion>
         <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.02 0.0 0.0</knowrob:translation>
     </owl:NamedIndividual>
     
@@ -865,7 +849,7 @@
 
     <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#sidegraspTomatoSauceOroDiParma_4">
         <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#SideGrasp"/>
-        <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0236374 -0.0115326 0.698618 0.715011</knowrob:quaternion>
+        <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0236374 0.0115326 0.698618 0.715011</knowrob:quaternion>
         <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.0 -0.02 0.0</knowrob:translation>
     </owl:NamedIndividual>
 </rdf:RDF>
