@@ -46,7 +46,7 @@ bool find_grasp_pose(knowledge_msgs::GraspIndividual::Request &req, knowledge_ms
       it != bdgs.end(); it++)
     {
       PrologBindings bdg = *it;
-      res.grasp_pose.header.frame_id = "/" + translateToUnderscore(req.object_label);
+      res.grasp_pose.header.frame_id = "/" + req.object_label;
 	    res.grasp_pose.pose =  PrologUtil::prologBindingToPose(bdg, "Position", "Quaternion");
       geometry_msgs::Quaternion quat = res.grasp_pose.pose.orientation;
       tf::Quaternion new_quat;
