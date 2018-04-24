@@ -20,7 +20,7 @@ int main(int argc, char **argv)
     knowledge_msgs::GraspObject grasp_msg;
     grasp_msg.object_label = "JaMilch";
     grasp_msg.gripper.gripper = knowledge_msgs::Gripper::LEFT_GRIPPER;
-    grasp_msg.grasp_pose.header.frame_id = "ja_milch";
+    grasp_msg.grasp_pose.header.frame_id = "JaMilch";
     grasp_msg.grasp_pose.header.stamp = ros::Time::now();   
     grasp_msg.grasp_pose.pose.position.x = 0.0;
     grasp_msg.grasp_pose.pose.position.y = 0.0;

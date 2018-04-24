@@ -153,22 +153,24 @@ def object_attached_to_gripper(req):
     return GetObjectAttachedToGripperResponse("")
 
 def objects_to_pick(req):
-    query_result = prolog.once("get_two_objects_on_kitchen_island_counter_with_same_storage_place(Object1, Object2)")
-    if(prolog_query_true(query_result)):# two object found with equal storage place
-        object_url_1 = query_result["Object1"]
-        object_url_2 = query_result["Object2"]
-
-        return ObjectsToPickResponse(object_url_to_object_name(object_url_1), object_url_to_object_name(object_url_2))
+    try:
+        query_result = prolog.once("get_two_objects_on_kitchen_island_counter_with_same_storage_place(Object1, Object2)")
+    except:
+        rospy.logerr("ObjectsToPick failed!")
     else:
-        query_result = prolog.once("get_objects_on_kitchen_island_counter(ObjectList)")
-        object_list = query_result["ObjectList"]
-        if(len(object_list) == 0):# no object remaining
+        if(prolog_query_false(query_result)):
             return ObjectsToPickResponse("", "")
         else:
-            if(len(object_list) == 1):# only one object remaining
-                return ObjectsToPickResponse(object_url_to_object_name(object_list[0]), "")
-            else:#no objects with same storage place but more than one
-                return ObjectsToPickResponse(object_url_to_object_name(object_list[0]), object_url_to_object_name(object_list[1]))
+            print(query_result)
+            object_name_1 = ""
+            object_name_2 = ""
+            if("Object1" in query_result and query_result["Object1"] != "\'None\'"):
+                object_name_1 = object_url_to_object_name(query_result["Object1"])
+
+            if("Object2" in query_result and query_result["Object2"] != "\'None\'"):
+                object_name_2 = object_url_to_object_name(query_result["Object2"])
+
+            return ObjectsToPickResponse(object_name_1, object_name_2) 
 
 def pose_stamped_to_position_tupel(pose_stamped):
     return (pose_stamped.pose.position.x, pose_stamped.pose.position.y, pose_stamped.pose.position.z)
