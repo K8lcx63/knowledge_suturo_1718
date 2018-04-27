@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1524570391852" name="http://knowrob.org/kb/suturo_storage_place.owl" uri="suturo_actions.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1524557556723" name="http://knowrob.org/kb/suturo_storage_place.owl" uri="suturo_storage_place.owl"/>
     </group>
 </catalog>
