@@ -23,9 +23,9 @@ int main(int argc, char **argv)
   geometry_msgs::PoseStamped object_pose;
   object_pose.header.stamp = ros::Time::now();
   object_pose.header.frame_id = "/map";
-  object_pose.pose.position.x = 2.0;
-  object_pose.pose.position.y = -1.5;
-  object_pose.pose.position.z = 0.5;
+  object_pose.pose.position.x = 1.51594;
+  object_pose.pose.position.y = 0.65563;
+  object_pose.pose.position.z = 0.9475;
   object_pose.pose.orientation.x = 0.0;
   object_pose.pose.orientation.y = 0.0;
   object_pose.pose.orientation.z = 0.0;
