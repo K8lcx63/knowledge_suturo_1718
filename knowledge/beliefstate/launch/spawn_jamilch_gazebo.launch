@@ -1,6 +1,6 @@
 <launch>
 
-	<arg name="JAMILCH_POSE_TABLE" default="-x 1.51594 -y 0.00563 -z 0.9600"/>
+	<arg name="JAMILCH_POSE_TABLE" default="-x 1.513857 -y 0.005283 -z 0.932698"/>
 
     <node name="spawn_jamilch" 
      pkg="gazebo_ros" 

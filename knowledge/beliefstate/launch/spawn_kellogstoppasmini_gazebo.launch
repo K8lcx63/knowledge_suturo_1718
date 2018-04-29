@@ -1,6 +1,6 @@
 <launch>
 
-	<arg name="KELLOGS_POSE_TABLE" default="-x 1.51594 -y 0.65563 -z 0.9700"/>
+	<arg name="KELLOGS_POSE_TABLE" default="-x 1.513453 -y 0.656326 -z 0.968618"/>
 
     <node name="spawn_kellogs" 
      pkg="gazebo_ros" 

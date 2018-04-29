@@ -20,12 +20,12 @@
 
 
         <collision name="collision">
-          <pose>0 0 0 0 0 0</pose>
-          <geometry>
-	           <box>
-	              <size>0.15 0.195 0.09</size>
-	             </box>
-             </geometry>
+           <pose>0 0 0 0 0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>model:///JaMilch/JaMilch.dae</uri>
+              </mesh>
+            </geometry>
            </collision>
 
            <visual name="visual">
