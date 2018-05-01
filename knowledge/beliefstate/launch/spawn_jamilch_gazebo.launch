@@ -1,0 +1,11 @@
+<launch>
+
+	<arg name="JAMILCH_POSE_TABLE" default="-x 1.508618 -y -0.000126 -z 0.932383"/>
+
+    <node name="spawn_jamilch" 
+     pkg="gazebo_ros" 
+     type="spawn_model" 
+     args="$(arg JAMILCH_POSE_TABLE) -file $(find knowledge_common)/meshes/JaMilch/model.sdf -sdf -model jamilch2" 
+     respawn="false" 
+     output="screen"/> 
+</launch>

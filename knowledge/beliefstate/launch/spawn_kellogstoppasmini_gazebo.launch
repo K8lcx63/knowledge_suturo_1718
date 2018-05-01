@@ -1,0 +1,11 @@
+<launch>
+
+	<arg name="KELLOGS_POSE_TABLE" default="-x 1.506304 -y 0.673161 -z 0.968510"/>
+
+    <node name="spawn_kellogs" 
+     pkg="gazebo_ros" 
+     type="spawn_model" 
+     args="$(arg KELLOGS_POSE_TABLE) -file $(find knowledge_common)/meshes/KellogsToppasMini/model.sdf -sdf -model kellogstoppasmini2" 
+     respawn="false" 
+     output="screen"/> 
+</launch>
