@@ -73,8 +73,10 @@ def process_perceive_action(perceive_object_msg):
     #perceive_object_msg.object_pose.pose.orientation.z = 0.0 
     #perceive_object_msg.object_pose.pose.orientation.w = 1.0 
 
-    #perceive_object_msg.object_pose.header.stamp = rospy.Time(0)
-    #map_pose = transform_listener.transformPose("map", perceive_object_msg.object_pose)
+    perceive_object_msg.object_pose.header.stamp = rospy.Time(0)
+    map_pose = transform_listener.transformPose("map", perceive_object_msg.object_pose)
+    map_pose.header.frame_id = "map"
+    perceive_object_msg.object_pose = map_pose
 
     quaternion = (
     perceive_object_msg.object_pose.pose.orientation.x,
@@ -84,7 +86,7 @@ def process_perceive_action(perceive_object_msg):
 
     euler = tf.transformations.euler_from_quaternion(quaternion)
     roll = euler[0]
-    pitch = euler[1]+180
+    pitch = euler[1]+3.14159265359
     yaw = euler[2]
 
     quaternion = tf.transformations.quaternion_from_euler(roll, pitch, yaw)
