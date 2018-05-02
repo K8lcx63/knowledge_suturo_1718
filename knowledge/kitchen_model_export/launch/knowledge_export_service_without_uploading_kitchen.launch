@@ -1,3 +1,5 @@
 <launch>
-  <node name="kitchen_model_service" pkg="kitchen_model_export" type="kitchen_model_service" output="screen" />
+  <node name="kitchen_model_service" pkg="kitchen_model_export" type="kitchen_model_service" output="screen">
+        <param name="sim" value="false"/>
+    </node>
 </launch>

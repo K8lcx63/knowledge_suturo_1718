@@ -10,6 +10,7 @@
   
 using namespace json_prolog;
 
+bool sim;
 
 /*double prologValueToDouble(PrologValue value)
 {
@@ -91,7 +92,7 @@ geometry_msgs::Vector3 toBoundingBoxMsgs(PrologBindings bdg)
 bool get_fixed_kitchen_objects(knowledge_msgs::GetFixedKitchenObjects::Request  &req, knowledge_msgs::GetFixedKitchenObjects::Response &res)
 {
     //std::string query = "get_fixed_kitchen_objects(ObjectName, Translation, Quaternion, BoundingBox)";
-    std::string query = "get_fixed_kitchen_objects(ObjectName, Path, Frame)";
+    std::string query = sim?"get_fixed_kitchen_objects(ObjectName, Path, Frame)":"get_fixed_kitchen_objects_without_prefix(ObjectName, Path, Frame)";
     Prolog pl;
   	PrologQueryProxy bdgs = pl.query(query);
 
@@ -131,6 +132,12 @@ int main(int argc, char **argv)
     ros::NodeHandle nh("~");
    
     ros::ServiceServer service = nh.advertiseService("get_fixed_kitchen_objects", get_fixed_kitchen_objects);
+    if (!nh.getParam("sim", sim))
+    {
+        ROS_ERROR("Could not find parameter 'sim' in namespace '%s'",
+        nh.getNamespace().c_str());
+        return 0;
+    }
     ros::spin();
    
     return 0;

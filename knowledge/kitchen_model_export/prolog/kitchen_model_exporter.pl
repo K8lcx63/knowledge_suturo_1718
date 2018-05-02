@@ -1,6 +1,7 @@
 :- module(kitchen_model_exporter,
     [
-      get_fixed_kitchen_objects/3
+      get_fixed_kitchen_objects/3,
+      get_fixed_kitchen_objects_without_prefix/3
     ]).
 
 :- use_module(library('semweb/rdfs')).
@@ -19,9 +20,11 @@ path_to_cad_model(IAIKitchenObjectClass, Path):-
     strip_literal_type(Temp, Path).
 
 get_frame(ObjectIndividual, Frame):-
+  rdf(ObjectIndividual, srdl2comp:'urdfName', literal(TempFrame)),
+  atom_concat('iai_kitchen/', TempFrame, Frame).
+
+get_frame_without_prefix(ObjectIndividual, Frame):-
   rdf(ObjectIndividual, srdl2comp:'urdfName', literal(Frame)).
-  %rdf(ObjectIndividual, srdl2comp:'urdfName', literal(TempFrame)),
-  %atom_concat('iai_kitchen/', TempFrame, Frame).
 
 is_iai_kitchen_object(IAIKitchenObjectClass):-
   rdfs_subclass_of(IAIKitchenObjectClass, knowrob:'IAISink');
@@ -46,4 +49,13 @@ get_fixed_kitchen_objects(ObjectIndividual, Path, Frame) :-
   rdf(ObjectIndividual,rdf:'type', Class),
   is_iai_kitchen_object(Class),
   get_frame(ObjectIndividual, Frame),
+  path_to_cad_model(Class, Path).
+
+get_fixed_kitchen_objects_without_prefix(ObjectIndividual, Path, Frame) :-
+  rdfs_individual_of(SemanticMapPerceptionIndividual, knowrob:'SemanticMapPerception'),
+  rdf_has(SemanticMapPerceptionIndividual, knowrob:'objectActedOn', ObjectIndividual),
+  rdf(ObjectIndividual,rdf:'type', srdl2comp:'UrdfLink'),
+  rdf(ObjectIndividual,rdf:'type', Class),
+  is_iai_kitchen_object(Class),
+  get_frame_without_prefix(ObjectIndividual, Frame),
   path_to_cad_model(Class, Path).
