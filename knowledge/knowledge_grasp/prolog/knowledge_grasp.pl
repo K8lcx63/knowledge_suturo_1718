@@ -1,6 +1,6 @@
 :- module(knowledge_grasp,
     [
-      find_grasp_pose/5,
+      find_grasp_pose/4,
       find_grasp_individual/2,
       sort_grasp_poses/3
     ]).
@@ -45,7 +45,7 @@ build_pose_list(ObjectClassLabel, Frame, PoseList):-
 evaluate_pose_by_height([Individual, Class, Frame, Translation, Quaternion], K-[Individual, Translation, Quaternion]):-
 	 tf_transform_pose(Frame, "/map", pose(Translation, Quaternion), pose([_, _, MZ], _)),
 	 storage_place(Class, [_,_,SZ], _, _),
-	 K is MZ * -SZ.
+	 K is MZ - SZ.
 
 pair_value(_-V, V).
 
