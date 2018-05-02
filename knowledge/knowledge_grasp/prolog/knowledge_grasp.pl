@@ -28,12 +28,9 @@
     pair_value(r,-),
     evaluate_pose_by_height(r,-).
 
-find_grasp_pose(ObjectClassLabel, Frame, Translation, Quaternion, Direction):-
+find_grasp_pose(ObjectClassLabel, Frame, Translation, Quaternion):-
 	 sort_grasp_poses(ObjectClassLabel, Frame, SortedGraspList),
-	 member([GraspPose, Translation, Quaternion], SortedGraspList),
-	 rdf(GraspPose, suturo_object:'graspDirection', LitDirection),
-	 strip_literal_type(LitDirection, Direction).
-
+	 member([GraspPose, Translation, Quaternion], SortedGraspList).
 
 find_grasp_individual(ObjectClassLabel, GraspIndividual):-
 	 owl_class_properties_value(ObjectClassLabel, suturo_object:'graspableAt', GraspIndividual).
@@ -48,7 +45,7 @@ build_pose_list(ObjectClassLabel, Frame, PoseList):-
 evaluate_pose_by_height([Individual, Class, Frame, Translation, Quaternion], K-[Individual, Translation, Quaternion]):-
 	 tf_transform_pose(Frame, "/map", pose(Translation, Quaternion), pose([_, _, MZ], _)),
 	 storage_place(Class, [_,_,SZ], _, _),
-	 K is MZ - SZ.
+	 K is MZ * -SZ.
 
 pair_value(_-V, V).
 

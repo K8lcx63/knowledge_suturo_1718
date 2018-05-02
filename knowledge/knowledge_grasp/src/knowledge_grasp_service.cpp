@@ -16,7 +16,7 @@ std::string createQuery(std::string object_label, std::string frame_id)
     ss << "find_grasp_pose(suturo_object:\'" 
        << object_label << "\',"
        << "\"" << frame_id << "\","
-       << "Position, Quaternion, Direction)";
+       << "Position, Quaternion)";
     
   return ss.str();
 }
@@ -79,13 +79,7 @@ bool find_grasp_pose(knowledge_msgs::GraspIndividual::Request &req, knowledge_ms
       //new_quat.normalize();
       //quaternionTFToMsg(new_quat, quat);
       //res.grasp_pose.pose.orientation = quat;
-      res.grasp_pose_array.header.stamp = ros::Time::now();
-	    
-      
-      res.direction_key.push_back(bdg["Direction"]);
-
-
-      
+      res.grasp_pose_array.header.stamp = ros::Time::now();      
 	  }
     
       return true;
