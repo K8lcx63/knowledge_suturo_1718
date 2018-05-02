@@ -46,7 +46,7 @@ bool find_grasp_pose(knowledge_msgs::GraspIndividual::Request &req, knowledge_ms
     //res.grasp_pose_array.header.frame_id = "/ja_milch";
 
     res.force = 0.0;
-      if(req.object_label == "JaMilch"){res.force = 30.0;}
+      if(req.object_label == "JaMilch"){res.force = 20.0;}
       if(req.object_label == "TomatoSauceOroDiParma"){res.force = 40.0;}
       if(req.object_label == "SiggBottle"){res.force = 50.0;}
       if(req.object_label == "EdekaRedBowl"){res.force = 20.0;}
