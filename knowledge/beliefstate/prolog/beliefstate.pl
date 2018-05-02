@@ -170,26 +170,51 @@ get_objects_on_kitchen_island_counter(ObjectIndividualList):-
 
 get_two_objects_on_kitchen_island_counter_with_same_storage_place(Object1, Object2):-
     get_objects_on_kitchen_island_counter(ObjectList),
+    length(ObjectList, Length),
+    Length =:= 1,
+    nth0(0, ObjectList, Object1),
+    atom_concat('', 'None', Object2).
+
+get_two_objects_on_kitchen_island_counter_with_same_storage_place(Object1, Object2):-
+    get_objects_on_kitchen_island_counter(ObjectList),
+    length(ObjectList, Length),
+    Length =:= 0,
+    atom_concat('', 'None', Object1),
+    atom_concat('', 'None', Object2).
+
+get_two_objects_on_kitchen_island_counter_with_same_storage_place(Object1, Object2):-
+    get_objects_on_kitchen_island_counter(ObjectList),
     member(Object1, ObjectList),
     member(Object2, ObjectList),
     Object1 \= Object2,
-    rdfs_individual_of(Object1, ObjectClass1),
-    rdfs_individual_of(Object2, ObjectClass2),
+    rdfs_type_of(Object1, ObjectClass1),
+    rdfs_type_of(Object2, ObjectClass2),
     storage_area(ObjectClass1, StorageArea1),
     storage_area(ObjectClass2, StorageArea2),
     StorageArea1 == StorageArea2.
 
-two_objects_stored_at_same_storage_place(StorageArea):-
-    get_latest_action_associated_with_object(ObjectIndividual1, ActionIndvidual1),
-    get_latest_action_associated_with_object(ObjectIndividual2, ActionIndvidual2),
-    ObjectIndividual1 \= ObjectIndividual2,
+get_two_objects_on_kitchen_island_counter_with_same_storage_place(Object1, Object2):-
+    get_objects_on_kitchen_island_counter(ObjectList),
+    member(Object1, ObjectList),
     rdfs_individual_of(ActionIndvidual1, knowrob:'RealisingGraspOfSomething'),
     rdfs_individual_of(ActionIndvidual2, knowrob:'RealisingGraspOfSomething'),
-    rdfs_individual_of(ObjectIndividual1, ObjectClass1),
-    rdfs_individual_of(ObjectIndividual2, ObjectClass2),
-    storage_area(ObjectClass1, StorageArea),
-    storage_area(ObjectClass2, StorageArea).
+    ActionIndvidual1 \= ActionIndvidual2,
+    rdf_has(ActionIndvidual1, knowrob:'objectActedOn', StoredObjectIndividual1),
+    rdf_has(ActionIndvidual1, knowrob:'objectActedOn', StoredObjectIndividual2),
+    rdfs_type_of(StoredObjectIndividual1, StoredObjectClass1),
+    rdfs_type_of(StoredObjectIndividual2, StoredObjectClass2),
+    rdfs_type_of(Object1, ObjectClass),
+    storage_area(StoredObjectClass1, StorageArea),
+    storage_area(StoredObjectClass2, StorageArea),
+    storage_area(ObjectClass, StorageArea),
+    atom_concat('', 'None', Object2).
 
+get_two_objects_on_kitchen_island_counter_with_same_storage_place(Object1, Object2):-
+    get_objects_on_kitchen_island_counter(ObjectList),
+    length(ObjectList, Length),
+    Length >= 2,
+    nth0(0, ObjectList, Object1),
+    nth0(1, ObjectList, Object2).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%

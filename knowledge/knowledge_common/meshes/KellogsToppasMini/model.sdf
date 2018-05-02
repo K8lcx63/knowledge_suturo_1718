@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+<model name="KellogsToppasMini">
+    <static>false</static>
+    <link name="KellogsToppasMini2">
+       <inertial>
+          <inertia>
+            <ixx>0.083</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.083</iyy>
+            <iyz>0</iyz>
+            <izz>0.083</izz>
+          </inertia>
+          <mass>5</mass>
+        </inertial>
+        <gravity>true</gravity>
+        <self_collide>true</self_collide>
+        <!--kinematic>true</kinematic-->
+
+
+        <collision name="collision_kellogs">
+           <pose>0 0 0 0 0 0</pose>
+            <geometry>
+              <mesh>
+                <uri>model:///KellogsToppasMini/KellogsToppasMini.dae</uri>
+              </mesh>
+            </geometry>
+           </collision>
+
+           <visual name="visual">
+             <geometry>
+               <mesh><uri>model:///KellogsToppasMini/KellogsToppasMini.dae</uri></mesh>
+             </geometry>
+           </visual>
+
+    </link>
+  </model>
+</sdf>

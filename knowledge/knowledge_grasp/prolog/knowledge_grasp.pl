@@ -2,11 +2,18 @@
     [
       find_grasp_pose/4,
       find_grasp_individual/2,
+<<<<<<< HEAD
       sort_grasp_poses/3
     ]).
 
 :- use_module(library(pairs)).
 :- use_module(library('storage_place')).
+=======
+      sort_grasp_poses/2
+    ]).
+
+:- use_module(library('storage_place'))
+>>>>>>> master
 :- use_module(library('semweb/rdfs')).
 :- use_module(library('semweb/rdf_db')).
 :- use_module(library('knowrob/rdfs')).
@@ -22,6 +29,7 @@
 :-  rdf_meta
     find_grasp_pose(r,-,-,-),
     find_grasp_individual(r,-),
+<<<<<<< HEAD
     sort_grasp_poses(r,r,-),
     build_grasp_triple(r,-),
     build_pose_list(r,-),
@@ -34,10 +42,20 @@ find_grasp_pose(ObjectClassLabel, Frame, Translation, Quaternion, Direction):-
 	 rdf(GraspPose, suturo_object:'graspDirection', LitDirection),
 	 strip_literal_type(LitDirection, Direction).
 
+=======
+    sort_grasp_poses(r,-).
+
+find_grasp_pose(ObjectClassLabel, Translation, Quaternion, Direction):-
+	 find_grasp_individual(ObjectClassLabel, GraspPose),
+	 rdf(GraspPose, suturo_object:'graspDirection', LitDirection),
+	 strip_literal_type(LitDirection, Direction),
+	 transform_data(GraspPose, (Translation, Quaternion)).
+>>>>>>> master
 
 find_grasp_individual(ObjectClassLabel, GraspIndividual):-
 	 owl_class_properties_value(ObjectClassLabel, suturo_object:'graspableAt', GraspIndividual).
 
+<<<<<<< HEAD
 build_grasp_tuple([GraspIndividual, ObjectClassLabel, Frame], [GraspIndividual, ObjectClassLabel, Frame, Translation, Quaternion]):-
 	 transform_data(GraspIndividual, (Translation, Quaternion)).
 
@@ -61,3 +79,7 @@ sort_grasp_poses(ObjectClassLabel, Frame, SortedGraspList):-
 pose_test(R):-
 	 sort_grasp_poses(suturo_object:'PringlesSalt', "/ja_milch", List),
 	 member(R, List).
+=======
+sort_grasp_poses(ObjectClassLabel, SortedGraspList):-
+	 findall(X,find_grasp_individual(ObjectClassLabel,X),SortedGraspList).
+>>>>>>> master
