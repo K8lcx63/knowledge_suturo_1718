@@ -72,6 +72,28 @@ def process_perceive_action(perceive_object_msg):
     #perceive_object_msg.object_pose.pose.orientation.y = 0.0 
     #perceive_object_msg.object_pose.pose.orientation.z = 0.0 
     #perceive_object_msg.object_pose.pose.orientation.w = 1.0 
+
+    #perceive_object_msg.object_pose.header.stamp = rospy.Time(0)
+    #map_pose = transform_listener.transformPose("map", perceive_object_msg.object_pose)
+
+    quaternion = (
+    perceive_object_msg.object_pose.pose.orientation.x,
+    perceive_object_msg.object_pose.pose.orientation.y,
+    perceive_object_msg.object_pose.pose.orientation.z,
+    perceive_object_msg.object_pose.pose.orientation.w)
+
+    euler = tf.transformations.euler_from_quaternion(quaternion)
+    roll = euler[0]
+    pitch = euler[1]+180
+    yaw = euler[2]
+
+    quaternion = tf.transformations.quaternion_from_euler(roll, pitch, yaw)
+
+    perceive_object_msg.object_pose.pose.orientation.x = quaternion[0] 
+    perceive_object_msg.object_pose.pose.orientation.y = quaternion[1] 
+    perceive_object_msg.object_pose.pose.orientation.z = quaternion[2] 
+    perceive_object_msg.object_pose.pose.orientation.w = quaternion[3] 
+
     if not is_known_object_label(perceive_object_msg.object_label):
         rospy.logerr("Label: \'" + perceive_object_msg.object_label + "\' is an unknonw label!")
         return
