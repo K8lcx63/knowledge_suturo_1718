@@ -19,8 +19,9 @@ path_to_cad_model(IAIKitchenObjectClass, Path):-
     strip_literal_type(Temp, Path).
 
 get_frame(ObjectIndividual, Frame):-
-  rdf(ObjectIndividual, srdl2comp:'urdfName', literal(TempFrame)),
-  atom_concat('iai_kitchen/', TempFrame, Frame).
+  rdf(ObjectIndividual, srdl2comp:'urdfName', literal(Frame)).
+  %rdf(ObjectIndividual, srdl2comp:'urdfName', literal(TempFrame)),
+  %atom_concat('iai_kitchen/', TempFrame, Frame).
 
 is_iai_kitchen_object(IAIKitchenObjectClass):-
   rdfs_subclass_of(IAIKitchenObjectClass, knowrob:'IAISink');
