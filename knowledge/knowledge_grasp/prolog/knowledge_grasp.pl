@@ -20,7 +20,7 @@
 :- rdf_register_prefix(suturo_object, 'http://knowrob.org/kb/suturo_object.owl#').
 
 :-  rdf_meta
-    find_grasp_pose(r,r,-,-,-),
+    find_grasp_pose(r,r,-,-),
     find_grasp_individual(r,-),
     sort_grasp_poses(r,r,-),
     build_grasp_triple(r,-),
