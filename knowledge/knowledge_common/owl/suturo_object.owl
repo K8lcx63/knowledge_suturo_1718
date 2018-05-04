@@ -16,6 +16,23 @@
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#graspDirection -->
+
+    <owl:AnnotationProperty rdf:about="http://knowrob.org/kb/suturo_object.owl#graspDirection"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
     // Object Properties
     //
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -307,6 +324,18 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://knowrob.org/kb/suturo_object.owl#graspableAt"/>
                 <owl:hasValue rdf:resource="http://knowrob.org/kb/suturo_object.owl#graspKellogsToppasMini"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/suturo_object.owl#graspableAt"/>
+                <owl:hasValue rdf:resource="http://knowrob.org/kb/suturo_object.owl#sidegraspKellogsToppasMini_2"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://knowrob.org/kb/suturo_object.owl#graspableAt"/>
+                <owl:hasValue rdf:resource="http://knowrob.org/kb/suturo_object.owl#sidegraspKellogstoppasMini_1"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -731,6 +760,26 @@
         <knowrob:quaternion rdf:datatype="http://www.w3.org/2001/XMLSchema#string">-0.0209739 0.00917910 0.999944 -0.00226114</knowrob:quaternion>
         <knowrob:translation rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0.02 0.0 0.0</knowrob:translation>
         <graspDirection rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hinten</graspDirection>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#sidegraspKellogsToppasMini_2 -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#sidegraspKellogsToppasMini_2">
+        <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#SideGrasp"/>
+        <knowrob:quaternion>-0.0264513 -0.0113481 0.999427 -0.0178083</knowrob:quaternion>
+        <knowrob:translation>0.033 0.0 -0.04</knowrob:translation>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://knowrob.org/kb/suturo_object.owl#sidegraspKellogstoppasMini_1 -->
+
+    <owl:NamedIndividual rdf:about="http://knowrob.org/kb/suturo_object.owl#sidegraspKellogstoppasMini_1">
+        <rdf:type rdf:resource="http://knowrob.org/kb/suturo_object.owl#SideGrasp"/>
+        <knowrob:quaternion>0.011203 -0.0265204 0.0224501 0.999333</knowrob:quaternion>
+        <knowrob:translation>-0.033 0.0 -0.04</knowrob:translation>
     </owl:NamedIndividual>
     
 
