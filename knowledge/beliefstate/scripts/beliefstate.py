@@ -179,24 +179,37 @@ def object_attached_to_gripper(req):
     return GetObjectAttachedToGripperResponse("")
 
 def objects_to_pick(req):
-    try:
-        query_result = prolog.once("get_two_objects_on_kitchen_island_counter_with_same_storage_place(Object1, Object2)")
-    except:
-        rospy.logerr("ObjectsToPick failed!")
+    if hack:
+        object_1 = ""
+        object_2 = ""
+        
+        if len(hack_list) >= 2:
+            object_2 = hack_list[1]
+
+        if len(hack_list) >=1:
+            object_1 = hack_list[0]
+            del hack_list[0]
+
+        return ObjectsToPickResponse(object_1, object_2) 
     else:
-        if(prolog_query_false(query_result)):
-            return ObjectsToPickResponse("", "")
+
+        try:
+            query_result = prolog.once("get_two_objects_on_kitchen_island_counter_with_same_storage_place(Object1, Object2)")
+        except:
+            rospy.logerr("ObjectsToPick failed!")
         else:
-            print(query_result)
-            object_name_1 = ""
-            object_name_2 = ""
-            if("Object1" in query_result and query_result["Object1"] != "\'None\'"):
-                object_name_1 = object_url_to_object_name(query_result["Object1"])
+            if(prolog_query_false(query_result)):
+                return ObjectsToPickResponse("", "")
+            else:
+                object_name_1 = ""
+                object_name_2 = ""
+                if("Object1" in query_result and query_result["Object1"] != "\'None\'"):
+                    object_name_1 = object_url_to_object_name(query_result["Object1"])
 
-            if("Object2" in query_result and query_result["Object2"] != "\'None\'"):
-                object_name_2 = object_url_to_object_name(query_result["Object2"])
+                if("Object2" in query_result and query_result["Object2"] != "\'None\'"):
+                    object_name_2 = object_url_to_object_name(query_result["Object2"])
 
-            return ObjectsToPickResponse(object_name_1, object_name_2) 
+                return ObjectsToPickResponse(object_name_1, object_name_2) 
 
 def pose_stamped_to_position_tupel(pose_stamped):
     return (pose_stamped.pose.position.x, pose_stamped.pose.position.y, pose_stamped.pose.position.z)
@@ -301,6 +314,9 @@ if __name__ == '__main__':
     despawn_place_preview_publisher = rospy.Publisher("/place_object/despawn_place_preview", String, queue_size=1)
     marker_pub = rospy.Publisher("/visualization_marker", Marker, queue_size=1)
     collision_object_publisher = rospy.Publisher("perceived_object_bounding_box", PerceivedObjectBoundingBox, queue_size=100)
+
+    hack = rospy.get_param('~hack')
+    hack_list = ['JaMilch','SiggBottle','PringlesPaprika','TomatoSauceOroDiParma','KellogsToppasMini']
 
     object_marker = []
     object_frames = {}
