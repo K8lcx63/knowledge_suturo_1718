@@ -108,9 +108,9 @@ def process_perceive_action(perceive_object_msg):
     else:
         if not exists:
             spawn_object_frame(perceive_object_msg.object_label, perceive_object_msg.object_pose)
-            publish_collision_object(perceive_object_msg)
         else:
             update_object_frame(perceive_object_msg.object_label, perceive_object_msg.object_pose)
+        publish_collision_object(perceive_object_msg)
 
 def process_grasp_action(grasp_object_msg):
     #check if its a known label
