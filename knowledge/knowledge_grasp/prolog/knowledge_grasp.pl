@@ -45,7 +45,8 @@ build_pose_list(ObjectClassLabel, Frame, PoseList):-
 evaluate_pose_by_height([Individual, Class, Frame, Translation, Quaternion], K-[Individual, Translation, Quaternion]):-
 	 tf_transform_pose(Frame, "/map", pose(Translation, Quaternion), pose([_, _, MZ], _)),
 	 storage_place(Class, [_,_,SZ], _, _),
-	 K is MZ - SZ.
+	 HeightDiff is MZ - SZ,
+	 (HeightDiff > -0.2 -> (HeightDiff < 0.2 -> K = HeightDiff ; K is SZ - MZ) ; K is SZ - MZ).
 
 pair_value(_-V, V).
 
