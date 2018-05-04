@@ -142,6 +142,8 @@ def process_drop_action(drop_object_msg):
     else:
         if prolog_query_true(query_result):
             try:
+                object_label = object_url_to_object_name(query_result["ObjectIndividual"])
+                despawn_place_preview_publisher.publish(object_label)
                 prolog.once(create_query_for_drop_object(drop_object_msg))
             except:
                 rospy.logerr("Dropaction failed, because the prolog query failed!")
@@ -296,6 +298,7 @@ if __name__ == '__main__':
     rospy.Service('/beliefstate/gripper_empty', EmptyGripper, gripper_empty)
     rospy.Service('/beliefstate/objects_to_pick', ObjectsToPick, objects_to_pick)
     rospy.Service('/beliefstate/object_attached_to_gripper', GetObjectAttachedToGripper, object_attached_to_gripper)
+    despawn_place_preview_publisher = rospy.Publisher("/place_object/despawn_place_preview", String, queue_size=1)
     marker_pub = rospy.Publisher("/visualization_marker", Marker, queue_size=1)
     collision_object_publisher = rospy.Publisher("perceived_object_bounding_box", PerceivedObjectBoundingBox, queue_size=100)
 

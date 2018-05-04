@@ -1,6 +1,7 @@
 :- module(place_object,
     [
-      calculate_place_pose/3
+      calculate_place_pose/3,
+      object_height/2
     ]).
 
 :- use_module(library('semweb/rdfs')).
@@ -33,10 +34,10 @@ object_height(ObjectClass, Height):-
 
 calculate_place_pose(GripperIndividual, Z, [QX, QY, QZ, QW]):-
     object_attached_to_gripper(GripperIndividual, ObjectIndividual),
-    rdfs_individual_of(ObjectIndividual, ObjectClass),
+    rdfs_type_of(ObjectIndividual, ObjectClass),
     get_latest_grasp_pose(ObjectClass, [[GX,GY,GZ],[GQX,GQY,GQZ,GQW]]),
     get_grasp_pose_individual(ObjectClass, [[GX,GY,GZ],[GQX,GQY,GQZ,GQW]], GraspPoseIndividual),
-    (rdfs_individual_of(GraspPoseIndividual, suturo_object:'TopGrasp') ->
+    (rdfs_type_of(GraspPoseIndividual, suturo_object:'TopGrasp') ->
         QX is 0.0,
         QY is 0.707,
         QZ is 0.0,
