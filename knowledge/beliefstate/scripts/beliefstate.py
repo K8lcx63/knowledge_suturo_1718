@@ -282,7 +282,15 @@ def publish_collision_object(perceive_object_msg):
         collision_object_msg = PerceivedObjectBoundingBox()
         collision_object_msg.object_label = perceive_object_msg.object_label
         collision_object_msg.mesh_path = mesh_path[1:-1]
-        collision_object_msg.pose = perceive_object_msg.object_pose
+
+        perceive_object_msg.object_pose.header.stamp = rospy.Time(0)
+        map_pose = transform_listener.transformPose("map", perceive_object_msg.object_pose)
+        map_pose.pose.orientation.x = 0.0
+        map_pose.pose.orientation.y = 0.0
+        map_pose.pose.orientation.z = 0.0
+        map_pose.pose.orientation.w = 1.0
+        map_pose.header.frame_id = "map"
+        collision_object_msg.pose = map_pose
         collision_object_publisher.publish(collision_object_msg)
 
 def object_frame_broadcast(event):
