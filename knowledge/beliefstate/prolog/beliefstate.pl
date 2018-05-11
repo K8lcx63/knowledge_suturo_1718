@@ -10,7 +10,8 @@
       get_latest_object_pose/2,
       get_latest_grasp_pose/2,
       get_objects_on_kitchen_island_counter/1,
-      get_two_objects_on_kitchen_island_counter_with_same_storage_place/2
+      get_two_objects_on_kitchen_island_counter_with_same_storage_place/2,
+      get_top_grasp_pose/2
     ]).
 
 :- use_module(library('semweb/rdfs')).
@@ -25,6 +26,7 @@
 :- rdf_register_prefix(suturo_object, 'http://knowrob.org/kb/suturo_object.owl#').
 
 :-  rdf_meta
+    get_top_grasp_pose(r, -),
     mesh_path(r, -),
     object_exists(r),
     process_perceive_action(r,+, +),
@@ -47,6 +49,11 @@
     print_action_info(r),
     get_pose_info(r, -),
     get_used_gripper_info(r, +, -).
+
+get_top_grasp_pose(ObjectClass, [[GX,GY,GZ],[GQX,GQY,GQZ,GQW]]):-
+    owl_class_properties_value(ObjectClass, suturo_object:'graspableAt', GraspPoseIndividual),
+    rdfs_type_of(GraspPoseIndividual, suturo_object:'TopGrasp'),
+    get_pose(GraspPoseIndividual, [[GX,GY,GZ],[GQX,GQY,GQZ,GQW]]).
 
 clear:-
     forall(rdf(J, _, _, belief_state), rdf_retractall(J,_,_)),

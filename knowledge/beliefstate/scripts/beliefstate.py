@@ -37,6 +37,18 @@ def quaternion_to_prolog_list(quaternion):
 def pose_to_prolog_list(pose):
   return "[" + point_to_prolog_list(pose.pose.position) + "," + quaternion_to_prolog_list(pose.pose.orientation) + "]"
 
+def prolog_list_to_pose(prolog_list):
+    pose = Pose()
+    pose.position.x = prolog_list[0][0]
+    pose.position.y = prolog_list[0][1]
+    pose.position.z = prolog_list[0][2]
+    pose.orientation.x = prolog_list[1][0]
+    pose.orientation.y = prolog_list[1][1]
+    pose.orientation.z = prolog_list[1][2]
+    pose.orientation.w = prolog_list[1][3]
+
+    return pose
+
 def gripper_as_string(gripper):
   if(gripper == Gripper.LEFT_GRIPPER):
     return "left_gripper"
@@ -307,11 +319,47 @@ def clear_beliefstate(msg):
     del object_marker[:]
     object_frames.clear()
 
+def grasp_object_human_interaction(msg):
+    gripper_frame_id = ""
+    if(msg.gripper.gripper == Gripper.LEFT_GRIPPER):
+        gripper_frame_id = "l_gripper_tool_frame"
+    else:
+        gripper_frame_id = "r_gripper_tool_frame"
+
+    object_pose_in_gripper = PoseStamped()
+    object_pose_in_gripper.header.frame_id = gripper_frame_id
+    object_pose_in_gripper.header.stamp = rospy.Time(0)
+    object_pose_in_gripper.pose.position.x = 0.05;
+    object_pose_in_gripper.pose.position.y = 0.0;
+    object_pose_in_gripper.pose.position.z = 0.0;
+    object_pose_in_gripper.pose.orientation.x = 0.0;
+    object_pose_in_gripper.pose.orientation.y = -0.707;
+    object_pose_in_gripper.pose.orientation.z = 0.0;
+    object_pose_in_gripper.pose.orientation.w = 0.707;
+
+    try:
+        query_result = prolog.once("get_top_grasp_pose(suturo_object:\'" + msg.object_label + "\',TopGraspPoseList)")
+    except:
+        rospy.logerr("Humaninteraction failed, because the prolog query failed!")
+    else:    
+        print(query_result["TopGraspPoseList"])
+        top_grasp_pose = prolog_list_to_pose(query_result["TopGraspPoseList"])
+        grasp_object_msg = GraspObject()
+        grasp_object_msg.object_label = msg.object_label
+        grasp_object_msg.grasp_pose.header.frame_id = msg.object_label
+        grasp_object_msg.grasp_pose.header.stamp = rospy.Time(0)
+        grasp_object_msg.grasp_pose.pose = top_grasp_pose
+
+        update_object_frame(msg.object_label, object_pose_in_gripper)
+        process_grasp_action(grasp_object_msg)
+
 if __name__ == '__main__':
     rospy.init_node('beliefstate')
 
     prolog = json_prolog.Prolog()
 
+    rospy.Subscriber("/beliefstate/grasp_object_human_interaction", GraspObjectHumanInteraction, grasp_object_human_interaction)
+    #rospy.Subscriber("/beliefstate/delete_object_human_interaction", String, delete_object_human_interaction)
     rospy.Subscriber("/beliefstate/clear", String, clear_beliefstate)
     rospy.Subscriber("/beliefstate/perceive_action", PerceivedObject, process_perceive_action)
     rospy.Subscriber("/beliefstate/grasp_action", GraspObject, process_grasp_action)
