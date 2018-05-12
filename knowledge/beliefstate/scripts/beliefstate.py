@@ -346,6 +346,7 @@ def grasp_object_human_interaction(msg):
         top_grasp_pose = prolog_list_to_pose(query_result["TopGraspPoseList"])
         grasp_object_msg = GraspObject()
         grasp_object_msg.object_label = msg.object_label
+        grasp_object_msg.gripper = msg.gripper
         grasp_object_msg.grasp_pose.header.frame_id = msg.object_label
         grasp_object_msg.grasp_pose.header.stamp = rospy.Time(0)
         grasp_object_msg.grasp_pose.pose = top_grasp_pose
