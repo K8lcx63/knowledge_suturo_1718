@@ -282,7 +282,8 @@ def spawn_object_mesh(object_frame):
     mesh_marker.mesh_resource = "package://knowledge_common/meshes/" + object_frame + "/" + object_frame + ".dae";
     mesh_marker.mesh_use_embedded_materials = True
 
-    object_marker.append(mesh_marker)
+    object_marker[object_frame] = mesh_marker
+    marker_pub.publish(mesh_marker)
 
 def publish_collision_object(perceive_object_msg):
     try:
@@ -310,13 +311,13 @@ def object_frame_broadcast(event):
         transform_broadcaster.sendTransform(pose_stamped_to_position_tupel(frame_pose), pose_stamped_to_quaternion_tupel(frame_pose), rospy.Time.now(), frame_id, frame_pose.header.frame_id)
 
 def object_mesh_broadcast(event):
-    for marker in object_marker:
+    for lable, marker in object_marker.iteritems():
       marker.header.stamp = rospy.get_rostime()
       marker_pub.publish(marker)
 
 def clear_beliefstate(msg):
     prolog.once("clear")
-    del object_marker[:]
+    object_marker.clear()
     object_frames.clear()
 
 def grasp_object_human_interaction(msg):
@@ -340,9 +341,8 @@ def grasp_object_human_interaction(msg):
     try:
         query_result = prolog.once("get_top_grasp_pose(suturo_object:\'" + msg.object_label + "\',TopGraspPoseList)")
     except:
-        rospy.logerr("Humaninteraction failed, because the prolog query failed!")
+        rospy.logerr("Humaninteraction grasp failed, because the prolog query failed!")
     else:    
-        print(query_result["TopGraspPoseList"])
         top_grasp_pose = prolog_list_to_pose(query_result["TopGraspPoseList"])
         grasp_object_msg = GraspObject()
         grasp_object_msg.object_label = msg.object_label
@@ -354,13 +354,28 @@ def grasp_object_human_interaction(msg):
         update_object_frame(msg.object_label, object_pose_in_gripper)
         process_grasp_action(grasp_object_msg)
 
+def delete_object_human_interaction(msg):
+    try:
+        prolog.once("remove_object(suturo_object:\'" + msg.data + "\')")
+    except:
+        rospy.logerr("Humaninteraction delete failed, because the prolog query failed!")
+    else:
+        marker = object_marker[msg.data]
+        marker.action = Marker.DELETE
+        marker_pub.publish(marker)
+
+        del object_frames[msg.data]
+        del object_marker[msg.data]
+
+        despawn_place_preview_publisher.publish(msg)
+
 if __name__ == '__main__':
     rospy.init_node('beliefstate')
 
     prolog = json_prolog.Prolog()
 
     rospy.Subscriber("/beliefstate/grasp_object_human_interaction", GraspObjectHumanInteraction, grasp_object_human_interaction)
-    #rospy.Subscriber("/beliefstate/delete_object_human_interaction", String, delete_object_human_interaction)
+    rospy.Subscriber("/beliefstate/delete_object_human_interaction", String, delete_object_human_interaction)
     rospy.Subscriber("/beliefstate/clear", String, clear_beliefstate)
     rospy.Subscriber("/beliefstate/perceive_action", PerceivedObject, process_perceive_action)
     rospy.Subscriber("/beliefstate/grasp_action", GraspObject, process_grasp_action)
@@ -375,7 +390,7 @@ if __name__ == '__main__':
     hack = rospy.get_param('~hack')
     hack_list = ['JaMilch','SiggBottle','PringlesPaprika','TomatoSauceOroDiParma','KellogsToppasMini']
 
-    object_marker = []
+    object_marker = {}
     object_frames = {}
     transform_listener = tf.TransformListener()
     transform_broadcaster = tf.TransformBroadcaster()

@@ -11,7 +11,8 @@
       get_latest_grasp_pose/2,
       get_objects_on_kitchen_island_counter/1,
       get_two_objects_on_kitchen_island_counter_with_same_storage_place/2,
-      get_top_grasp_pose/2
+      get_top_grasp_pose/2,
+      remove_object/1
     ]).
 
 :- use_module(library('semweb/rdfs')).
@@ -26,6 +27,7 @@
 :- rdf_register_prefix(suturo_object, 'http://knowrob.org/kb/suturo_object.owl#').
 
 :-  rdf_meta
+    remove_object(r),
     get_top_grasp_pose(r, -),
     mesh_path(r, -),
     object_exists(r),
@@ -50,13 +52,19 @@
     get_pose_info(r, -),
     get_used_gripper_info(r, +, -).
 
+remove_object(ObjectClass):-
+    rdfs_type_of(ObjectIndividual, ObjectClass),
+    forall(rdf_has(ActionIndvidual, knowrob:'objectActedOn', ObjectIndividual), rdf_retractall(ActionIndvidual,_,_)),
+    rdf_retractall(ObjectIndividual,_,_),
+    print_beliefstate,!.
+
 get_top_grasp_pose(ObjectClass, [[GX,GY,GZ],[GQX,GQY,GQZ,GQW]]):-
     owl_class_properties_value(ObjectClass, suturo_object:'graspableAt', GraspPoseIndividual),
     rdfs_type_of(GraspPoseIndividual, suturo_object:'TopGrasp'),
     get_pose(GraspPoseIndividual, [[GX,GY,GZ],[GQX,GQY,GQZ,GQW]]).
 
 clear:-
-    forall(rdf(J, _, _, belief_state), rdf_retractall(J,_,_)),
+    forall(rdf_has(J, _, _, belief_state), rdf_retractall(J,_,_)),
     ros_info('beliefstate cleared!!!!'),
     ros_info('###################################').
 

@@ -86,11 +86,12 @@ def spawn_object_mesh(x, y, object_label):
     spawn_mesh(object_label, x, y, z)
 
 def despawn_object_mesh(object_label):
-    marker = object_marker_map[object_label.data]
-    marker.action = Marker.DELETE
-    marker.header.stamp = rospy.get_rostime()
-    marker_pub.publish(marker)
-    del object_marker_map[object_label.data]
+    if(object_label.data in object_marker_map):
+        marker = object_marker_map[object_label.data]
+        marker.action = Marker.DELETE
+        marker.header.stamp = rospy.get_rostime()
+        marker_pub.publish(marker)
+        del object_marker_map[object_label.data]
 
 if __name__ == '__main__':
     rospy.init_node('place_object')
