@@ -354,6 +354,12 @@ def grasp_object_human_interaction(msg):
         update_object_frame(msg.object_label, object_pose_in_gripper)
         process_grasp_action(grasp_object_msg)
 
+        spawn_attached_object_msg = SpawnAttachedObject()
+        spawn_attached_object_msg.object_label = msg.object_label
+        spawn_attached_object_msg.pose = object_pose_in_gripper
+        attach_collision_object_publisher.publish(spawn_attached_object_msg)
+
+
 def delete_object_human_interaction(msg):
     try:
         prolog.once("remove_object(suturo_object:\'" + msg.data + "\')")
@@ -386,6 +392,8 @@ if __name__ == '__main__':
     despawn_place_preview_publisher = rospy.Publisher("/place_object/despawn_place_preview", String, queue_size=1)
     marker_pub = rospy.Publisher("/visualization_marker", Marker, queue_size=1)
     collision_object_publisher = rospy.Publisher("perceived_object_bounding_box", PerceivedObjectBoundingBox, queue_size=100)
+    attach_collision_object_publisher = rospy.Publisher("/beliefstate/spawn_attached_object", SpawnAttachedObject, queue_size=100)
+
 
     hack = rospy.get_param('~hack')
     hack_list = ['JaMilch','SiggBottle','PringlesPaprika','TomatoSauceOroDiParma','KellogsToppasMini']
