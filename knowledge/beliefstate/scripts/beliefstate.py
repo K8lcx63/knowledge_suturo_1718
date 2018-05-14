@@ -321,23 +321,6 @@ def clear_beliefstate(msg):
     object_frames.clear()
 
 def grasp_object_human_interaction(msg):
-    gripper_frame_id = ""
-    if(msg.gripper.gripper == Gripper.LEFT_GRIPPER):
-        gripper_frame_id = "l_gripper_tool_frame"
-    else:
-        gripper_frame_id = "r_gripper_tool_frame"
-
-    object_pose_in_gripper = PoseStamped()
-    object_pose_in_gripper.header.frame_id = gripper_frame_id
-    object_pose_in_gripper.header.stamp = rospy.Time(0)
-    object_pose_in_gripper.pose.position.x = 0.05;
-    object_pose_in_gripper.pose.position.y = 0.0;
-    object_pose_in_gripper.pose.position.z = 0.0;
-    object_pose_in_gripper.pose.orientation.x = 0.0;
-    object_pose_in_gripper.pose.orientation.y = -0.707;
-    object_pose_in_gripper.pose.orientation.z = 0.0;
-    object_pose_in_gripper.pose.orientation.w = 0.707;
-
     try:
         query_result = prolog.once("get_top_grasp_pose(suturo_object:\'" + msg.object_label + "\',TopGraspPoseList)")
     except:
@@ -350,6 +333,23 @@ def grasp_object_human_interaction(msg):
         grasp_object_msg.grasp_pose.header.frame_id = msg.object_label
         grasp_object_msg.grasp_pose.header.stamp = rospy.Time(0)
         grasp_object_msg.grasp_pose.pose = top_grasp_pose
+
+        gripper_frame_id = ""
+        if(msg.gripper.gripper == Gripper.LEFT_GRIPPER):
+            gripper_frame_id = "l_gripper_tool_frame"
+        else:
+            gripper_frame_id = "r_gripper_tool_frame"
+
+        object_pose_in_gripper = PoseStamped()
+        object_pose_in_gripper.header.frame_id = gripper_frame_id
+        object_pose_in_gripper.header.stamp = rospy.Time(0)
+        object_pose_in_gripper.pose.position.x = top_grasp_pose.position.z;
+        object_pose_in_gripper.pose.position.y = 0.0;
+        object_pose_in_gripper.pose.position.z = 0.0;
+        object_pose_in_gripper.pose.orientation.x = 0.0;
+        object_pose_in_gripper.pose.orientation.y = -0.707;
+        object_pose_in_gripper.pose.orientation.z = 0.0;
+        object_pose_in_gripper.pose.orientation.w = 0.707;
 
         update_object_frame(msg.object_label, object_pose_in_gripper)
         process_grasp_action(grasp_object_msg)
